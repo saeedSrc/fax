@@ -1,0 +1,45 @@
+body{
+    direction: rtl;
+    font-family: iranyekan, serif ;
+}
+.centered-form{
+    margin-top: 60px;
+}
+
+.centered-form .panel{
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+
+.input-sm {
+    height: 53px;
+}
+
+nav ul  {
+  margin: 3%;
+    text-align: center;
+    padding: 0;
+}
+
+nav ul li {
+    text-decoration: none;
+    display: inline-block;
+    padding: 0 1%;
+    width: 30%;
+}
+
+nav ul li img {
+   width: 20px;
+    vertical-align: middle;
+    margin: 0 1%;
+}
+
+/*=================mobile==================*/
+
+@media only screen and (max-width: 780px) {
+    nav {
+        display: none;
+    }
+}
+
+/*==========mobile=======*/
