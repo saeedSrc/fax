@@ -15,6 +15,10 @@ body{
     height: 53px;
 }
 
+.center{
+    text-align: center;
+}
+
 nav ul  {
   margin: 3%;
     text-align: center;

@@ -33,7 +33,7 @@
                                 @else
                                     <img src="{{asset('img/not-check.png')}}" alt="">
                                 @endif
-                                درخواست اهراز هویت
+                                درخواست احراز هویت
                             </li>
                             <li>
                                 @if(session()->has('auth-done'))
@@ -41,11 +41,12 @@
                                 @else
                                     <img src="{{asset('img/not-check.png')}}" alt="">
                                 @endif
-                                اهراز هویت
+                                    احراز هویت
                             </li>
                         </ul>
                     </nav>
                 </div>
+                @if(session()->has('register-form'))
                 <div class="panel-body">
                     <form role="form" action="{{action('UserController@store')}}" method="post">
                         @csrf
@@ -76,6 +77,28 @@
                         <input type="submit" value="ثبت نام" class="btn btn-info btn-block">
                     </form>
                 </div>
+                    @elseif(session()->has('auth-req-form'))
+                        <div class="panel-body">
+                            <form role="form" action="{{action('UserController@store')}}" method="post">
+                                @csrf
+                                <p class="center" dir="rtl">برای احراز هویت درخواست دهید.</p>
+                                <input type="submit" value="ارسال کد" class="btn btn-info btn-block">
+                            </form>
+                        </div>
+                @elseif(session()->has('auth-form'))
+                    <div class="panel-body">
+                        <form role="form" action="{{action('UserController@store')}}" method="post">
+                            @csrf
+                            <div class="form-group">
+                                @error('phone')
+                                <label class="alert alert-danger" dir="rtl">کد وارد شده اشتباه است</label>
+                                @enderror
+                                <input type="number" name="phone" id="phone" class="form-control input-sm" placeholder="کد ارسال شده را وارد کنید">
+                            </div>
+                            <input type="submit" value="احراز هویت" class="btn btn-info btn-block">
+                        </form>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

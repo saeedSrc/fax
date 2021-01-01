@@ -15,10 +15,16 @@ use Illuminate\Support\Facades\Route;
 
 // home api
 Route::get('/', function () {
-    return view('welcome');
+    return view('users.home');
 });
 
+// user login api
+Route::get('/login', function () {
+    return view('users.login');
+});
 
 Route::resource('user', 'UserController');
+
+Route::resource('ticket', 'TicketController');
 
 

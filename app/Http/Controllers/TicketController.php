@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class TicketController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,13 +23,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        session(['register-done' => null]);
-        session(['auth-req-done' => 'true']);
-        session(['auth-done' => 'true']);
-        session(['register-form' => null]);
-        session(['auth-req-form' => null]);
-        session(['auth-form' => 'true']);
-        return view('users.register');
+        return view('users.contact');
     }
 
     /**
@@ -41,14 +34,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'first_name' => ['required'],
-            'last_name' => ['required'],
-            'phone' => ['required'],
-            'password' => ['required'],
-        ]);
-
-        User::create($request->all());
+        //
     }
 
     /**

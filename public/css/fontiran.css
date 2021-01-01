@@ -16,16 +16,7 @@ This set of fonts are used in this project under the license: (.....)
 --------------------------------------------------------------------------------------
 *	
 **/
-@font-face {
-	font-family: iranyekan;
-	font-style: normal;
-	font-weight: bold;
-	src: url('../fonts/eot/IRANYekanWebBold.eot');
-	src: url('../fonts/eot/IRANYekanWebBold.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
-		 url('../fonts/woff/IRANYekanWebBold.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-		 url('../fonts/woff2/IRANYekanWebBold.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
-		 url('../fonts/ttf/IRANYekanWebBold.ttf') format('truetype');
-}
+
 
 @font-face {
 	font-family: iranyekan;
@@ -41,7 +32,7 @@ This set of fonts are used in this project under the license: (.....)
 @font-face {
 	font-family: iranyekanLight;
 	font-style: normal;
-	font-weight: 300;
+	font-weight: 100;
 	src: url('../fonts/eot/IRANYekanWebLight.eot');
 	src: url('../fonts/eot/IRANYekanWebLight.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
 		 url('../fonts/woff/IRANYekanWebLight.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
