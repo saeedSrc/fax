@@ -32,7 +32,7 @@
                     <li><a href="/ticket/create">تماس با ما</a></li>
                     <li><a href="/" class="active">خانه</a></li>
                     <li><a href="/login">ورود</a></li>
-                    <li><a href="/user/create">ثبت نام</a></li>
+                    <li><a href="/register">ثبت نام</a></li>
                 </ul>
             </header>
         </div>
@@ -46,8 +46,17 @@
         <div class="left-nav">
             <nav>
                 <ul>
+                    @if(auth()->check())
+                        <li><a href="#"><span> {{ Auth::user()->first_name }}</span>/ <span>ورود به پنل ارسال فکس</span></a></li>
+                        <li><a href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" >خروج</a></li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    @else
                     <li><a href="/login"><span>ورود</span> <img src="{{asset('img/login.png')}}"  alt=""></a></li>
-                    <li><a href="/user/create"><span>ثبت نام</span><img src="{{asset('img/register.png')}}"  alt=""></a></li>
+                    <li><a href="/register"><span>ثبت نام</span><img src="{{asset('img/register.png')}}"  alt=""></a></li>
+                        @endif
+
                 </ul>
             </nav>
         </div>

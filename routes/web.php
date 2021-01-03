@@ -23,9 +23,9 @@ Route::get('/login', function () {
     return view('users.login');
 });
 
-Route::resource('user', 'UserController');
+//Route::resource('user', 'UserController');
 
-Route::resource('ticket', 'TicketController');
+//Route::resource('ticket', 'TicketController');
 
 
 
