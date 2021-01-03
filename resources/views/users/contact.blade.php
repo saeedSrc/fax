@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layouts.master')
 
 @section('css')
     @parent
@@ -77,7 +77,7 @@
                                 سرور دچار خطا شد سرور دچار خطا شد سرور دچار خطا شد سرور دچار خطا شد
                             </div>
                             <div class="contact-form">
-                                <h1 class="violet-color">پیام مجدد</h1>
+                                <h1 class="violet-color">پاسخ</h1>
                                 <br>
                                 <form class="violet-color" action="/">
                                     <div class="form-group">

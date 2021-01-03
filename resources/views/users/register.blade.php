@@ -52,25 +52,25 @@
                         @csrf
                         <div class="form-group">
                             @error('first_name')
-                            <label class="alert alert-danger" dir="rtl">نام را وارد نکرده‌اید.</label>
+                            <label class="alert alert-danger" dir="rtl"> {{ $message }}</label>
                             @enderror
                             <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="نام">
                         </div>
                         <div class="form-group">
                             @error('last_name')
-                            <label class="alert alert-danger" dir="rtl">نام خانوادگی را وارد نکرده‌اید.</label>
+                            <label class="alert alert-danger" dir="rtl"> {{ $message }}</label>
                             @enderror
                             <input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="نام خانوادگی">
                         </div>
                         <div class="form-group">
                             @error('phone')
-                            <label class="alert alert-danger" dir="rtl">تلفن همراه را وارد نکرده‌اید.</label>
+                            <label class="alert alert-danger" dir="rtl"> {{ $message }}</label>
                             @enderror
                             <input type="number" name="phone" id="phone" class="form-control input-sm" placeholder="شماره تلفن همراه">
                         </div>
                         <div class="form-group">
                             @error('password')
-                            <label class="alert alert-danger" dir="rtl">پسورد را وارد نکرده‌اید.</label>
+                            <label class="alert alert-danger" dir="rtl"> {{ $message }}</label>
                             @enderror
                             <input type="password" name="password" id="password" class="form-control input-sm" placeholder="پسورد">
                         </div>

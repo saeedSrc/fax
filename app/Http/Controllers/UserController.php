@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -27,9 +28,9 @@ class UserController extends Controller
         session(['register-done' => null]);
         session(['auth-req-done' => 'true']);
         session(['auth-done' => 'true']);
-        session(['register-form' => null]);
+        session(['register-form' => true]);
         session(['auth-req-form' => null]);
-        session(['auth-form' => 'true']);
+        session(['auth-form' => null]);
         return view('users.register');
     }
 
@@ -39,15 +40,8 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUser $request)
     {
-        $request->validate([
-            'first_name' => ['required'],
-            'last_name' => ['required'],
-            'phone' => ['required'],
-            'password' => ['required'],
-        ]);
-
         User::create($request->all());
     }
 

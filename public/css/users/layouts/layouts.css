@@ -72,7 +72,6 @@ textarea {
     outline: none !important;
 }
 
-
 body {
     font-family: iranyekan, serif ;
 }
@@ -149,6 +148,7 @@ label {
 
 input:focus, textarea:focus, select:focus {
     outline-width: 0;
+    border: 1px solid #5bc0de !important;
 }
 
 button:focus {
@@ -801,7 +801,7 @@ nav li img {
 }
 
 .footer img {
-    width: 10%;
+    /*width: 10%;*/
 }
 
 .red-color {

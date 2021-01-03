@@ -28,3 +28,7 @@ Route::resource('user', 'UserController');
 Route::resource('ticket', 'TicketController');
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -23,13 +23,13 @@
                         @csrf
                         <div class="form-group">
                             @error('phone')
-                            <label class="alert alert-danger" dir="rtl">تلفن همراه را وارد نکرده‌اید.</label>
+                            <label class="alert alert-danger" dir="rtl"> {{ $message }}</label>
                             @enderror
                             <input type="number" name="phone" id="phone" class="form-control input-sm" placeholder="شماره تلفن همراه">
                         </div>
                         <div class="form-group">
                             @error('password')
-                            <label class="alert alert-danger" dir="rtl">پسورد را وارد نکرده‌اید.</label>
+                            <label class="alert alert-danger" dir="rtl"> {{ $message }}</label>
                             @enderror
                             <input type="password" name="password" id="password" class="form-control input-sm" placeholder="پسورد">
                         </div>

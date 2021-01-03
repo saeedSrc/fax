@@ -60,13 +60,13 @@
 <div class="footer">
     <p>سرویس ارسال و دریافت فکس به صورت انلاین <span class="red-color">به صورت انلاین</span> سرویس اراسل و دریافت فکس به صورت انلاین ویس اراسل و دریافت فکس  </p>
     <p>یوفکس را در شبکه‌های اجتماعی دنبال کنید.</p>
-    <img src="{{asset('img/telegram.png')}}" alt="">
-    <img src="{{asset('img/instagram.png')}}" alt="">
+    <img class="social-img" src="{{asset('img/telegram.png')}}" alt="">
+    <img class="social-img" src="{{asset('img/instagram.png')}}" alt="">
     <p>
        یو فکس در تلاش است ارسال فکس رو برای شما اسان و اسان تر بکنه یو فکس در تلاش است ارسال فکس رو برای شما اسان و اسان تر بکنه
         یو فکس در تلاش است ارسال فکس رو برای شما اسان و اسان تر بکنه
     </p>
-    <img src="../static/img/enamad.png" alt="">
+    <img src="{{asset('img/enamad.png')}}" alt="">
 </div>
 </body>
 

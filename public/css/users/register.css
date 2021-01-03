@@ -38,6 +38,10 @@ nav ul li img {
     margin: 0 1%;
 }
 
+.alert-danger {
+    width: 100%;
+}
+
 /*=================mobile==================*/
 
 @media only screen and (max-width: 780px) {
