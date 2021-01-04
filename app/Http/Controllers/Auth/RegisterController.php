@@ -30,7 +30,7 @@ class RegisterController extends Controller
      * @var string
      */
 //    protected $redirectTo = RouteServiceProvider::HOME;
-    protected $redirectTo = '/register';
+    protected $redirectTo = '/phone_authorize';
 
     /**
      * Create a new controller instance.
@@ -56,6 +56,13 @@ class RegisterController extends Controller
             'phone' => ['required', 'max:255', 'unique:users'], // 'regex:/(01)[0-9]{9}/'
             'password' => ['required', 'string', 'min:2'],
         ]);
+
+//        session(['register-done' => null]);
+//        session(['auth-req-done' => 'true']);
+//        session(['auth-done' => 'true']);
+//        session(['register-form' => true]);
+//        session(['auth-req-form' => null]);
+//        session(['auth-form' => null]);
     }
 
     /**

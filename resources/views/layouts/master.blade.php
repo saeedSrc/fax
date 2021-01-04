@@ -10,6 +10,7 @@
     @show
     @section('js')
         <script src="{{ asset('js/jquery/jquery.js') }}"></script>
+        <script src="{{ asset('js/layouts/master.js') }}"></script>
     @show
 </head>
 <body>
@@ -28,9 +29,10 @@
                     <input class="profile-btn" id="profile-btn" type="checkbox"><label for="profile-btn"></label>
                 </div>
                 <ul class="menu">
+                    <li><a href="/ticket">تیکت‌های من</a></li>
                     <li><a href="/about">درباره ما</a></li>
-                    <li><a href="/ticket/create">تماس با ما</a></li>
-                    <li><a href="/" class="active">خانه</a></li>
+                    <li><a href="/contact">تماس با ما</a></li>
+                    <li><a href="/">خانه</a></li>
                     <li><a href="/login">ورود</a></li>
                     <li><a href="/register">ثبت نام</a></li>
                 </ul>
@@ -38,9 +40,10 @@
         </div>
         <div class="right-nav"><nav>
                 <ul>
+                    <li><a href="/ticket">تیکت‌های من</a></li>
                     <li><a href="/about">درباره ما</a></li>
-                    <li><a href="/ticket/create">تماس با ما</a></li>
-                    <li><a href="/" class="active">خانه</a></li>
+                    <li><a href="/contact">تماس با ما</a></li>
+                    <li><a href="/">خانه</a></li>
                 </ul>
             </nav></div>
         <div class="left-nav">

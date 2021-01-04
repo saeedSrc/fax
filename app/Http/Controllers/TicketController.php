@@ -13,7 +13,7 @@ class TicketController extends Controller
      */
     public function index()
     {
-        //
+       return view('users.tickets');
     }
 
     /**
@@ -23,7 +23,7 @@ class TicketController extends Controller
      */
     public function create()
     {
-        return view('users.contact');
+
     }
 
     /**

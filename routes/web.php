@@ -13,19 +13,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// home api
+// home path
 Route::get('/', function () {
     return view('users.home');
 });
 
-// user login api
+// user login path
 Route::get('/login', function () {
     return view('users.login');
 });
 
+// user contact path
+Route::get('/contact', function () {
+    return view('users.contact');
+});
+
+// user phone authorize path
+Route::get('/phone_authorize', function () {
+    return view('auth.phone_authorize');
+});
+
 //Route::resource('user', 'UserController');
 
-//Route::resource('ticket', 'TicketController');
+Route::resource('ticket', 'TicketController')->middleware('check.phone.auth');
 
 
 
