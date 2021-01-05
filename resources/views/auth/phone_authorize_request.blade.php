@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="{{ asset('css/fontiran.css') }}">
     <script src="{{ asset('js/jquery/jquery.js') }}"></script>
     <script src="{{ asset('js/bootstrap/bootstrap.js') }}"></script>
-    <script src="{{ asset('js/users/register.js') }}"></script>
 </head>
 <body>
 <div class="container">
@@ -48,25 +47,14 @@
                     </nav>
                 </div>
 
-
                 <div class="panel-body">
-                        <form role="form" action="" method="post">
-                            @csrf
-                            <div class="form-group">
-                                @error('phone')
-                                <label class="alert alert-danger" dir="rtl">کد وارد شده اشتباه است</label>
-                                @enderror
-                                <input type="number" name="phone" id="phone" class="form-control input-sm" placeholder="کد ارسال شده را وارد کنید">
-                            </div>
-                            <div class="time-left">
-                                <span> مدت زمان باقی مانده تا وارد کردن کد ارسالی‌:</span> <span class="countdown"></span>
-                            </div>
-
-                            <input type="submit" value="احراز هویت" class="btn btn-info btn-block">
-                        </form>
+                            <form role="form" action="/phone_authorize" method="get">
+                                @csrf
+                                <p class="center" dir="rtl">برای احراز هویت درخواست دهید.</p>
+                                <input type="submit" value="ارسال کد" class="btn btn-info btn-block">
+                            </form>
                     <a class="left-text full" href="/">انصراف</a>
-                    </div>
-
+                </div>
             </div>
         </div>
     </div>

@@ -28,6 +28,11 @@ Route::get('/contact', function () {
     return view('users.contact');
 });
 
+// user phone authorize request path
+Route::get('/phone_authorize_request', function () {
+    return view('auth.phone_authorize_request');
+});
+
 // user phone authorize path
 Route::get('/phone_authorize', function () {
     return view('auth.phone_authorize');

@@ -35,6 +35,7 @@
                         </div>
                         <input type="submit" value="ورود" class="btn btn-info btn-block">
                     </form>
+                    <a class="left-text full" href="/register">درخواست عضویت</a>
                 </div>
             </div>
         </div>

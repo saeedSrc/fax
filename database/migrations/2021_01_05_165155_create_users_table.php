@@ -19,7 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('last_name');
             $table->string('phone');
             $table->string('password');
-            $table->integer('pages')->nullable(true);
+            $table->integer('pages')->default(0);
+            $table->boolean('auth_check')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

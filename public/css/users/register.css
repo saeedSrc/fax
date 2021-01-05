@@ -42,6 +42,27 @@ nav ul li img {
     width: 100%;
 }
 
+.left-text {
+    text-align: left;
+}
+
+.time-left{
+   margin: 2%;
+}
+
+.full {
+    display: inline-block;
+    width: 100%;
+    margin-top: 3%;
+}
+
+.resend {
+    width: 100%;
+    margin-top: 3%;
+    text-align: center;
+    display: none;
+}
+
 /*=================mobile==================*/
 
 @media only screen and (max-width: 780px) {
