@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUser;
 use App\Models\User;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+use League\Flysystem\Config;
 
 class UserController extends Controller
 {
@@ -89,4 +91,26 @@ class UserController extends Controller
     {
         //
     }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $phone
+     * @return \Illuminate\Http\Response
+     */
+    public function sendAuthCode(Request $request)
+    {
+        if(!session('auth-code-expire-at') || (session('auth-code-expire-at') && session('auth-code-expire-at') < time() ) ) { // if code expires
+            $code = rand(1001, 9999);
+            $expire_at = time() + 16;
+            session(['auth-code' => $code]);
+            session(['auth-code-expire-at' => $expire_at]);
+            // TODO send sms method here
+        }
+
+        return view('auth.phone_authorize');
+    }
+
+
 }

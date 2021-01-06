@@ -35,9 +35,11 @@
                     </nav>
                 </div>
 
-
+                @if(session()->has('auth-code'))
+                   {{ session('auth-code') }}
+                @endif
                 <div class="panel-body">
-                        <form role="form" action="" method="post">
+                    <form role="form" action="" method="post">
                             @csrf
                             <div class="form-group">
                                 @error('phone')
@@ -48,10 +50,12 @@
                             <div class="time-left">
                                 <span> مدت زمان باقی مانده تا وارد کردن کد ارسالی‌:</span> <span class="countdown"></span>
                             </div>
-
                             <input type="submit" value="احراز هویت" class="btn btn-info btn-block authorize">
-                            <a class="btn btn-info btn-block re-authorize" href="/phone_authorize_request">ارسال مجدد</a>
                         </form>
+                    <form role="form" action="/phone_authorize" method="post">
+                        @csrf
+                        <input type="submit" value="ارسال مجدد" class="btn btn-info btn-block re-authorize">
+                    </form>
                     <a class="left-text full" href="/">انصراف</a>
                     </div>
 

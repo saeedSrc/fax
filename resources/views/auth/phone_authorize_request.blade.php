@@ -34,7 +34,7 @@
                 </div>
 
                 <div class="panel-body">
-                            <form role="form" action="/phone_authorize" method="get">
+                            <form role="form" action="/phone_authorize" method="post">
                                 @csrf
                                 <p class="center" dir="rtl">برای احراز هویت درخواست دهید.</p>
                                 <input type="submit" value="ارسال کد" class="btn btn-info btn-block">

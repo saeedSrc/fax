@@ -34,15 +34,11 @@ Route::get('/phone_authorize_request', function () {
 });
 
 // user phone authorize path
-Route::get('/phone_authorize', function () {
-    return view('auth.phone_authorize');
-});
+Route::post('/phone_authorize','UserController@SendAuthCode');
 
 //Route::resource('user', 'UserController');
 
 Route::resource('ticket', 'TicketController')->middleware('check.phone.auth');
-
-
 
 Auth::routes();
 
