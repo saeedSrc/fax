@@ -21,28 +21,15 @@
                     <nav>
                         <ul>
                             <li>
-                                @if(session()->has('register-done'))
-                                    <img src="{{asset('img/check.png')}}" alt="">
-                                @else
-                                    <img src="{{asset('img/not-check.png')}}" alt="">
-                                @endif
-                                ثبت نام
+                                <img src="{{asset('img/check.png')}}" alt="">
+                                1- ثبت نام----->
                             </li>
                             <li>
-                                @if(session()->has('auth-req-done'))
-                                    <img src="{{asset('img/check.png')}}" alt="">
-                                @else
-                                    <img src="{{asset('img/not-check.png')}}" alt="">
-                                @endif
-                                درخواست احراز هویت
+                                <img src="{{asset('img/check.png')}}" alt="">
+                                2- درخواست احراز هویت ----->
                             </li>
                             <li>
-                                @if(session()->has('auth-done'))
-                                    <img src="{{asset('img/check.png')}}" alt="">
-                                @else
-                                    <img src="{{asset('img/not-check.png')}}" alt="">
-                                @endif
-                                    احراز هویت
+                                3- احراز هویت
                             </li>
                         </ul>
                     </nav>
@@ -62,7 +49,8 @@
                                 <span> مدت زمان باقی مانده تا وارد کردن کد ارسالی‌:</span> <span class="countdown"></span>
                             </div>
 
-                            <input type="submit" value="احراز هویت" class="btn btn-info btn-block">
+                            <input type="submit" value="احراز هویت" class="btn btn-info btn-block authorize">
+                            <a class="btn btn-info btn-block re-authorize" href="/phone_authorize_request">ارسال مجدد</a>
                         </form>
                     <a class="left-text full" href="/">انصراف</a>
                     </div>

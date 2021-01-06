@@ -20,28 +20,14 @@
                     <nav>
                         <ul>
                             <li>
-                                @if(session()->has('register-done'))
-                                    <img src="{{asset('img/check.png')}}" alt="">
-                                @else
-                                    <img src="{{asset('img/not-check.png')}}" alt="">
-                                @endif
-                                ثبت نام
+                                <img src="{{asset('img/check.png')}}" alt="">
+                                1- ثبت نام----------->
                             </li>
                             <li>
-                                @if(session()->has('auth-req-done'))
-                                    <img src="{{asset('img/check.png')}}" alt="">
-                                @else
-                                    <img src="{{asset('img/not-check.png')}}" alt="">
-                                @endif
-                                درخواست احراز هویت
+                                2- درخواست احراز هویت ----------->
                             </li>
                             <li>
-                                @if(session()->has('auth-done'))
-                                    <img src="{{asset('img/check.png')}}" alt="">
-                                @else
-                                    <img src="{{asset('img/not-check.png')}}" alt="">
-                                @endif
-                                    احراز هویت
+                                    3- احراز هویت
                             </li>
                         </ul>
                     </nav>
