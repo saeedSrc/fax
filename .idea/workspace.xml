@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1cb918d-7cdc-4736-a8aa-f74ff98da455" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/CheckPhoneAuth.php" afterPath="$PROJECT_DIR$/app/Http/Middleware/CheckPhoneAuth.php" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/fa/validation.php" afterPath="$PROJECT_DIR$/resources/lang/fa/validation.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/phone_authorize.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/phone_authorize.blade.php" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
-      <change beforePath="$PROJECT_DIR$/storage/logs/laravel.log" afterPath="$PROJECT_DIR$/storage/logs/laravel.log" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,37 +28,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="phone_authorize.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/auth/phone_authorize.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="48" column="106" lean-forward="false" selection-start-line="48" selection-start-column="106" selection-end-line="48" selection-end-column="106" />
-              <folding>
-                <marker date="1610051408185" expanded="true" signature="192:230" ph="..." />
-                <marker date="1610051408185" expanded="true" signature="271:304" ph="..." />
-                <marker date="1610051408185" expanded="true" signature="344:371" ph="..." />
-                <marker date="1610051408185" expanded="true" signature="395:425" ph="..." />
-                <marker date="1610051408185" expanded="true" signature="458:494" ph="..." />
-                <marker date="1610051408185" expanded="true" signature="527:558" ph="..." />
-                <marker date="1610051408185" expanded="true" signature="1032:1054" ph="..." />
-                <marker date="1610051408185" expanded="true" signature="1226:1248" ph="..." />
-                <marker date="1610051408185" expanded="true" signature="1569:1624" ph="..." />
-                <marker date="1610051408185" expanded="true" signature="1647:1697" ph="..." />
-                <marker date="1610051408185" expanded="true" signature="2079:2089" ph="..." />
-                <marker date="1610051408185" expanded="true" signature="2298:2308" ph="..." />
-                <marker date="1610051408185" expanded="true" signature="2661:2669" ph="..." />
-                <marker date="1610051408185" expanded="true" signature="2801:2816" ph="..." />
-                <marker date="1610051408185" expanded="true" signature="2936:2953" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UserController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="141" column="5" lean-forward="true" selection-start-line="141" selection-start-column="5" selection-end-line="141" selection-end-column="5" />
+            <state relative-caret-position="253">
+              <caret line="108" column="82" lean-forward="false" selection-start-line="108" selection-start-column="82" selection-end-line="108" selection-end-column="82" />
               <folding>
                 <element signature="e#446#547#0#PHP" expanded="false" />
                 <element signature="e#552#598#0#PHP" expanded="false" />
@@ -82,29 +49,17 @@
                 <element signature="e#1957#2090#0#PHP" expanded="false" />
                 <element signature="e#2095#2146#0#PHP" expanded="false" />
                 <element signature="e#2152#2268#0#PHP" expanded="false" />
-                <element signature="e#2273#2945#0#PHP" expanded="false" />
-                <element signature="e#2349#2813#0#PHP" expanded="false" />
-                <element signature="e#2951#3087#0#PHP" expanded="false" />
-                <element signature="e#3092#3289#0#PHP" expanded="false" />
-                <element signature="e#3295#3423#0#PHP" expanded="false" />
-                <element signature="e#3634#3676#0#PHP" expanded="false" />
-                <element signature="e#3681#3808#0#PHP" expanded="false" />
-                <element signature="e#3814#3857#0#PHP" expanded="false" />
-                <element signature="e#3862#3979#0#PHP" expanded="false" />
-                <element signature="e#3985#4042#0#PHP" expanded="false" />
-                <element signature="e#4047#4353#0#PHP" expanded="false" />
-                <element signature="e#4204#4267#0#PHP" expanded="false" />
+                <element signature="e#3057#3193#0#PHP" expanded="false" />
+                <element signature="e#3198#3395#0#PHP" expanded="false" />
+                <element signature="e#3401#3529#0#PHP" expanded="false" />
+                <element signature="e#3709#3751#0#PHP" expanded="false" />
+                <element signature="e#3756#3883#0#PHP" expanded="false" />
+                <element signature="e#3889#3932#0#PHP" expanded="false" />
+                <element signature="e#3937#4054#0#PHP" expanded="false" />
+                <element signature="e#4060#4117#0#PHP" expanded="false" />
+                <element signature="e#4122#4428#0#PHP" expanded="false" />
+                <element signature="e#4279#4342#0#PHP" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CheckPhoneAuth.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Middleware/CheckPhoneAuth.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="20" column="39" lean-forward="false" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -269,8 +224,8 @@
         <option value="$PROJECT_DIR$/app/Http/Requests/AuthCode.php" />
         <option value="$PROJECT_DIR$/resources/lang/fa/validation.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
         <option value="$PROJECT_DIR$/app/Http/Middleware/CheckPhoneAuth.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
       </list>
     </option>
   </component>
@@ -584,12 +539,12 @@
       <workItem from="1609832563972" duration="16000" />
       <workItem from="1609865169067" duration="4749000" />
       <workItem from="1609925053397" duration="4621000" />
-      <workItem from="1609951402397" duration="29000000" />
+      <workItem from="1609951402397" duration="29468000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="116650000" />
+    <option name="totallyTimeSpent" value="117118000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
@@ -1039,40 +994,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/auth/phone_authorize.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="48" column="106" lean-forward="false" selection-start-line="48" selection-start-column="106" selection-end-line="48" selection-end-column="106" />
-          <folding>
-            <marker date="1610051408185" expanded="true" signature="192:230" ph="..." />
-            <marker date="1610051408185" expanded="true" signature="271:304" ph="..." />
-            <marker date="1610051408185" expanded="true" signature="344:371" ph="..." />
-            <marker date="1610051408185" expanded="true" signature="395:425" ph="..." />
-            <marker date="1610051408185" expanded="true" signature="458:494" ph="..." />
-            <marker date="1610051408185" expanded="true" signature="527:558" ph="..." />
-            <marker date="1610051408185" expanded="true" signature="1032:1054" ph="..." />
-            <marker date="1610051408185" expanded="true" signature="1226:1248" ph="..." />
-            <marker date="1610051408185" expanded="true" signature="1569:1624" ph="..." />
-            <marker date="1610051408185" expanded="true" signature="1647:1697" ph="..." />
-            <marker date="1610051408185" expanded="true" signature="2079:2089" ph="..." />
-            <marker date="1610051408185" expanded="true" signature="2298:2308" ph="..." />
-            <marker date="1610051408185" expanded="true" signature="2661:2669" ph="..." />
-            <marker date="1610051408185" expanded="true" signature="2801:2816" ph="..." />
-            <marker date="1610051408185" expanded="true" signature="2936:2953" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/AuthCode.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="26" column="5" lean-forward="false" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-          <folding>
-            <element signature="e#37#77#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/lang/fa/validation.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="501">
@@ -1086,16 +1007,6 @@
         <state relative-caret-position="396">
           <caret line="53" column="62" lean-forward="true" selection-start-line="53" selection-start-column="10" selection-end-line="53" selection-end-column="62" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-          <folding>
-            <element signature="e#7#44#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1126,10 +1037,62 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/CheckPhoneAuth.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="20" column="39" lean-forward="false" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/auth/phone_authorize.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="48" column="106" lean-forward="false" selection-start-line="48" selection-start-column="106" selection-end-line="48" selection-end-column="106" />
+          <folding>
+            <marker date="1610051408185" expanded="true" signature="192:230" ph="..." />
+            <marker date="1610051408185" expanded="true" signature="271:304" ph="..." />
+            <marker date="1610051408185" expanded="true" signature="344:371" ph="..." />
+            <marker date="1610051408185" expanded="true" signature="395:425" ph="..." />
+            <marker date="1610051408185" expanded="true" signature="458:494" ph="..." />
+            <marker date="1610051408185" expanded="true" signature="527:558" ph="..." />
+            <marker date="1610051408185" expanded="true" signature="1032:1054" ph="..." />
+            <marker date="1610051408185" expanded="true" signature="1226:1248" ph="..." />
+            <marker date="1610051408185" expanded="true" signature="1569:1624" ph="..." />
+            <marker date="1610051408185" expanded="true" signature="1647:1697" ph="..." />
+            <marker date="1610051408185" expanded="true" signature="2079:2089" ph="..." />
+            <marker date="1610051408185" expanded="true" signature="2298:2308" ph="..." />
+            <marker date="1610051408185" expanded="true" signature="2661:2669" ph="..." />
+            <marker date="1610051408185" expanded="true" signature="2801:2816" ph="..." />
+            <marker date="1610051408185" expanded="true" signature="2936:2953" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="505">
+          <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+          <folding>
+            <element signature="e#7#44#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/AuthCode.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="26" column="5" lean-forward="false" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+          <folding>
+            <element signature="e#37#77#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="141" column="5" lean-forward="true" selection-start-line="141" selection-start-column="5" selection-end-line="141" selection-end-column="5" />
+        <state relative-caret-position="253">
+          <caret line="108" column="82" lean-forward="false" selection-start-line="108" selection-start-column="82" selection-end-line="108" selection-end-column="82" />
           <folding>
             <element signature="e#446#547#0#PHP" expanded="false" />
             <element signature="e#552#598#0#PHP" expanded="false" />
@@ -1146,27 +1109,17 @@
             <element signature="e#1957#2090#0#PHP" expanded="false" />
             <element signature="e#2095#2146#0#PHP" expanded="false" />
             <element signature="e#2152#2268#0#PHP" expanded="false" />
-            <element signature="e#2273#2945#0#PHP" expanded="false" />
-            <element signature="e#2349#2813#0#PHP" expanded="false" />
-            <element signature="e#2951#3087#0#PHP" expanded="false" />
-            <element signature="e#3092#3289#0#PHP" expanded="false" />
-            <element signature="e#3295#3423#0#PHP" expanded="false" />
-            <element signature="e#3634#3676#0#PHP" expanded="false" />
-            <element signature="e#3681#3808#0#PHP" expanded="false" />
-            <element signature="e#3814#3857#0#PHP" expanded="false" />
-            <element signature="e#3862#3979#0#PHP" expanded="false" />
-            <element signature="e#3985#4042#0#PHP" expanded="false" />
-            <element signature="e#4047#4353#0#PHP" expanded="false" />
-            <element signature="e#4204#4267#0#PHP" expanded="false" />
+            <element signature="e#3057#3193#0#PHP" expanded="false" />
+            <element signature="e#3198#3395#0#PHP" expanded="false" />
+            <element signature="e#3401#3529#0#PHP" expanded="false" />
+            <element signature="e#3709#3751#0#PHP" expanded="false" />
+            <element signature="e#3756#3883#0#PHP" expanded="false" />
+            <element signature="e#3889#3932#0#PHP" expanded="false" />
+            <element signature="e#3937#4054#0#PHP" expanded="false" />
+            <element signature="e#4060#4117#0#PHP" expanded="false" />
+            <element signature="e#4122#4428#0#PHP" expanded="false" />
+            <element signature="e#4279#4342#0#PHP" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/CheckPhoneAuth.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="20" column="39" lean-forward="false" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>

@@ -106,11 +106,14 @@ class UserController extends Controller
     public function PostPhoneAuthenticationForm(Request $request)
     {
         if (!$this->getSession('auth_code_expired_at') || ( $this->getSession('auth_code_expired_at') && $this->getSession('auth_code_expired_at') < time())) { // if code expires
-            $code = rand(1001, 9999);
-            $expire_at = time() + config('constants.auth_code_expire_time');
-            $this->setSession('authentication_code', $code);
-            $this->setSession('auth_code_expired_at', $expire_at);
-            // TODO send sms method here
+          if (Auth::user()->auth_check == 0) { // id user not authenticated at all
+              $code = rand(1001, 9999);
+              $expire_at = time() + config('constants.auth_code_expire_time');
+              $this->setSession('authentication_code', $code);
+              $this->setSession('auth_code_expired_at', $expire_at);
+              // TODO send sms method here
+          }
+
         }
 
         return view('auth.phone_authorize')->with("remaining_time", $this->getRemainingSessionTime('auth_code_expired_at'));
@@ -135,7 +138,7 @@ class UserController extends Controller
      */
     public function FinalAuthenticate(AuthCode $request)
     {
-//        dd(Auth::user()->id);
+
         User::where('id', Auth::user()->id)->update(['auth_check'=> 1]);
         return redirect('/');
 
