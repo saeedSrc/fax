@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use League\Flysystem\Config;
+use PHPUnit\TextUI\XmlConfiguration\Constant;
+use Psy\TabCompletion\Matcher\ConstantsMatcher;
 
 class UserController extends Controller
 {
@@ -39,7 +41,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreUser $request)
@@ -50,7 +52,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -61,7 +63,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -72,8 +74,8 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -84,7 +86,7 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -96,21 +98,42 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $phone
+     * @param  int $phone
      * @return \Illuminate\Http\Response
      */
     public function sendAuthCode(Request $request)
     {
-        if(!session('auth-code-expire-at') || (session('auth-code-expire-at') && session('auth-code-expire-at') < time() ) ) { // if code expires
+        if (!$this->getSession('auth_code_expired_at') || ( $this->getSession('auth_code_expired_at') && $this->getSession('auth_code_expired_at') < time())) { // if code expires
             $code = rand(1001, 9999);
-            $expire_at = time() + 16;
-            session(['auth-code' => $code]);
-            session(['auth-code-expire-at' => $expire_at]);
+            $expire_at = time() + config('constants.auth_code_expire_time');
+            $this->setSession('authentication_code', $code);
+            $this->setSession('auth_code_expired_at', $expire_at);
             // TODO send sms method here
         }
 
-        return view('auth.phone_authorize');
+        return view('auth.phone_authorize')->with("remaining_time", $this->getRemainingSessionTime('auth_code_expired_at'));
     }
 
+    public function setSession($key, $val)
+    {
+        $key = 'constants.' . $key;
+        session([config($key) => $val]);
+    }
+
+    public function getSession($key)
+    {
+        $key = 'constants.' . $key;
+       return session(config($key));
+    }
+
+    public function getRemainingSessionTime ($key)
+    {
+        $sessionTime = $this->getSession($key);
+        $remainingTime = $sessionTime - time();
+        if ($remainingTime < 0) {
+            return "00:00";
+        }
+        return intval($remainingTime / 60) . ':' . intval($remainingTime % 60);
+    }
 
 }

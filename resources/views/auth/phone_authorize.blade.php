@@ -35,8 +35,8 @@
                     </nav>
                 </div>
 
-                @if(session()->has('auth-code'))
-                   {{ session('auth-code') }}
+                @if(session()->has(config('constants.authentication_code')))
+                   {{ session(config('constants.authentication_code')) }}
                 @endif
                 <div class="panel-body">
                     <form role="form" action="" method="post">
@@ -48,7 +48,7 @@
                                 <input type="number" name="phone" id="phone" class="form-control input-sm" placeholder="کد ارسال شده را وارد کنید">
                             </div>
                             <div class="time-left">
-                                <span> مدت زمان باقی مانده تا وارد کردن کد ارسالی‌:</span> <span class="countdown"></span>
+                                <span> مدت زمان باقی مانده تا وارد کردن کد ارسالی‌:</span> <span class="countdown"> {{ $remaining_time }}</span>
                             </div>
                             <input type="submit" value="احراز هویت" class="btn btn-info btn-block authorize">
                         </form>
