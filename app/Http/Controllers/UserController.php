@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AuthCode;
 use App\Http\Requests\StoreUser;
 use App\Models\User;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use League\Flysystem\Config;
 use PHPUnit\TextUI\XmlConfiguration\Constant;
 use Psy\TabCompletion\Matcher\ConstantsMatcher;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -94,14 +97,13 @@ class UserController extends Controller
         //
     }
 
-
     /**
-     * Remove the specified resource from storage.
+     * Send auth code to user.
      *
      * @param  int $phone
      * @return \Illuminate\Http\Response
      */
-    public function sendAuthCode(Request $request)
+    public function PostPhoneAuthenticationForm(Request $request)
     {
         if (!$this->getSession('auth_code_expired_at') || ( $this->getSession('auth_code_expired_at') && $this->getSession('auth_code_expired_at') < time())) { // if code expires
             $code = rand(1001, 9999);
@@ -114,18 +116,55 @@ class UserController extends Controller
         return view('auth.phone_authorize')->with("remaining_time", $this->getRemainingSessionTime('auth_code_expired_at'));
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int $phone
+     * @return \Illuminate\Http\Response
+     */
+    public function GetPhoneAuthenticationForm(Request $request)
+    {
+        return view('auth.phone_authorize')->with("remaining_time", $this->getRemainingSessionTime('auth_code_expired_at'));
+    }
+
+    /**
+     * Final rule for user Authentication.
+     *
+     * @param  int $phone
+     * @return \Illuminate\Http\Response
+     */
+    public function FinalAuthenticate(AuthCode $request)
+    {
+//        dd(Auth::user()->id);
+        User::where('id', Auth::user()->id)->update(['auth_check'=> 1]);
+        return redirect('/');
+
+    }
+
+    /**
+     * Set user session
+     *
+     */
     public function setSession($key, $val)
     {
         $key = 'constants.' . $key;
         session([config($key) => $val]);
     }
 
+    /**
+     * Get user session.
+     *
+     */
     public function getSession($key)
     {
         $key = 'constants.' . $key;
        return session(config($key));
     }
 
+    /**
+     * Get user remaining session time
+     *
+     */
     public function getRemainingSessionTime ($key)
     {
         $sessionTime = $this->getSession($key);
@@ -135,5 +174,4 @@ class UserController extends Controller
         }
         return intval($remainingTime / 60) . ':' . intval($remainingTime % 60);
     }
-
 }

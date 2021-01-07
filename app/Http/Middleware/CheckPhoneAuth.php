@@ -18,8 +18,8 @@ class CheckPhoneAuth
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check())  {
-            if(Auth::user()->pages == null) {
-                return redirect('/phone_authorize_request'); // not phone authorize
+            if(Auth::user()->auth_check == null) {
+                return redirect('/phone_authentication_request'); // not phone authorize
             } else {
                 return $next($request); // final authorize
             }

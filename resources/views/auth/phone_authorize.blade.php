@@ -39,16 +39,22 @@
                    {{ session(config('constants.authentication_code')) }}
                 @endif
                 <div class="panel-body">
-                    <form role="form" action="" method="post">
+                    <form role="form" action="/final_authenticate" method="post">
                             @csrf
                             <div class="form-group">
-                                @error('phone')
-                                <label class="alert alert-danger" dir="rtl">کد وارد شده اشتباه است</label>
+                                @error('auth_code')
+                                <label for="auth_code" class="alert alert-danger" dir="rtl">{{ $message }}</label>
                                 @enderror
-                                <input type="number" name="phone" id="phone" class="form-control input-sm" placeholder="کد ارسال شده را وارد کنید">
+                                @error('auth_code_time_sent')
+                                <label for="auth_code" class="alert alert-danger" dir="rtl">{{ $message }}</label>
+                                @enderror
+                                <input type="number" name="auth_code" id="auth_code" class="form-control input-sm" placeholder="کد ارسال شده را وارد کنید">
+                                <input type="hidden" name="auth_code_time_sent" id="auth_code_time_sent" class="form-control input-sm" value="{{ time() }}" >
                             </div>
                             <div class="time-left">
+                                @isset($remaining_time)
                                 <span> مدت زمان باقی مانده تا وارد کردن کد ارسالی‌:</span> <span class="countdown"> {{ $remaining_time }}</span>
+                                @endisset
                             </div>
                             <input type="submit" value="احراز هویت" class="btn btn-info btn-block authorize">
                         </form>

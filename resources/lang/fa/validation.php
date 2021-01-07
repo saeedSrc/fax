@@ -64,7 +64,8 @@ return [
     'ipv6'                 => ':attribute باید یک آدرس معتبر از نوع IPv6 باشد.',
     'json'                 => 'فیلد :attribute باید یک رشته از نوع JSON باشد.',
     'lt'                   => [
-        'numeric' => ':attribute باید کوچکتر از :value باشد.',
+//        'numeric' => ':attribute باید کوچکتر از :value باشد.',
+        'numeric' => 'زمان استفاده به پایان رسیده است.',
         'file'    => ':attribute باید کوچکتر از :value کیلوبایت باشد.',
         'string'  => ':attribute باید کمتر از :value کاراکتر داشته باشد.',
         'array'   => ':attribute باید کمتر از :value آیتم داشته باشد.',
@@ -176,5 +177,6 @@ return [
         'size'                  => 'اندازه',
         'terms'                 => 'شرایط',
         'province'              => 'استان',
+        'auth_code'             => 'کد احراز هویت',
     ],
 ];

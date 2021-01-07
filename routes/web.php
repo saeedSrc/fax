@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,14 +14,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Auth
+Auth::routes();
+
+// user phone authorize request path
+Route::get('/phone_authentication_request', function () {
+    return view('auth.phone_authorize_request');
+});
+
+// user phone authorize path
+Route::post('/phone_authorize','UserController@PostPhoneAuthenticationForm');
+
+// user phone authorize path
+Route::get('/phone_authorize','UserController@GetPhoneAuthenticationForm');
+
+// user phone authorize path
+Route::post('/final_authenticate','UserController@FinalAuthenticate');
+
 // home path
 Route::get('/', function () {
     return view('users.home');
-});
-
-// user login path
-Route::get('/login', function () {
-    return view('users.login');
 });
 
 // user contact path
@@ -28,18 +41,8 @@ Route::get('/contact', function () {
     return view('users.contact');
 });
 
-// user phone authorize request path
-Route::get('/phone_authorize_request', function () {
-    return view('auth.phone_authorize_request');
-});
-
-// user phone authorize path
-Route::post('/phone_authorize','UserController@SendAuthCode');
-
-//Route::resource('user', 'UserController');
+Route::resource('user', 'UserController');
 
 Route::resource('ticket', 'TicketController')->middleware('check.phone.auth');
-
-Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
