@@ -38,15 +38,15 @@
             <form class="violet-color" action="{{ action('TicketController@store')}}" method="post">
                 @csrf
                 <div class="form-group">
-                    <label for="title" class="last-label" for="title">موضوع پیام</label>
+                    <label for="title" class="last-label">موضوع پیام</label>
                     <br>
                     <input  id="title" name="title">
                 </div>
                 <br>
                 <div class="form-group">
-                    <label class="last-label" for="message">متن پیام</label>
+                    <label class="last-label" for="question">متن پیام</label>
                     <br>
-                    <textarea  id="message" name="message"></textarea>
+                    <textarea  id="question" name="question"></textarea>
                 </div>
                 <br>
                 <button class="btn submit-btn" type="submit" value="Submit">ارسال</button>

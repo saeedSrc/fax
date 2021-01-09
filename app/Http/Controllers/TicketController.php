@@ -2,10 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TicketController extends Controller
 {
+    private $user_id;
+
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->user_id = Auth::user()->id;
+            return $next($request);
+        });
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +25,8 @@ class TicketController extends Controller
      */
     public function index()
     {
-       return view('users.tickets');
+        $tickets = Ticket::all()->where('user_id', $this->user_id);
+        return view('users.tickets', compact('tickets'));
     }
 
     /**
@@ -34,7 +47,7 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      dd($request->all());
     }
 
     /**

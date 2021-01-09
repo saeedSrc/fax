@@ -10,6 +10,9 @@ form>* {
     display: inline-block;
 }
 
+.time {
+    margin-right: 10%;
+}
 
 .submit-btn:hover {
     background: linear-gradient(261.44deg, #205F8F -29.09%, rgba(83, 174, 243, 0.72) 102.54%);
@@ -109,8 +112,12 @@ form .btn {
     box-shadow: 0px 4px 6px rgba(196, 196, 196, 0.44);
 }
 
-.ticket-title ul>* {
+.ticket-titles ul>* {
  margin-bottom: 2%;
+}
+
+.ticket-titles ul li {
+    cursor: pointer;
 }
 
 .ticket-box {
@@ -196,7 +203,7 @@ form .btn {
         width: 97%!important;
     }
 
-    .ticket-title a  {
+    .ticket-titles a  {
         font-size: 3.5vw;
     }
 
@@ -206,5 +213,9 @@ form .btn {
 
     .tickets ul li {
         padding: 3%;
+    }
+
+    .time {
+        display: none;
     }
 }

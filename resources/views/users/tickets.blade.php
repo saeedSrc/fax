@@ -14,15 +14,23 @@
 @section('content')
     <div class="contact-content back-white-color1">
         <div class="tickets">
-            <div class="ticket-title">
+            <div class="ticket-titles">
                 <h1 class="violet-color">پیام‌های من</h1>
+                @isset($tickets)
                 <ul>
+                    @foreach($tickets as $ticket)
                     <li>
-                        <a id="ticket-title01" class="gray-color" href="#">
-                            خطا در ارتباط با سرور ارسال فکس
+                        <a id="ticket-title{{ $ticket->id }}"  class="gray-color" href="#">
+                           {{ $ticket->title }}
                         </a>
+
+                        <span class="time">  اخرین بروز رسانی : {{  date('  h:i:s  d-m-Y', strtotime($ticket->updated_at)) }} </span>
+                        @if($ticket->was_answered == 1)
                         <span class="left light-green-color" href="">پاسخ داده شد</span>
-                        <div id="ticket-detail01" class="ticket-detail">
+                            @else
+                            <span class="left gray-color" href="">در حال بررسی</span>
+                        @endif
+                        <div id="ticket-detail{{ $ticket->id }}" class="ticket-detail">
                             <div class="ticket-box">
                                 <h3>پیام شما</h3>
                                 سرور دچار خطا شد سرور دچار خطا شد سرور دچار خطا شد سرور دچار خطا شد
@@ -74,7 +82,9 @@
                             </div>
                         </div>
                     </li>
+                    @endforeach
                 </ul>
+                @endisset
             </div>
         </div>
     </div>

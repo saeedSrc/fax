@@ -13,8 +13,15 @@ class CreateTicketsTable extends Migration
      */
     public function up()
     {
-        Schema::table('tickets', function (Blueprint $table) {
-            //
+        Schema::create('tickets', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->string('title');
+            $table->boolean('was_answered')->default(false);
+            $table->rememberToken();
+            $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
