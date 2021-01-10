@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTicket;
 use App\Models\Ticket;
+use App\Models\TicketMessage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -45,9 +47,22 @@ class TicketController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTicket $request)
     {
-      dd($request->all());
+        // create ticket
+        $ticket = new Ticket();
+        $ticket->title = $request->input('title');
+        $ticket->was_answered = 0;
+        $ticket->user_id = Auth::user()->id;
+        $ticket->save();
+
+       // create ticket_message
+        $ticketMessage = new TicketMessage();
+        $ticketMessage->ticket_id = $ticket->id;
+        $ticketMessage->question = $request->input('question');
+        $ticketMessage->save();
+
+        return redirect('/ticket');
     }
 
     /**

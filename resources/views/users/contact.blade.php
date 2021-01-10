@@ -38,15 +38,23 @@
             <form class="violet-color" action="{{ action('TicketController@store')}}" method="post">
                 @csrf
                 <div class="form-group">
-                    <label for="title" class="last-label">موضوع پیام</label>
+                    @error('title')
+                    <label class="alert alert-danger" dir="rtl" > {{ $message }}</label>
+                    @enderror
                     <br>
-                    <input  id="title" name="title">
+                    <input  id="title" name="title" placeholder="پیام">
                 </div>
                 <br>
                 <div class="form-group">
-                    <label class="last-label" for="question">متن پیام</label>
+                    @error('question')
+                    <label class="alert alert-danger" dir="rtl" > {{ $message }}</label>
+                    @enderror
                     <br>
-                    <textarea  id="question" name="question"></textarea>
+                    <textarea  id="question" name="question" placeholder="متن پیام"></textarea>
+                </div>
+                <br>
+                <div>
+                    <input class="file-input" type="file" name="question_image">
                 </div>
                 <br>
                 <button class="btn submit-btn" type="submit" value="Submit">ارسال</button>

@@ -34,6 +34,16 @@ input[type=text] {
     outline: none !important;
 }
 
+input[type=file] {
+    /* Remove First */
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    outline: none !important;
+    font-family: iranyekan, serif !important;
+    cursor: pointer;
+}
+
 input[type=number] {
     /* Remove First */
     -webkit-appearance: none !important;

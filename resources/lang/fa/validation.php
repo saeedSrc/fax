@@ -178,5 +178,6 @@ return [
         'terms'                 => 'شرایط',
         'province'              => 'استان',
         'auth_code'             => 'کد احراز هویت',
+        'question'             => 'متن پیام',
     ],
 ];

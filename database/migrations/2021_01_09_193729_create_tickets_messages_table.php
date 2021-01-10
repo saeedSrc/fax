@@ -13,13 +13,13 @@ class CreateTicketsMessagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('tickets_messages', function (Blueprint $table) {
+        Schema::create('ticket_messages', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('ticket_id');
             $table->text('question');
-            $table->string('question_image');
-            $table->text('answer');
-            $table->text('answer_image');
+            $table->string('question_image')->nullable(true);
+            $table->text('answer')->nullable(true);
+            $table->text('answer_image')->nullable(true);
             $table->rememberToken();
             $table->timestamps();
 
