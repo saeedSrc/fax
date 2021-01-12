@@ -179,5 +179,6 @@ return [
         'province'              => 'استان',
         'auth_code'             => 'کد احراز هویت',
         'question'             => 'متن پیام',
+        'question_image'        => 'تصویر',
     ],
 ];

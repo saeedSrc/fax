@@ -60,6 +60,15 @@ class TicketController extends Controller
         $ticketMessage = new TicketMessage();
         $ticketMessage->ticket_id = $ticket->id;
         $ticketMessage->question = $request->input('question');
+        if($request->hasFile('question_image')) {
+            if($request->file('question_image')->isValid()) {
+//                dd($request->file('question_image')->getMimeType());
+                $filename = time(). '-' . $request->file('question_image')->getClientOriginalName();
+                $request->file('question_image')->move(public_path('uploads'), $filename);
+            $ticketMessage->question_image = $filename;
+            }
+        }
+
         $ticketMessage->save();
 
         return redirect('/ticket');

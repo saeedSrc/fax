@@ -26,6 +26,7 @@ class StoreTicket extends FormRequest
         return [
             'title' => ['required','max:100'],
             'question' => ['required', 'max:750'],
+            'question_image' => ['mimes:jpg,jpeg,png,bmp,tiff', 'max:4096'],
         ];
     }
 }

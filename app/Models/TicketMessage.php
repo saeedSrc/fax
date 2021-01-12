@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class TicketMessage extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'question_image', 'answer_image' , 'question', 'answer',
+    ];
 }

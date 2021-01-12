@@ -35,7 +35,7 @@
         <div class="contact-form">
             <h1 class="violet-color">فرم ارسال پیام جدید</h1>
             <br>
-            <form class="violet-color" action="{{ action('TicketController@store')}}" method="post">
+            <form class="violet-color" action="{{ action('TicketController@store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     @error('title')
@@ -54,6 +54,9 @@
                 </div>
                 <br>
                 <div>
+                    @error('question_image')
+                    <label class="alert alert-danger" dir="rtl" > {{ $message }}</label>
+                    @enderror
                     <input class="file-input" type="file" name="question_image">
                 </div>
                 <br>
