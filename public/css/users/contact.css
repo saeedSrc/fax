@@ -157,7 +157,8 @@ form .btn {
 }
 
 .ticket-titles ul li {
-    cursor: pointer;
+  
+    direction: rtl;
 }
 
 .ticket-box {

@@ -82,7 +82,12 @@ class TicketController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $tickets = Ticket::where('id', $id)->where('user_id', Auth::user()->id)->get();
+        foreach ($tickets as $ticket){
+            $ticketMessages = $ticket->ticketMessages;
+            return view('users.ticketMessages', compact('ticketMessages', 'ticket'));
+        }
     }
 
     /**

@@ -1,0 +1,103 @@
+form {
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5vw!important;
+}
+
+form>* {
+    display: inline-block;
+}
+
+a {
+    cursor: pointer;
+}
+::-webkit-input-placeholder {
+    color: #9A9A9A;
+    font-size: 1vw;
+    font-family: iranyekan, serif ;
+}
+
+::-moz-placeholder {
+    color: #9A9A9A;
+    font-size: 1vw;
+    font-family: iranyekan, serif ;
+}
+
+:-ms-input-placeholder {
+    color: #9A9A9A;
+    font-size: 1vw;
+    font-family: iranyekan, serif ;
+}
+
+::placeholder {
+    color: #9A9A9A;
+    font-size: 1vw;
+    font-family: iranyekan, serif ;
+}
+
+.ticket-messages {
+    text-align: right;
+    padding: 4% 10%;
+}
+
+.ticket-messages ul>* {
+    margin-bottom: 5%;
+}
+
+.ticket-messages ul li>* {
+    margin-bottom: 1%;
+}
+
+.img-download {
+    padding: 0 5%;
+    border-radius: 4px;
+}
+
+.question {
+    box-shadow: 0px 4px 6px rgba(196, 196, 196, 0.44);
+    padding: 1%;
+}
+
+.answer {
+    box-shadow: 0px 4px 6px rgba(196, 196, 196, 0.44);
+    padding: 1%;
+}
+
+.answer-word {
+    /*background: #5bc0de;*/
+    color: #5bc0de;
+    padding: 1%;
+    border-radius: 4px;
+}
+
+@media only screen and (max-width: 780px) {
+    ::-webkit-input-placeholder {
+        color: #9A9A9A;
+        font-size: 3vw;
+    }
+    ::-moz-placeholder {
+        color: #9A9A9A;
+        font-size: 3vw;
+    }
+    :-ms-input-placeholder {
+        color: #9A9A9A;
+        font-size: 3vw;
+    }
+    ::placeholder {
+        color: #9A9A9A;
+        font-size: 3vw;
+    }
+
+
+    form>* {
+        display: initial;
+    }
+
+
+    h1 {
+        margin-bottom: 10%;
+    }
+
+}

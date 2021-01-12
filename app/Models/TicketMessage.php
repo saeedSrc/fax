@@ -12,4 +12,9 @@ class TicketMessage extends Model
     protected $fillable = [
         'question_image', 'answer_image' , 'question', 'answer',
     ];
+
+    public function ticket()
+    {
+        return $this->belongsTo(Ticket::class);
+    }
 }

@@ -16,4 +16,10 @@ class Ticket extends Model
     protected $fillable = [
         'title',
     ];
+
+
+    public function ticketMessages()
+    {
+        return $this->hasMany(TicketMessage::class);
+    }
 }

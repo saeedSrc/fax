@@ -6,7 +6,7 @@
 @endsection
 @section('js')
     @parent
-    <script src="{{ asset('js/users/tickets.js') }}"></script>
+    <script src="{{ asset('js/users/ticket.js') }}"></script>
 @endsection
 
 @section('title', 'تیکت‌های من')
@@ -20,15 +20,15 @@
                 <ul>
                     @foreach($tickets as $ticket)
                     <li>
-                        <a id="ticket-title{{ $ticket->id }}"  class="gray-color" href="#">
+                        <a  id="ticket-title{{ $ticket->id }}"  class="gray-color" href="/ticket/{{ $ticket->id }}">
                            {{ $ticket->title }}
                         </a>
 
                         <span class="time">  اخرین بروز رسانی : {{  date('  h:i:s  d-m-Y', strtotime($ticket->updated_at)) }} </span>
                         @if($ticket->was_answered == 1)
-                        <span class="left light-green-color" href="">پاسخ داده شد</span>
+                        <span class="left light-green-color">پاسخ داده شد</span>
                             @else
-                            <span class="left gray-color" href="">در حال بررسی</span>
+                            <span class="left gray-color">در حال بررسی</span>
                         @endif
                         <div id="ticket-detail{{ $ticket->id }}" class="ticket-detail">
                             <div class="ticket-box">
