@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTicket;
 use App\Models\Ticket;
 use App\Models\TicketMessage;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class TicketController extends Controller
 {
@@ -64,7 +66,7 @@ class TicketController extends Controller
             if($request->file('question_image')->isValid()) {
 //                dd($request->file('question_image')->getMimeType());
                 $filename = time(). '-' . $request->file('question_image')->getClientOriginalName();
-                $request->file('question_image')->move(public_path('uploads'), $filename);
+                $request->file('question_image')->move(storage_path('app/public/uploads'), $filename);
             $ticketMessage->question_image = $filename;
             }
         }
@@ -88,6 +90,20 @@ class TicketController extends Controller
             $ticketMessages = $ticket->ticketMessages;
             return view('users.ticketMessages', compact('ticketMessages', 'ticket'));
         }
+    }
+
+    /**
+     * Download specified image.
+     *
+     * @param  string  $image
+     * @return \Illuminate\Http\Response
+     */
+    public function Download($image)
+    {
+        $filePath = storage_path('app/public/uploads/') . $image;
+
+//        dd($filePath);
+        return Storage::download($filePath);
     }
 
     /**

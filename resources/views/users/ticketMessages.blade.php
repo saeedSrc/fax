@@ -31,7 +31,7 @@
                                     @endisset
                                     @isset($ticketMessage->question_image)
                                         <p>
-                                            <a class="btn img-download">
+                                            <a class="btn img-download" href="/download/{{ $ticketMessage->question_image }}">
                                                 دانلود
                                             </a>
                                             {{--{{ $ticketMessage->question_image }}--}}
@@ -51,6 +51,7 @@
                                             </a>
                                         </p>
                                     @endisset
+                                        @if($loop->last)
                                         <form class="violet-color" action="{{ action('TicketController@store')}}" method="post" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-group">
@@ -58,7 +59,7 @@
                                                 <label class="alert alert-danger" dir="rtl" > {{ $message }}</label>
                                                 @enderror
                                                 <br>
-                                                <textarea  id="question" name="question" placeholder="متن پیام"></textarea>
+                                                <textarea  id="question" name="question" placeholder="پاسخ"></textarea>
                                             </div>
                                             <br>
                                             <div>
@@ -70,9 +71,8 @@
                                             <br>
                                             <button class="btn submit-btn" type="submit" value="Submit">ارسال</button>
                                         </form>
+                                        @endif
                                     @endif
-
-
                                 </li>
                             @endforeach
                         </ul>

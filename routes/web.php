@@ -45,4 +45,7 @@ Route::resource('user', 'UserController');
 
 Route::resource('ticket', 'TicketController')->middleware('check.phone.auth');
 
+// download image
+Route::get('/download/{image}','TicketController@Download');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
