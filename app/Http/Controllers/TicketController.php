@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTicket;
+use App\Http\Requests\StoreTicketMessage;
 use App\Models\Ticket;
 use App\Models\TicketMessage;
 
@@ -75,6 +76,37 @@ class TicketController extends Controller
 
         return redirect('/ticket');
     }
+
+    /**
+     * Store a newly created ticket messages in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function CreateTicketMessage(StoreTicketMessage $request, $tid)
+    {
+        $ticket = Ticket::find($tid);
+        $ticket->was_answered = 0;
+
+        // create ticket_message
+        $ticketMessage = new TicketMessage();
+        $ticketMessage->ticket_id = $tid;
+        $ticketMessage->question = $request->input('question');
+        if($request->hasFile('question_image')) {
+            if($request->file('question_image')->isValid()) {
+                $filename = time(). '-' . $request->file('question_image')->getClientOriginalName();
+                $request->file('question_image')->move(storage_path('app/public/uploads'), $filename);
+                $ticketMessage->question_image = $filename;
+            }
+        }
+
+        $ticketMessage->save();
+        $ticket->save();
+
+        return redirect('/ticket/'.$tid);
+    }
+
+
 
     /**
      * Display the specified resource.

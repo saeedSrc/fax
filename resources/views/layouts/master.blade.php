@@ -29,8 +29,13 @@
                     <input class="profile-btn" id="profile-btn" type="checkbox"><label for="profile-btn"></label>
                 </div>
                 <ul class="menu">
+                    @if(auth()->check())
+                        @if( Auth::user()->type == 'admin')
+                            <li><a href="/ticket">پیام های مردم</a></li>
+                            @endif
+                        @endif
                     <li><a href="/ticket">تیکت‌های من</a></li>
-                    <li><a href="/about">درباره ما</a></li>
+                    {{--<li><a href="/about">درباره ما</a></li>--}}
                     <li><a href="/contact">تماس با ما</a></li>
                     <li><a href="/">خانه</a></li>
                     <li><a href="/login">ورود</a></li>
@@ -40,8 +45,13 @@
         </div>
         <div class="right-nav"><nav>
                 <ul>
+                    @if(auth()->check())
+                        @if( Auth::user()->type == 'admin')
+                            <li><a href="/admin/get_users_tickets">پیام های مردم</a></li>
+                        @endif
+                    @endif
                     <li><a href="/ticket">تیکت‌های من</a></li>
-                    <li><a href="/about">درباره ما</a></li>
+                    {{--<li><a href="/about">درباره ما</a></li>--}}
                     <li><a href="/contact">تماس با ما</a></li>
                     <li><a href="/">خانه</a></li>
                 </ul>

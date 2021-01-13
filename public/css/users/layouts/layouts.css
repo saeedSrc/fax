@@ -627,6 +627,13 @@ nav li img {
     color: #222121;
 }
 
+.lagevardi {
+    color: #5bc0de;
+}
+
+.back-lajevardi {
+    background: #5bc0de;
+}
 .content-new {
     padding: 5% 0;
 }

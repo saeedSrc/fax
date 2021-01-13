@@ -15,12 +15,12 @@
     <div class="contact-content back-white-color1">
         <div class="tickets">
             <div class="ticket-titles">
-                <h1 class="violet-color">پیام‌های من</h1>
+                <h1 class="violet-color">پیام‌های کاربران</h1>
                 @isset($tickets)
                 <ul>
                     @foreach($tickets as $ticket)
                     <li>
-                        <a  id="ticket-title{{ $ticket->id }}"  class="gray-color" href="/ticket/{{ $ticket->id }}">
+                        <a  id="ticket-title{{ $ticket->id }}"  class="gray-color" href="/admin/ticket/{{ $ticket->id }}">
                            {{ $ticket->title }}
                         </a>
 

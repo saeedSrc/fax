@@ -25,25 +25,32 @@
                             @foreach($ticketMessages as $ticketMessage)
                                 <li>
                                     @isset($ticketMessage->question)
+                                  <div class="question-box">
                                     <p class="question">
+                                        <span class="lagevardi">
+                                            {{ auth()->user()->first_name }}
+                                            {{ auth()->user()->last_name }}
+                                            :
+                                        </span>
                                         {{ $ticketMessage->question }}
                                     </p>
-                                    @endisset
                                     @isset($ticketMessage->question_image)
                                         <p>
                                             <a class="btn img-download" href="/download/{{ $ticketMessage->question_image }}">
                                                 دانلود
                                             </a>
-                                            {{--{{ $ticketMessage->question_image }}--}}
                                         </p>
                                     @endisset
-                                      @if(isset($ticketMessage->answer))
-                                    @isset($ticketMessage->answer)
+                                      <span class="time">  اخرین بروز رسانی : {{  date('  h:i:s  d-m-Y', strtotime($ticketMessage->updated_at)) }} </span>
+                                  </div>
+                                    @endisset
+
+                                    @if(isset($ticketMessage->answer))
+                                   <div class="answer-box">
                                     <p class="answer">
-                                        <span class="answer-word">پاسخ:</span>
+                                        <span class="lagevardi">پاسخ:</span>
                                         {{ $ticketMessage->answer }}
                                     </p>
-                                    @endisset
                                     @isset($ticketMessage->answer_image)
                                         <p>
                                             <a class="btn">
@@ -51,8 +58,10 @@
                                             </a>
                                         </p>
                                     @endisset
+                                       <span class="time">  اخرین بروز رسانی : {{  date('  h:i:s  d-m-Y', strtotime($ticketMessage->updated_at)) }} </span>
+                                   </div>
                                         @if($loop->last)
-                                        <form class="violet-color" action="{{ action('TicketController@store')}}" method="post" enctype="multipart/form-data">
+                                        <form class="violet-color" action="/create_ticket_message/{{ $ticket->id }}" method="post" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-group">
                                                 @error('question')
@@ -72,6 +81,9 @@
                                             <button class="btn submit-btn" type="submit" value="Submit">ارسال</button>
                                         </form>
                                         @endif
+
+                                        @else
+                                        <h3 class="gray-color center">در انتظار پاسخ</h3>
                                     @endif
                                 </li>
                             @endforeach

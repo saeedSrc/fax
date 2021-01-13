@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('pages')->default(0);
             $table->boolean('auth_check')->default(false);
+            $table->enum('type', ['admin', 'normal'])->default("normal");
             $table->rememberToken();
             $table->timestamps();
         });

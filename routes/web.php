@@ -44,8 +44,17 @@ Route::get('/contact', function () {
 Route::resource('user', 'UserController');
 
 Route::resource('ticket', 'TicketController')->middleware('check.phone.auth');
+Route::post('/create_ticket_message/{tid}','TicketController@CreateTicketMessage')->middleware('check.phone.auth');
 
 // download image
 Route::get('/download/{image}','TicketController@Download');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+// admin controller
+Route::prefix('admin')->group(function () {
+    Route::get('/get_users_tickets','AdminController@GetUsersTickets');
+    Route::get('/ticket/{id}','AdminController@ShowTicket');
+    Route::post('/update_ticket/{tid}/{tmid}','AdminController@UpdateTicket');
+});

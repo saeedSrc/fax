@@ -12,7 +12,8 @@ return [
 
         'auth_code_expired_at' => 'auth-code-expired-at',
 
-         'auth_code_expire_time' => 600 // second,
+         'auth_code_expire_time' => 600, // second,
 
+          'user_type_admin' => 'admin'
 ];
 
