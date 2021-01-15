@@ -41,9 +41,11 @@
                                             </a>
                                         </p>
                                     @endisset
-                                      <span class="time">  اخرین بروز رسانی : {{  date('  h:i:s  d-m-Y', strtotime($ticketMessage->updated_at)) }} </span>
+                                      <span class="time">  اخرین بروز رسانی : {{  date('  h:i:s  d-m-Y', strtotime($ticketMessage->question_time)) }} </span>
                                   </div>
                                     @endisset
+
+
 
                                     @if(isset($ticketMessage->answer))
                                    <div class="answer-box">
@@ -58,7 +60,7 @@
                                             </a>
                                         </p>
                                     @endisset
-                                       <span class="time">  اخرین بروز رسانی : {{  date('  h:i:s  d-m-Y', strtotime($ticketMessage->updated_at)) }} </span>
+                                       <span class="time">  اخرین بروز رسانی : {{  date('  h:i:s  d-m-Y', strtotime($ticketMessage->answer_time)) }} </span>
                                    </div>
                                         @if($loop->last)
                                         <form class="violet-color" action="/create_ticket_message/{{ $ticket->id }}" method="post" enctype="multipart/form-data">

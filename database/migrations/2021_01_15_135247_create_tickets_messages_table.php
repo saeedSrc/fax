@@ -21,7 +21,10 @@ class CreateTicketsMessagesTable extends Migration
             $table->text('answer')->nullable(true);
             $table->text('answer_image')->nullable(true);
             $table->rememberToken();
-            $table->timestamps();
+            $table->timestampsTz();
+            $table->timestampTz("question_time")->default(now());
+            $table->timestampTz("answer_time")->default(now());
+
 
             $table->foreign('ticket_id')->references('id')->on('tickets')->onDelete('cascade');
         });

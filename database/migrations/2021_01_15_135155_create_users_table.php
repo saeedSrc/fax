@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->boolean('auth_check')->default(false);
             $table->enum('type', ['admin', 'normal'])->default("normal");
             $table->rememberToken();
-            $table->timestamps();
+            $table->timestampsTz();
         });
     }
 

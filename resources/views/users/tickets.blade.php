@@ -15,7 +15,7 @@
     <div class="contact-content back-white-color1">
         <div class="tickets">
             <div class="ticket-titles">
-                <h1 class="violet-color">پیام‌های من</h1>
+                <h2 class="violet-color">پیام‌های من</h2>
                 @isset($tickets)
                 <ul>
                     @foreach($tickets as $ticket)
@@ -34,6 +34,9 @@
                     @endforeach
                 </ul>
                 @endisset
+                @if(count($tickets) == 0)
+                    <h3 class="center gray-color">پیامی وجود ندارد.</h3>
+                @endif
             </div>
         </div>
     </div>

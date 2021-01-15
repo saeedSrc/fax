@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Ticket;
 use App\Models\TicketMessage;
 use App\Models\User;
+use Carbon\Carbon;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,7 +34,7 @@ class AdminController extends Controller
      */
     public function GetUsersTickets()
     {
-        $tickets = Ticket::all();
+        $tickets = Ticket::orderByDesc('updated_at')->get();
         return view('admin.tickets', compact('tickets'));
     }
 
@@ -62,6 +63,7 @@ class AdminController extends Controller
         $ticket->was_answered = 1;
         $ticketMessage = TicketMessage::Find($tmid);
         $ticketMessage->answer = $request->input('answer');
+        $ticketMessage->answer_time = Carbon::now();
         if ($request->hasFile('answer_image')) {
             if ($request->file('answer_image')->isValid()) {
                 $filename = time() . '-' . $request->file('answer_image')->getClientOriginalName();

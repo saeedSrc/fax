@@ -7,6 +7,7 @@ use App\Http\Requests\StoreTicketMessage;
 use App\Models\Ticket;
 use App\Models\TicketMessage;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -30,7 +31,7 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $tickets = Ticket::all()->where('user_id', $this->user_id);
+        $tickets = Ticket::orderByDesc('updated_at')->where('user_id', $this->user_id)->get();
         return view('users.tickets', compact('tickets'));
     }
 
@@ -53,26 +54,10 @@ class TicketController extends Controller
     public function store(StoreTicket $request)
     {
         // create ticket
-        $ticket = new Ticket();
-        $ticket->title = $request->input('title');
-        $ticket->was_answered = 0;
-        $ticket->user_id = Auth::user()->id;
-        $ticket->save();
+        $ticket = $this->RepoCreateTicket($request);
 
-       // create ticket_message
-        $ticketMessage = new TicketMessage();
-        $ticketMessage->ticket_id = $ticket->id;
-        $ticketMessage->question = $request->input('question');
-        if($request->hasFile('question_image')) {
-            if($request->file('question_image')->isValid()) {
-//                dd($request->file('question_image')->getMimeType());
-                $filename = time(). '-' . $request->file('question_image')->getClientOriginalName();
-                $request->file('question_image')->move(storage_path('app/public/uploads'), $filename);
-            $ticketMessage->question_image = $filename;
-            }
-        }
-
-        $ticketMessage->save();
+        // create ticket_message
+        $this->RepoCreateTicketMessage($ticket->id, $request);
 
         return redirect('/ticket');
     }
@@ -85,25 +70,16 @@ class TicketController extends Controller
      */
     public function CreateTicketMessage(StoreTicketMessage $request, $tid)
     {
+        // update ticket
         $ticket = Ticket::find($tid);
         $ticket->was_answered = 0;
-
-        // create ticket_message
-        $ticketMessage = new TicketMessage();
-        $ticketMessage->ticket_id = $tid;
-        $ticketMessage->question = $request->input('question');
-        if($request->hasFile('question_image')) {
-            if($request->file('question_image')->isValid()) {
-                $filename = time(). '-' . $request->file('question_image')->getClientOriginalName();
-                $request->file('question_image')->move(storage_path('app/public/uploads'), $filename);
-                $ticketMessage->question_image = $filename;
-            }
-        }
-
-        $ticketMessage->save();
         $ticket->save();
 
-        return redirect('/ticket/'.$tid);
+        // create ticket_message
+        $this->RepoCreateTicketMessage($tid, $request);
+
+
+        return redirect('/ticket/' . $tid);
     }
 
 
@@ -170,5 +146,33 @@ class TicketController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function RepoCreateTicketMessage($tid, $request)
+    {
+        $ticketMessage = new TicketMessage();
+        $ticketMessage->ticket_id = $tid;
+        $ticketMessage->question = $request->input('question');
+        $ticketMessage->question_time = Carbon::now();
+        if($request->hasFile('question_image')) {
+            if($request->file('question_image')->isValid()) {
+                $filename = time(). '-' . $request->file('question_image')->getClientOriginalName();
+                $request->file('question_image')->move(storage_path('app/public/uploads'), $filename);
+                $ticketMessage->question_image = $filename;
+            }
+        }
+
+        $ticketMessage->save();
+    }
+
+    public function RepoCreateTicket($request)
+    {
+        $ticket = new Ticket();
+        $ticket->title = $request->input('title');
+        $ticket->was_answered = 0;
+        $ticket->user_id = Auth::user()->id;
+        $ticket->save();
+        return $ticket;
     }
 }

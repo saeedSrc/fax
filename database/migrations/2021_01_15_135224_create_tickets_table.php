@@ -19,7 +19,7 @@ class CreateTicketsTable extends Migration
             $table->string('title');
             $table->boolean('was_answered')->default(false);
             $table->rememberToken();
-            $table->timestamps();
+            $table->timestampsTz();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
