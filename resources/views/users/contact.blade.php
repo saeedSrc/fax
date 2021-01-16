@@ -15,25 +15,25 @@
 
 @section('content')
     <div class="contact-content back-white-color1">
-        <div class="contact-all-info">
-            <div class="contact-info">
+        <div class="contact-all-info white-color">
+            <div class="contact-info ">
                 <img src="{{asset('img/location.png')}}" alt="">
                 <h3>نشانی</h3>
-                <p class="gray-color"> تهران خیابان فلان کوچه‌ی فلان پلاک 2 طبقه‌ی سوم</p>
+                <p class=""> تهران خیابان فلان کوچه‌ی فلان پلاک 2 طبقه‌ی سوم</p>
             </div>
             <div class="contact-info">
                 <img src="{{asset('img/phone-number.png')}}" alt="">
                 <h3>شماره تماس</h3>
-                <p class="gray-color">021 22122254 </p>
+                <p class="">021 22122254 </p>
             </div>
             <div class="contact-info">
                 <img src="{{asset('img/email.png')}}" alt="">
                 <h3>آدرس ایمیل</h3>
-                <p class="gray-color">saeedrasooli@yahoo.com</p>
+                <p class="">saeedrasooli@yahoo.com</p>
             </div>
         </div>
         <div class="contact-form">
-            <h1 class="violet-color">فرم ارسال پیام جدید</h1>
+            <h1 class="title">فرم ارسال پیام </h1>
             <br>
             <form class="violet-color" action="{{ action('TicketController@store')}}" method="post" enctype="multipart/form-data">
                 @csrf

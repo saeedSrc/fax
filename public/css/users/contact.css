@@ -39,16 +39,6 @@ form>* {
 }
 
 
-.submit-btn:hover {
-    background: linear-gradient(261.44deg, #205F8F -29.09%, rgba(83, 174, 243, 0.72) 102.54%);
-    box-shadow: 0px 4px 6px rgba(196, 196, 196, 0.44);
-}
-
-.submit-btn:focus  {
-    background: #5887AB;
-    box-shadow: 0px 4px 6px rgba(196, 196, 196, 0.44);
-    border-radius: 4px;
-}
 
 .file-input {
     border: 0!important;
@@ -74,6 +64,7 @@ form .btn {
 .contact-all-info {
     text-align: center;
     padding: 3% 0;
+    background: linear-gradient(to right ,  #5B7FDE, #66C0E3);
 }
 
 .contact-all-info>* {
@@ -96,6 +87,14 @@ form .btn {
 .contact-info img {
     width: 25%;
 
+}
+
+.title {
+    width: 30%;
+    margin: auto;
+    background: linear-gradient(to right ,  #5B7FDE, #66C0E3);
+    color: white;
+    border-radius: 4px;
 }
 
 .contact-info>* {

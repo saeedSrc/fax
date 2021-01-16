@@ -16,8 +16,27 @@
 <body>
 <div class="header">
     <div class="header-top back-white-color2">
-        <h3>ارسال و دریافت فکس به صورت آنلاین</h3>
-        <img class="logo" src="{{asset('img/fax.png')}}"  alt="">
+        <div class="right-header-name">
+            <h3>ارسال و دریافت فکس به صورت آنلاین</h3>
+            <img class="logo" src="{{asset('img/fax.png')}}"  alt="">
+        </div>
+        <div class="left-nav">
+            <nav>
+                <ul>
+                    @if(auth()->check())
+                        <li><a href="#"><span> {{ Auth::user()->first_name }}</span>/ <span>ورود به پنل ارسال فکس</span></a></li>
+                        <li><a href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" >خروج</a></li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    @else
+                        <li><a href="/login"><span>ورود</span> <img src="{{asset('img/login.png')}}"  alt=""></a></li>
+                        <li><a href="/register"><span>ثبت نام</span><img src="{{asset('img/register.png')}}"  alt=""></a></li>
+                    @endif
+
+                </ul>
+            </nav>
+        </div>
     </div>
     <div class="header-middle back-white-color gray-color">
         <div class="mobile">
@@ -47,7 +66,8 @@
                 </ul>
             </header>
         </div>
-        <div class="right-nav"><nav>
+        <div class="right-nav">
+            <nav>
                 <ul>
                     @if(auth()->check())
                         @if( Auth::user()->type == 'admin')
@@ -64,22 +84,6 @@
                     <li><a href="/contact">تماس با ما</a></li>
                     <li><a href="/">خانه</a></li>
                 </ul>
-            </nav></div>
-        <div class="left-nav">
-            <nav>
-                <ul>
-                    @if(auth()->check())
-                        <li><a href="#"><span> {{ Auth::user()->first_name }}</span>/ <span>ورود به پنل ارسال فکس</span></a></li>
-                        <li><a href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" >خروج</a></li>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    @else
-                    <li><a href="/login"><span>ورود</span> <img src="{{asset('img/login.png')}}"  alt=""></a></li>
-                    <li><a href="/register"><span>ثبت نام</span><img src="{{asset('img/register.png')}}"  alt=""></a></li>
-                        @endif
-
-                </ul>
             </nav>
         </div>
     </div>
@@ -87,7 +91,6 @@
 <div class="container">
     @yield('content')
 </div>
-
 <div class="footer">
     <p>سرویس ارسال و دریافت فکس به صورت انلاین <span class="red-color">به صورت انلاین</span> سرویس اراسل و دریافت فکس به صورت انلاین ویس اراسل و دریافت فکس  </p>
     <p>یوفکس را در شبکه‌های اجتماعی دنبال کنید.</p>

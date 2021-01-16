@@ -1,0 +1,206 @@
+.home-banner {
+    background: linear-gradient(to right ,  #5B7FDE, #66C0E3);
+}
+
+.home-banner:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.home-banner-right-section {
+    width: 40%;display: inline-block; vertical-align: middle;
+    text-align: right;
+    float: right;
+    margin: 10%;
+}
+
+.home-banner-left-section {
+    width: 40%;display: inline-block; vertical-align: middle;
+    float: left;
+}
+
+.home-banner-left-section img {
+    width: 100%;
+}
+
+.home-banner-right-section>* {
+    margin-bottom: 3%;
+}
+
+.home-banner-right-section a {
+    transition:  0.2s;
+    opacity: 1;
+    padding: 1%;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.home-banner-right-section a:hover {
+    opacity: 0.5;
+}
+
+.fax-spec {
+    margin: 2% auto;
+    text-align: center;
+    width: 80%;
+    box-shadow: 0px 4px 42px rgba(196, 196, 196, 0.4);
+    padding: 2%;
+
+}
+
+.fax-spec-section {
+    width: 25%;
+    text-align: center;
+    display: inline-block;
+    padding: 1%;
+
+}
+
+.fax-spec-section>* {
+    margin-bottom: 2%;
+}
+
+.fax-spec-section img {
+    width: 40%;
+}
+
+.fax-packages {
+    background: linear-gradient(to right ,  #5B7FDE, #66C0E3);
+    padding: 2% 4%;
+    text-align: center;
+    margin: auto;
+}
+
+.right-polygon {
+    position: absolute;
+    right: 1%;
+    width: 20%;
+}
+
+.left-polygon {
+    position: absolute;
+    left: 1%;
+    width: 20%;
+}
+
+.fax-packages-content
+{
+    margin: 1%;
+    display: inline-block;
+    border-radius: 4px;
+    text-align: center;
+    width: 20%;
+    direction: rtl;
+    padding: 2%;
+    box-shadow: 0px 4px 42px rgba(196, 196, 196, 0.4);
+}
+
+.org-img {
+    width: 30%;
+}
+
+.fax-packages-content>* {
+    margin-bottom: 1%;
+}
+
+.fax-packages-content ul li  {
+    width: 80%;
+    margin: 8% auto;
+}
+
+.flow{
+    margin: 2%;
+    direction: rtl;
+}
+
+.flow>* {
+    display: inline-block;
+    margin: 0 2%;
+}
+
+.flow-section {
+    width: 15%;
+}
+
+.flow-section>* {
+    margin-bottom:2%;
+}
+
+.flow-section img {
+    width: 60%;
+}
+
+.flow-section span {
+    font-size: 1vw;
+}
+
+.inline {
+    display: inline-block;
+}
+
+.arrow {
+    width: 5%;
+}
+
+.chosen-package-content{
+    display:none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    background: #609ae0d1;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    text-align: center;
+}
+
+/*=================mobile==================*/
+
+@media only screen and (max-width: 780px) {
+   .home-banner {
+       padding: 2%;
+   }
+
+    .home-banner-left-section {
+        width: 100%;
+
+    }
+
+    .home-banner-right-section {
+        width: 100%;
+        margin: 1%;
+    }
+
+   .fax-spec-section {
+       width: 40%;
+   }
+
+    .fax-packages-content {
+        display: block;
+        width: 70%;
+        margin: 3% auto;
+
+    }
+    .flow>* {
+        display: block;
+        margin: 10% auto!important;
+    }
+
+    .flow-section {
+        width: 60%;
+        margin: auto;
+    }
+
+    .arrow {
+        width: 20%;
+        transform: rotate(270deg);
+        margin: auto;
+    }
+
+    .flow-section span {
+        font-size: 4vw;
+    }
+
+}
