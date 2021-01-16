@@ -6,7 +6,7 @@
 @endsection
 @section('js')
     @parent
-    <script src="{{ asset('js/users/ticket.js') }}"></script>
+
 @endsection
 
 @section('title', 'تیکت‌های من')
@@ -36,6 +36,6 @@
                 @endisset
             </div>
         </div>
+        {!! $tickets->onEachSide(2)->links() !!}
     </div>
-
 @endsection

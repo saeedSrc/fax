@@ -93,10 +93,13 @@
                                 </li>
                             @endforeach
                         </ul>
+                        <a class="btn img-download" href="/admin/get_users_tickets">
+                            بازگشت
+                        </a>
                     </div>
                 @endisset
+
             </div>
         </div>
-    </div>
 
 @endsection

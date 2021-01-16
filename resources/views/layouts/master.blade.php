@@ -31,7 +31,7 @@
                 <ul class="menu">
                     @if(auth()->check())
                         @if( Auth::user()->type == 'admin')
-                            <li><a href="/ticket">پیام های مردم</a></li>
+                            <li><a href="/ticket">پیام‌های کاربران</a></li>
                             @endif
                         @endif
                     @if(auth()->check())
@@ -51,7 +51,7 @@
                 <ul>
                     @if(auth()->check())
                         @if( Auth::user()->type == 'admin')
-                            <li><a href="/admin/get_users_tickets">پیام های مردم</a></li>
+                            <li><a href="/admin/get_users_tickets">پیام‌های کاربران</a></li>
                         @endif
                     @endif
 

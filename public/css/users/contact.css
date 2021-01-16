@@ -180,13 +180,70 @@ form .btn {
     width: 100%;
 }
 
-
 .alert {
     display: inline-block;
     padding: 15px;
     margin-bottom: 20px;
     border: 1px solid transparent;
     border-radius: 4px;
+}
+
+ /*pagination*/
+.pager {
+    text-align: center;
+    background: #5bc0de;
+    color: white;
+    width: 20%;
+    margin: auto;
+    border-radius: 4px;
+}
+
+.pager>* {
+    margin: 1%;
+}
+
+.pager .active {
+    font-size: 1.5vw;
+}
+
+.pager li a {
+    text-align: center;
+    background: #5bc0de;
+    color: white;
+    font-size: 1vw;
+}
+
+.pager ul {
+
+}
+
+.pager li  {
+    /*direction: rtl;*/
+    /*font-size: 1.5vw;*/
+    /*!*margin: 0 10%;*!*/
+}
+
+.pager li a {
+    /*direction: rtl;*/
+    /*font-size: 1.5vw;*/
+    /*background: #5bc0de;*/
+    /*color: white;*/
+    /*border-radius: 4px;*/
+    /*padding: 2px 13%;*/
+    /*display: inline-block;*/
+    /*width: 3vw;*/
+}
+
+.disabled {
+  /*display: none!important;*/
+}
+
+.pager>* {
+    display: inline-block;
+}
+
+.container nav div span>* {
+    vertical-align: middle;
 }
 
 @media only screen and (max-width: 780px) {
@@ -291,5 +348,21 @@ form .btn {
 
     .time {
         display: none;
+    }
+
+    .next {
+        display: none;
+    }
+
+    .previous {
+        display: none;
+    }
+
+    .pager .active {
+        font-size: 5vw;
+    }
+
+    .pager li a {
+        font-size: 3.5vw;
     }
 }
