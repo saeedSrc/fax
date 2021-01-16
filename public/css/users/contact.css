@@ -3,7 +3,7 @@ form {
 }
 
 h1 {
-    font-size: 2.5vw!important;
+
 }
 
 form>* {
@@ -363,5 +363,9 @@ form .btn {
 
     .pager li a {
         font-size: 3.5vw;
+    }
+
+    .title {
+        width: 100%;
     }
 }

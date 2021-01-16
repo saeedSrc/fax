@@ -44,10 +44,13 @@
                 <input class="menu-btn" type="checkbox" id="menu-btn" />
                 <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
                 <div class="mobile-profile relative">
-
                     <input class="profile-btn" id="profile-btn" type="checkbox"><label for="profile-btn"></label>
                 </div>
                 <ul class="menu">
+                    @if(auth()->check())
+                        <li><a href="#"><span> {{ Auth::user()->first_name }}</span>/ <span>ورود به پنل ارسال فکس</span></a></li>
+                    @endif
+
                     @if(auth()->check())
                         @if( Auth::user()->type == 'admin')
                             <li><a href="/ticket">پیام‌های کاربران</a></li>
@@ -58,11 +61,19 @@
                     <li><a href="/ticket">تیکت‌های من</a></li>
                         @endif
                     @endif
+                        <li><a href="/">خانه</a></li>
                     {{--<li><a href="/about">درباره ما</a></li>--}}
                     <li><a href="/contact">تماس با ما</a></li>
-                    <li><a href="/">خانه</a></li>
-                    <li><a href="/login">ورود</a></li>
-                    <li><a href="/register">ثبت نام</a></li>
+                        @if(auth()->check())
+                            <li><a href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" >خروج</a></li>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        @else
+                            <li><a href="/login">ورود</a></li>
+                            <li><a href="/register">ثبت نام</a></li>
+                        @endif
+
                 </ul>
             </header>
         </div>
