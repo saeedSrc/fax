@@ -18,7 +18,7 @@
         <div class="white-color home-banner-right-section">
                <h1 class="right-text">دریافت و ارسال فکس از طریف اینترنت</h1>
                <p>شما می توانید با یوفکس در بستر اینترت به ارسال فک اقدام نمایید ما در یو فکس به شما کمک میکنیم تا لذت ارتباط آنلاین را بار دیگر تجربه نمایید.</p>
-               <a class="btn back-white-color lagevardi">سفارش فکس آنلاین</a>
+               <a class="btn back-white-color lagevardi" href="#fax-packages">سفارش فکس آنلاین</a>
            </div>
         <div class="home-banner-left-section">
             <img src="{{asset('img/banner.png')}}" alt="">
@@ -56,7 +56,7 @@
             <p class="gray-color">آنلاین فکس ارسال کنید.</p>
         </div>
     </div>
-    <div class="relative fax-packages white-color">
+    <div id='fax-packages' class="relative fax-packages white-color">
         <h2>تعرفه‌های ارسال فکس </h2>
         <img class="right-polygon" src="{{asset('img/Polygon.png')}}" alt="">
         <img class="left-polygon" src="{{asset('img/Rectangle.png')}}" alt="">
@@ -163,11 +163,10 @@
             </button>
         </div>
     </div>
-    <div class="relative fax-packages white-color">
+    <div class="relative fax-flow white-color">
         <h2>مراحل ارسال فکس</h2>
         <img class="right-polygon" src="{{asset('img/Polygon.png')}}" alt="">
         <img class="left-polygon" src="{{asset('img/Rectangle.png')}}" alt="">
-
         <div class="flow">
             <div class="flow-section">
                 <img  src="{{asset('img/file.png')}}" alt="">

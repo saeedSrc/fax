@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 .home-banner {
     background: linear-gradient(to right ,  #5B7FDE, #66C0E3);
 }
@@ -72,6 +76,13 @@
     margin: auto;
 }
 
+.fax-flow {
+    background: linear-gradient(to right ,  #5B7FDE, #66C0E3);
+    padding: 2% 4%;
+    text-align: center;
+    margin: auto;
+}
+
 .right-polygon {
     position: absolute;
     right: 1%;
@@ -86,6 +97,8 @@
 
 .fax-packages-content
 {
+    top: 0;
+    transition:  0.8s;
     margin: 1%;
     display: inline-block;
     border-radius: 4px;
@@ -94,6 +107,10 @@
     direction: rtl;
     padding: 2%;
     box-shadow: 0px 4px 42px rgba(196, 196, 196, 0.4);
+}
+
+.fax-packages-content:hover {
+    width: 25%;
 }
 
 .org-img {
@@ -183,6 +200,11 @@
         margin: 3% auto;
 
     }
+
+    .fax-packages-content:hover {
+        width: 70%;
+    }
+
     .flow>* {
         display: block;
         margin: 10% auto!important;
@@ -202,5 +224,6 @@
     .flow-section span {
         font-size: 4vw;
     }
+
 
 }

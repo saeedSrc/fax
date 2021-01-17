@@ -1,6 +1,5 @@
 $(document).ready(function() {
 
-
     $('.order').click(function(e){
 
         var container = $(".chosen-package-content");
@@ -22,4 +21,5 @@ $(document).ready(function() {
             container.slideToggle();
         }
     });
+
 });
