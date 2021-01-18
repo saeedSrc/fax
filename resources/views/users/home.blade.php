@@ -119,9 +119,20 @@
                             @endif
                     </ul>
                     <h3 class="pink-color">{{ $package->price }} تومان</h3>
-                    <button class="btn submit-btn order">
-                        سفارش
-                    </button>
+                    <div class="final-order">
+
+
+                         {{--todo inja bayad un action ro benevisam ke id package o berize too session--}}
+                    <form action="" method="post">
+                        @csrf
+                        <input type="hidden" name="{{ $package->id }}">
+                        <button class="btn submit-btn order">
+                            سفارش
+                        </button>
+                    </form>
+
+                    </div>
+
                 </div>
                 @endforeach
             @endisset
@@ -153,51 +164,5 @@
     </div>
 
    <div class="chosen-package-content">
-       <div class="fax-packages-content back-white-color lagevardi">
-           <img class="org-img" src="{{asset('img/org.png')}}" alt="">
-           <h3 class="violet-color">شرکتی</h3>
-           <ul>
-               <li>
-                   <div class="inline">
-                       <img class="right" src="{{asset('img/check.png')}}" alt="">
-                   </div>
-                   <span>۴۰ صفحه فکس</span>
-               </li>
-               <li>
-                   <div class="inline">
-                       <img class="right" src="{{asset('img/check.png')}}" alt="">
-                   </div>
-                   <span>ارسال و دریافت فکس</span>
-               </li>
-               <li>
-                   <div class="inline">
-                       <img class="right" src="{{asset('img/check.png')}}" alt="">
-                   </div>
-                   <span>شماره اختصاصی</span>
-               </li>
-               <li>
-                   <div class="inline">
-                       <img class="right" src="{{asset('img/check.png')}}" alt="">
-                   </div>
-                   <span>پنل تحت وب</span>
-               </li>
-               <li>
-                   <div class="inline">
-                       <img class="right" src="{{asset('img/check.png')}}" alt="">
-                   </div>
-                   <span>پنل تحت وب</span>
-               </li>
-               <li>
-                   <div class="inline">
-                       <img class="right" src="{{asset('img/check.png')}}" alt="">
-                   </div>
-                   <span>پنل تحت وب</span>
-               </li>
-           </ul>
-           <h2 class="pink-color">۴۵۰۰۰ تومان</h2>
-           <button class="btn submit-btn">
-              خرید
-           </button>
-       </div>
    </div>
 @endsection

@@ -1,25 +1,22 @@
 $(document).ready(function() {
-
     $('.order').click(function(e){
-
+        event.preventDefault();
         var container = $(".chosen-package-content");
-
         if (container.has(e.target).length === 0)
         {
-            console.log("inja");
-            container.slideToggle();
+            $('.chosen-package-content').empty();
+            $($(this).parent().parent().parent()).clone().appendTo(".chosen-package-content");
+            $('.chosen-package-content').find('.order').html('خرید اینترنتی');
+            $('.chosen-package-content').css('display', 'block');
         }
     });
-
     $('.chosen-package-content').click(function(e){
 
         var container = $(".chosen-package-content");
 
         if (container.has(e.target).length === 0)
         {
-            console.log("inja");
             container.slideToggle();
         }
     });
-
 });

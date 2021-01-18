@@ -85,7 +85,7 @@ form .btn {
 }
 
 .contact-info img {
-    width: 25%;
+    /*width: 25%;*/
 
 }
 
@@ -296,7 +296,7 @@ form .btn {
     }
 
     .contact-all-info {
-        padding: 0 15%;
+        padding: 5% 10%;
     }
 
     .contact-all-info img {
