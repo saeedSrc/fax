@@ -31,11 +31,6 @@ Route::get('/phone_authorize','UserController@GetPhoneAuthenticationForm');
 // user phone authorize path
 Route::post('/final_authenticate','UserController@FinalAuthenticate');
 
-// home path
-Route::get('/', function () {
-    return view('users.home');
-});
-
 // user contact path
 Route::get('/contact', function () {
     return view('users.contact');
@@ -49,7 +44,7 @@ Route::post('/create_ticket_message/{tid}','TicketController@CreateTicketMessage
 // download image
 Route::get('/download/{image}','TicketController@Download');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 // admin controller
