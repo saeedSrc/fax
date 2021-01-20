@@ -6,6 +6,10 @@ html {
     background: linear-gradient(to right ,  #5B7FDE, #66C0E3);
 }
 
+.hide {
+    display: none;
+}
+
 .home-banner:after {
     content: '';
     display: table;

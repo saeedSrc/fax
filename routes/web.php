@@ -46,6 +46,7 @@ Route::get('/download/{image}','TicketController@Download');
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::post('/order/request','OrderController@Request')->middleware('check.phone.auth');
 
 // admin controller
 Route::prefix('admin')->group(function () {

@@ -7,6 +7,7 @@ $(document).ready(function() {
             $('.chosen-package-content').empty();
             $($(this).parent().parent().parent()).clone().appendTo(".chosen-package-content");
             $('.chosen-package-content').find('.order').html('خرید اینترنتی');
+            $('.chosen-package-content').find('.hide').removeClass();
             $('.chosen-package-content').css('display', 'block');
         }
     });

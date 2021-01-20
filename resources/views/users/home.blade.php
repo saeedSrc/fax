@@ -117,15 +117,23 @@
                                 <span>وب سرویس</span>
                             </li>
                             @endif
+
+                        <li class="hide">
+                            <div class="inline">
+                                <img class="right" src="{{asset('img/check.png')}}" alt="">
+                            </div>
+                            <span>{{ $package->package_ttl_text }} </span>
+                        </li>
+
                     </ul>
                     <h3 class="pink-color">{{ $package->price }} تومان</h3>
                     <div class="final-order">
 
 
                          {{--todo inja bayad un action ro benevisam ke id package o berize too session--}}
-                    <form action="" method="post">
+                    <form action="/order/request" method="post">
                         @csrf
-                        <input type="hidden" name="{{ $package->id }}">
+                        <input type="hidden" name="package_id"  value="{{ $package->id }}">
                         <button class="btn submit-btn order">
                             سفارش
                         </button>
