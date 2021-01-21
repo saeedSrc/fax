@@ -6,6 +6,8 @@
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/app" isTestSource="false" packagePrefix="App\" />
       <sourceFolder url="file://$MODULE_DIR$/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/kavenegar/laravel" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/kavenegar/php" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/ui" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -13,9 +15,13 @@
     <orderEntry type="module-library">
       <library name="PHP" type="php">
         <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/kavenegar/laravel" />
+          <root url="file://$MODULE_DIR$/vendor/kavenegar/php" />
           <root url="file://$MODULE_DIR$/vendor/laravel/ui" />
         </CLASSES>
         <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/kavenegar/laravel" />
+          <root url="file://$MODULE_DIR$/vendor/kavenegar/php" />
           <root url="file://$MODULE_DIR$/vendor/laravel/ui" />
         </SOURCES>
       </library>
