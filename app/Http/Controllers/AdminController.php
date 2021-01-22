@@ -67,7 +67,7 @@ class AdminController extends Controller
         if ($request->hasFile('answer_image')) {
             if ($request->file('answer_image')->isValid()) {
                 $filename = time() . '-' . $request->file('answer_image')->getClientOriginalName();
-                $request->file('answer_image')->move(storage_path('app/public/uploads/answers_img'), $filename);
+                $request->file('answer_image')->move(storage_path(config('constants.ticket_answer_img_path')), $filename);
                 $ticketMessage->answer_image = $filename;
             }
         }

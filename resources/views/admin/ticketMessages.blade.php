@@ -39,7 +39,7 @@
                                     </p>
                                             @isset($ticketMessage->question_image)
                                         <p>
-                                            <a class="btn img-download" href="/download/{{ $ticketMessage->question_image }}">
+                                            <a class="btn img-download" href="/download/question/{{ $ticketMessage->question_image }}">
                                                 دانلود
                                             </a>
                                         </p>
@@ -81,7 +81,7 @@
 
                                            @isset($ticketMessage->answer_image)
                                         <p>
-                                            <a class="btn img-download">
+                                            <a class="btn img-download" href="/download/answer/{{ $ticketMessage->question_image }}">
                                                 دانلود
                                             </a>
                                         </p>

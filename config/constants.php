@@ -14,6 +14,9 @@ return [
 
          'auth_code_expire_time' => 600, // second,
 
-          'user_type_admin' => 'admin'
+          'user_type_admin' => 'admin',
+
+           'ticket_answer_img_path' => 'app/public/uploads/answers_img/',
+           'ticket_question_img_path' => 'app/public/uploads/question_img/',
 ];
 

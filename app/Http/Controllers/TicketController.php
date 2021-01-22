@@ -101,14 +101,30 @@ class TicketController extends Controller
     }
 
     /**
-     * Download specified image.
+     * Download answer specified image.
      *
      * @param  string  $image
      * @return \Illuminate\Http\Response
      */
-    public function Download($image)
+    public function DownloadAnswer($image)
     {
-        $filePath = storage_path('app/public/uploads/') . $image;
+
+        $filePath = storage_path(config('constants.ticket_answer_img_path')) . $image;
+
+        return Response::download($filePath);
+
+    }
+
+    /**
+     * Download Question specified image.
+     *
+     * @param  string  $image
+     * @return \Illuminate\Http\Response
+     */
+    public function DownloadQuestion($image)
+    {
+        $filePath = storage_path(config('constants.ticket_question_img_path')) . $image;
+
         return Response::download($filePath);
 
     }
@@ -157,7 +173,7 @@ class TicketController extends Controller
         if($request->hasFile('question_image')) {
             if($request->file('question_image')->isValid()) {
                 $filename = time(). '-' . $request->file('question_image')->getClientOriginalName();
-                $request->file('question_image')->move(storage_path('app/public/uploads'), $filename);
+                $request->file('question_image')->move(storage_path(config('constants.ticket_question_img_path')), $filename);
                 $ticketMessage->question_image = $filename;
             }
         }

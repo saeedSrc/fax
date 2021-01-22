@@ -41,8 +41,11 @@ Route::resource('user', 'UserController');
 Route::resource('ticket', 'TicketController')->middleware('check.phone.auth');
 Route::post('/create_ticket_message/{tid}','TicketController@CreateTicketMessage')->middleware('check.phone.auth');
 
-// download image
-Route::get('/download/{image}','TicketController@Download');
+// download answer image
+Route::get('/download/answer/{image}','TicketController@DownloadAnswer');
+
+// download question image
+Route::get('/download/question/{image}','TicketController@DownloadQuestion');
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
