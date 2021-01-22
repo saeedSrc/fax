@@ -55,7 +55,7 @@
                                     </p>
                                     @isset($ticketMessage->answer_image)
                                         <p>
-                                            <a class="btn" href="/download/answer/{{ $ticketMessage->answer_image }}">
+                                            <a class="btn img-download" href="/download/answer/{{ $ticketMessage->answer_image }}">
                                                 دانلود
                                             </a>
                                         </p>
@@ -90,6 +90,9 @@
                                 </li>
                             @endforeach
                         </ul>
+                        <a class="btn img-download" href="/ticket">
+                            بازگشت
+                        </a>
                     </div>
                 @endisset
             </div>

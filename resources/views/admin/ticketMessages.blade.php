@@ -81,7 +81,7 @@
 
                                            @isset($ticketMessage->answer_image)
                                         <p>
-                                            <a class="btn img-download" href="/download/answer/{{ $ticketMessage->question_image }}">
+                                            <a class="btn img-download" href="/download/answer/{{ $ticketMessage->answer_image }}">
                                                 دانلود
                                             </a>
                                         </p>

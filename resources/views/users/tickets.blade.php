@@ -6,7 +6,6 @@
 @endsection
 @section('js')
     @parent
-    <script src="{{ asset('js/users/ticket.js') }}"></script>
 @endsection
 
 @section('title', 'تیکت‌های من')
