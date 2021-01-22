@@ -10,7 +10,7 @@ use App\Models\TicketMessage;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Response;
 
 class TicketController extends Controller
 {
@@ -109,9 +109,8 @@ class TicketController extends Controller
     public function Download($image)
     {
         $filePath = storage_path('app/public/uploads/') . $image;
+        return Response::download($filePath);
 
-//        dd($filePath);
-        return Storage::download($filePath);
     }
 
     /**
