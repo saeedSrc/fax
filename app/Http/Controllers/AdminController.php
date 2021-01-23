@@ -34,7 +34,7 @@ class AdminController extends Controller
      */
     public function GetUsersTickets()
     {
-        $tickets = Ticket::orderByDesc('updated_at')->paginate(5);
+        $tickets = Ticket::orderByDesc('updated_at')->paginate(50);
         return view('admin.tickets', compact('tickets'));
     }
 

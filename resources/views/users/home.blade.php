@@ -126,7 +126,7 @@
                         </li>
 
                     </ul>
-                    <h3 class="pink-color">{{ $package->price }} تومان</h3>
+                    <h3 class="pink-color"> <span class="price">{{ $package->price }}</span> تومان</h3>
                     <div class="final-order">
 
 

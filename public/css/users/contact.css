@@ -12,6 +12,8 @@ form>* {
 
 .time {
     margin-right: 10%;
+    background: linear-gradient(to right ,  #5B7FDE, #66C0E3);
+    color: white;
 }
 
 ::-webkit-input-placeholder {

@@ -19,7 +19,7 @@
                 <ul>
                     @foreach($tickets as $ticket)
                     <li>
-                        <a  id="ticket-title{{ $ticket->id }}"  class="gray-color" href="/ticket/{{ $ticket->id }}">
+                        <a  id="ticket-title{{ $ticket->id }}"  class="black-color" href="/ticket/{{ $ticket->id }}">
                            {{ $ticket->title }}
                         </a>
 
