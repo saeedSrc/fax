@@ -1,7 +1,17 @@
 $(document).ready(function(){
-    var path = window.location.pathname;
-    $(".right-nav nav ul li a[href='"+path+"']").addClass("active");
+    activeMenu();
+    showPersianTime();
+});
 
+function activeMenu() {
+    var path = window.location.pathname;
+    if(path.indexOf('/ticket/') != -1){
+      $('.right-nav').css('display', 'none');
+    }
+    $(".right-nav nav ul li a[href='"+path+"']").addClass("active");
+}
+
+function showPersianTime() {
     $('.persian-time').each(function() {
         var htmlTime = $( this ).text();
         var arrayTime = htmlTime.split(" ");
@@ -11,4 +21,4 @@ $(document).ready(function(){
         var persianDate = dateToSend.toLocaleDateString('fa-IR');
         $( this ).html(time + " " + persianDate );
     });
-});
+}

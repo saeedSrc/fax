@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Package;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,6 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $packages = Package::all();
-        return view('users.home', compact('packages'));
+        $notAnswered = Ticket::all()->where('was_answered', 0);
+        return view('users.home', compact('packages', 'notAnswered'));
     }
 }
