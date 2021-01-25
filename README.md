@@ -65,3 +65,9 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 php artisan vendor:publish --tag=laravel-pagination
 
 ## change login and registration trait 
+
+
+## install ldap and restart service
+sudo yum install php-ldap php-zip php-fileinfo
+
+sudo service httpd restart

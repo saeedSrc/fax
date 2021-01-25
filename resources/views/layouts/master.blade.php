@@ -67,7 +67,7 @@
                         @endif
                     @endif
                         <li><a href="/">خانه</a></li>
-                    {{--<li><a href="/about">درباره ما</a></li>--}}
+                    <li><a href="/about">درباره ما</a></li>
                     <li><a href="/contact">تماس با ما</a></li>
                         @if(auth()->check())
                             <li><a href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" >خروج</a></li>
@@ -103,7 +103,7 @@
                     <li><a href="/ticket">تیکت‌های من</a></li>
                         @endif
                     @endif
-                    {{--<li><a href="/about">درباره ما</a></li>--}}
+                    <li><a href="/about">درباره ما</a></li>
                     <li><a href="/contact">تماس با ما</a></li>
                     <li><a href="/">خانه</a></li>
                 </ul>

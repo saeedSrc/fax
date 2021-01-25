@@ -139,7 +139,33 @@ class UserController extends Controller
     public function FinalAuthenticate(AuthCode $request)
     {
 
-        User::where('id', Auth::user()->id)->update(['auth_check'=> 1]);
+//        User::where('id', Auth::user()->id)->update(['auth_check'=> 1]);
+        // ldap
+
+        $domain = 'ufax.ir';
+        $username = 'Services';
+        $password = 'Service@7585';
+        $ldapconfig['host'] = '109.125.151.255';
+        $ldapconfig['port'] = 389;
+        $ldapconfig['basedn'] = 'dc=ir,dc=Ufax';
+
+        $ds=ldap_connect($ldapconfig['host'], $ldapconfig['port']);
+
+        ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, 3);
+        ldap_set_option($ds, LDAP_OPT_REFERRALS, 0);
+
+        $dn="o=My Company,c=US,CN=Services,ou=Users,ou=UFAX,ou=Admin,".$ldapconfig['basedn'];
+
+        dd($dn);
+        $bind=ldap_bind($ds, $username .'@' .$domain, $password);
+        $isITuser = ldap_mod_add($bind, $dn,'(&(objectClass=User)(sAMAccountName=' . $username. '))');
+        if ($isITuser) {
+            dd("Login correct");
+        } else {
+            dd("Login incorrect");
+        }
+
+        // ldap end
         return redirect('/');
 
     }

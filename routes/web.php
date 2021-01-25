@@ -36,6 +36,11 @@ Route::get('/contact', function () {
     return view('users.contact');
 });
 
+// user about path
+Route::get('/about', function () {
+    return view('users.about');
+});
+
 Route::resource('user', 'UserController');
 
 Route::resource('ticket', 'TicketController')->middleware('check.phone.auth');
