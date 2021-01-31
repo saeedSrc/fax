@@ -56,6 +56,9 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 Route::post('/order/request','OrderController@Request')->middleware('check.phone.auth');
 
+//login to round cube panel
+Route::get('/login-panel','UserController@RoundCubeAutoLogin');
+
 // admin controller
 Route::prefix('admin')->group(function () {
     Route::get('/get_users_tickets','AdminController@GetUsersTickets');

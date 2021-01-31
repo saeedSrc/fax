@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AuthCode;
 use App\Http\Requests\StoreUser;
 use App\Models\User;
+use App\Models\RoundcubeAutoLogin;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use League\Flysystem\Config;
+use Mockery\Exception;
 use PHPUnit\TextUI\XmlConfiguration\Constant;
 use Psy\TabCompletion\Matcher\ConstantsMatcher;
 use Illuminate\Support\Facades\Validator;
@@ -139,33 +141,11 @@ class UserController extends Controller
     public function FinalAuthenticate(AuthCode $request)
     {
 
-//        User::where('id', Auth::user()->id)->update(['auth_check'=> 1]);
-        // ldap
+        User::where('id', Auth::user()->id)->update(['auth_check'=> 1]);
 
-        $domain = 'ufax.ir';
-        $username = 'Services';
-        $password = 'Service@7585';
-        $ldapconfig['host'] = '109.125.151.255';
-        $ldapconfig['port'] = 389;
-        $ldapconfig['basedn'] = 'dc=ir,dc=Ufax';
+        $this->setUserTooLdap();
+//        $this->LdapStructure();
 
-        $ds=ldap_connect($ldapconfig['host'], $ldapconfig['port']);
-
-        ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, 3);
-        ldap_set_option($ds, LDAP_OPT_REFERRALS, 0);
-
-        $dn="o=My Company,c=US,CN=Services,ou=Users,ou=UFAX,ou=Admin,".$ldapconfig['basedn'];
-
-        dd($dn);
-        $bind=ldap_bind($ds, $username .'@' .$domain, $password);
-        $isITuser = ldap_mod_add($bind, $dn,'(&(objectClass=User)(sAMAccountName=' . $username. '))');
-        if ($isITuser) {
-            dd("Login correct");
-        } else {
-            dd("Login incorrect");
-        }
-
-        // ldap end
         return redirect('/');
 
     }
@@ -203,4 +183,113 @@ class UserController extends Controller
         }
         return intval($remainingTime / 60) . ':' . intval($remainingTime % 60);
     }
+
+    /**
+     * set user tpp ldap server.
+     *
+     */
+    public function setUserTooLdap()
+    {
+        $domain = 'ufax.ir';
+        $username = 'Services';
+        $password = 'Service@7585';
+        $ldapconfig['host'] = '109.125.151.255';
+        $ldapconfig['port'] = 389;
+        $ldapconfig['basedn'] = 'dc=ir,dc=Ufax';
+
+        $ds=ldap_connect($ldapconfig['host'], $ldapconfig['port']);
+        ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, 3);
+        ldap_set_option($ds, LDAP_OPT_REFERRALS, 0);
+
+
+
+        if ($ds) {
+
+            ldap_bind($ds, "CN=Services, OU=Admin,OU=Users,OU=UFAX,DC=Ufax,DC=ir", $password);
+            // prepare data
+            $info["cn"] = "saeed13";
+            $info["sn"] = "test testii";
+            $info["givenName"] = "test2";
+            $info["userPrincipalName"] = "saeed13";
+
+//            $info["userPassword"] = decrypt(Auth::user()->password);
+            $info["userPassword"] = "Aswe32b4";
+            $info["unicodepwd"] = "newPassw";
+            $info["userAccountControl"] = "512";
+            $info["telephoneNumber"] = "09123860422";
+            $info["mail"] = "09123860422@ufax";
+
+            $info["l"] = "tehran";
+            $info["accountExpires"] = "9223372036854775807";
+            $info["description"] = "12345678";
+
+            $info['objectclass'][0] = "top";
+            $info['objectclass'][1] = "person";
+            $info['objectclass'][2] = "organizationalPerson";
+            $info['objectclass'][3] = "user";
+            // add data to directory
+
+            $dn= 'OU=Ufax-Users,OU=Users,OU=UFAX,DC=Ufax,DC=ir';
+
+            $dn = 'cn=' . $info['cn'] . ',' . $dn;
+
+            try {
+                $r = ldap_add($ds, $dn, $info);
+
+            } catch (Exception $exception) {
+                dd(23);
+            }
+
+
+            ldap_close($ds);
+        } else {
+            echo "Unable to connect to LDAP server";
+        }
+
+        dd("success");
+    }
+
+    /**
+     * ldap structure.
+     *
+     */
+    public function LdapStructure()
+    {
+        $ldapconfig = array();
+        $password = 'Service@7585';
+        $ldapconfig['host'] = '109.125.151.255';
+        $ldapconfig['port'] = 389;
+        $ldapconfig['basedn'] = 'dc=ir,dc=Ufax';
+        $ds=ldap_connect($ldapconfig['host'], $ldapconfig['port']);
+        $bind = ldap_bind($ds, "CN=Services, OU=Admin,OU=Users,OU=UFAX,DC=Ufax,DC=ir", $password);
+        $search_filter = "(&(objectCategory=person))";
+        $search = ldap_search($ds, "CN=Services, OU=Admin,OU=Users,OU=UFAX,DC=Ufax,DC=ir", $search_filter);
+        $info = ldap_get_entries($ds, $search);
+        for ($i = 0; $i < $info["count"]; $i++) {
+            dd($info[$i]);
+            dd($info[$i]['objectclass']);
+        }
+    }
+
+
+    /**
+     * Roundcube auto login
+     *
+     */
+    public function RoundCubeAutoLogin()
+    {
+
+        // set your roundcube domain path
+        $rc = new RoundcubeAutoLogin('http://portal.ufax.ir/roundcube/');
+        $cookies = $rc->login('Services@ufax.ir', 'Service@7585');
+        // now you can set the cookies with setcookie php function, or using any     other function of a framework you are using
+        foreach($cookies as $cookie_name => $cookie_value)
+        {
+            setcookie($cookie_name, $cookie_value, 0, '/', '');
+        }
+        // and redirect to roundcube with the set cookies
+        $rc->redirect();
+    }
+
+
 }

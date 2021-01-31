@@ -24,7 +24,7 @@
             <nav>
                 <ul>
                     @if(auth()->check())
-                        <li><a href="#"><span> {{ Auth::user()->first_name }}</span>/ <span>ورود به پنل ارسال فکس</span></a></li>
+                        <li><a href="/login-panel" ><span> {{ Auth::user()->first_name }}</span>/<span>ورود به پنل ارسال فکس</span></a></li>
                         <li><a href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" >خروج</a></li>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
@@ -48,7 +48,7 @@
                 </div>
                 <ul class="menu">
                     @if(auth()->check())
-                        <li><a href="#"><span> {{ Auth::user()->first_name }}</span>/ <span>ورود به پنل ارسال فکس</span></a></li>
+                        <li><a href="/login-panel"><span> {{ Auth::user()->first_name }}</span>/ <span>ورود به پنل ارسال فکس</span></a></li>
                     @endif
 
                     @if(auth()->check())
