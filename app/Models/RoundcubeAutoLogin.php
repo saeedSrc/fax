@@ -56,14 +56,15 @@ class RoundcubeAutoLogin
                 '_pass' => $password
             );
 
+            $query = '_token='.$token . '&_task=login' . '&_action=login' . '&_timezone=' . '&_url=_task=login' . '&_user='.$email.'&_pass='.$password;
 
-            curl_setopt($this->ch, CURLOPT_URL, $this->_rc_link . '?_task=login');
+            curl_setopt($this->ch, CURLOPT_URL, $this->_rc_link );
             curl_setopt($this->ch, CURLOPT_COOKIEFILE, '');
             curl_setopt($this->ch, CURLOPT_COOKIEJAR, '');
             curl_setopt($this->ch, CURLOPT_POST, TRUE);
             curl_setopt($this->ch, CURLOPT_HEADER, TRUE);
             curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, TRUE);
-            curl_setopt($this->ch, CURLOPT_POSTFIELDS, http_build_query($post_params));
+            curl_setopt($this->ch, CURLOPT_POSTFIELDS, $query);
             $response = curl_exec($this->ch);
             $response_info = curl_getinfo($this->ch);
 
