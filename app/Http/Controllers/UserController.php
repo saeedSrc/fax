@@ -9,6 +9,7 @@ use App\Models\RoundcubeAutoLogin;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use League\Flysystem\Config;
 use Mockery\Exception;
 use PHPUnit\TextUI\XmlConfiguration\Constant;
@@ -280,15 +281,19 @@ class UserController extends Controller
     {
 
         // set your roundcube domain path
-        $rc = new RoundcubeAutoLogin('http://portal.ufax.ir');
+        $rc = new RoundcubeAutoLogin('http://portal.ufax.ir/');
         $cookies = $rc->login('Services@ufax.ir', 'Service@7585');
         // now you can set the cookies with setcookie php function, or using any     other function of a framework you are using
         foreach($cookies as $cookie_name => $cookie_value)
         {
-            setcookie($cookie_name, $cookie_value, 0, '/', '');
+            setcookie($cookie_name, $cookie_value, 0, '/', 'ufax.ir');
         }
         // and redirect to roundcube with the set cookies
+
+
+
         $rc->redirect();
+
     }
 
 
