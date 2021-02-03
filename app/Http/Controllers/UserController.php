@@ -199,6 +199,7 @@ class UserController extends Controller
         $ldapconfig['basedn'] = 'dc=ir,dc=Ufax';
         putenv('LDAPTLS_REQCERT=never');
         $ds = ldap_connect($ldapconfig['host'], $ldapconfig['port']);
+        dd(extension_loaded('ldap'));
         ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, 3);
         ldap_set_option($ds, LDAP_OPT_REFERRALS, 0);
 

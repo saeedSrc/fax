@@ -18,6 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('phone');
+            $table->string('province');
+            $table->string('national_code');
             $table->string('password');
             $table->integer('pages')->default(0);
             $table->boolean('auth_check')->default(false);
