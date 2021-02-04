@@ -17,6 +17,9 @@ return [
           'user_type_admin' => 'admin',
 
            'ticket_answer_img_path' => 'app/public/uploads/answers_img/',
+
            'ticket_question_img_path' => 'app/public/uploads/question_img/',
+
+           'bank_page_detail_name' => 'فروشگاه اینترنتی یوفکس',
 ];
 

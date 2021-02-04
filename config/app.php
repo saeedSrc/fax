@@ -162,6 +162,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Kavenegar\Laravel\ServiceProvider::class,
+        Shetabit\Payment\Provider\PaymentServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -228,6 +229,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Kavenegar' => Kavenegar\Laravel\Facade::class,
+        'Payment' => Shetabit\Payment\Facade\Payment::class
 
     ],
 

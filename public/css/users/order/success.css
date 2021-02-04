@@ -1,0 +1,20 @@
+.success-content {
+    direction: rtl;
+    text-align: center;
+    margin: 4%;
+    padding: 4%
+}
+
+.success-content>* {
+    margin-bottom: 2%;
+}
+
+.inline {
+    display: inline-block;
+
+}
+
+.home-link {
+    padding: 0 5%;
+    border-radius: 4px;
+}

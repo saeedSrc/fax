@@ -55,6 +55,9 @@ Route::get('/download/question/{image}','TicketController@DownloadQuestion');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::post('/order/request','OrderController@Request')->middleware('check.phone.auth');
+Route::get('/order/callback','OrderController@VerifyPayment');
+Route::get('/order/success/{id}','OrderController@SuccessPage');
+Route::get('/order/fail/{msg}','OrderController@FailPage');
 
 //login to round cube panel
 Route::get('/login-panel','UserController@RoundCubeAutoLogin');
