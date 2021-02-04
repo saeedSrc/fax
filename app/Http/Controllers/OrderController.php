@@ -175,6 +175,7 @@ class OrderController extends Controller
             getMessage method, returns a suitable message that can be used in user interface.
              **/
             $failure_message = $exception->getMessage();
+            session()->forget('order_id');
             return redirect('/order/fail/'.$failure_message);
         }
     }
