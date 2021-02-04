@@ -21,7 +21,7 @@ class CreateOrdersTable extends Migration
             $table->integer('package_2')->default(0);
             $table->integer('package_3')->default(0);
             $table->integer('price')->default(0);
-            $table->integer('zarinpal_authority')->default(0);
+            $table->string('zarinpal_authority')->default(0);
             $table->integer('zarinpal_referenceId')->default(0);
             $table->enum('pay', ['pending', 'success'])->default("pending");
             $table->timestampsTz();
