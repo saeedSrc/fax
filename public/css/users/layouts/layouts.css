@@ -1024,7 +1024,7 @@ nav li img {
     }
 
     .header-nav .menu-btn:checked ~ .menu {
-        max-height: 326px;
+        max-height: 406px;
     }
 
     .header-nav .menu-btn:checked ~ .menu-icon .navicon {

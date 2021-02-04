@@ -17,8 +17,10 @@
 <div class="header">
     <div class="header-top back-white-color2">
         <div class="right-header-name">
-            <h3>ارسال و دریافت فکس به صورت آنلاین</h3>
-            <img class="logo" src="{{asset('img/fax.png')}}"  alt="">
+            <a href="/">
+                <h3>ارسال و دریافت فکس به صورت آنلاین</h3>
+                <img class="logo" src="{{asset('img/fax.png')}}"  alt="">
+            </a>
         </div>
         <div class="left-nav">
             <nav>

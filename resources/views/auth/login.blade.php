@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
-    <title>ثبت نام</title>
+    <title>ورود</title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap.css') }}" >
     <link rel="stylesheet" href="{{ asset('css/users/register.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fontiran.css') }}">
@@ -35,7 +35,7 @@
                         </div>
                         <input type="submit" value="ورود" class="btn btn-info btn-block">
                     </form>
-                    <a class="left-text full" href="/register">درخواست عضویت</a>
+                    <a class="left-text" href="/register">درخواست عضویت</a> / <a class="left-text full" href="/">خانه</a>
                 </div>
             </div>
         </div>

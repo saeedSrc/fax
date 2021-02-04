@@ -180,5 +180,6 @@ return [
         'auth_code'             => 'کد احراز هویت',
         'question'             => 'متن پیام',
         'question_image'        => 'تصویر',
+        'national_code'        => 'کدملی',
     ],
 ];

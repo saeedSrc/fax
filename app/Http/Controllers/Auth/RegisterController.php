@@ -50,10 +50,15 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        if ($data['province'] == "null") {
+            $data['province'] = null;
+        }
         return Validator::make($data, [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'max:255', 'unique:users'], // 'regex:/(01)[0-9]{9}/'
+            'province' => ['required'], // 'regex:/(01)[0-9]{9}/'
+            'national_code' => ['required', 'numeric'], // 'regex:/(01)[0-9]{9}/'
             'password' => ['required', 'string', 'min:2'],
         ]);
 
@@ -77,6 +82,8 @@ class RegisterController extends Controller
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'phone' => $data['phone'],
+            'province' => $data['province'],
+            'national_code' => $data['national_code'],
 //            'password' => Hash::make($data['password']),
             'password' => bcrypt($data['password']),
         ]);

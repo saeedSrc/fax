@@ -130,7 +130,7 @@
                     <div class="final-order">
 
 
-                         {{--todo inja bayad un action ro benevisam ke id package o berize too session--}}
+
                     <form action="/order/request" method="post">
                         @csrf
                         <input type="hidden" name="package_id"  value="{{ $package->id }}">

@@ -34,6 +34,51 @@
                             <input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="نام خانوادگی" value="{{ old('last_name') }}" >
                         </div>
                         <div class="form-group">
+                            @error('national_code')
+                            <label  for="national_code" class="alert alert-danger" dir="rtl"> {{ $message }}</label>
+                            @enderror
+                            <input type="number" name="national_code" id="national_code" class="form-control input-sm" placeholder="کدملی" value="{{ old('national_code') }}" >
+                        </div>
+                        <div class="form-group">
+                            @error('province')
+                            <label  for="province" class="alert alert-danger" dir="rtl"> {{ $message }}</label>
+                            @enderror
+                            <select type="text" name="province" id="province" class="form-control input-sm">
+                                    <option value="null">لطفا استان را انتخاب نمایید</option>
+                                    <option value="تهران">تهران</option>
+                                    <option value="گیلان">گیلان</option>
+                                    <option value="آذربایجان شرقی">آذربایجان شرقی</option>
+                                    <option value="خوزستان">خوزستان</option>
+                                    <option value="فارس">فارس</option>
+                                    <option value="اصفهان">اصفهان</option>
+                                    <option value="خراسان رضوی">خراسان رضوی</option>
+                                    <option value="قزوین">قزوین</option>
+                                    <option value="سمنان">سمنان</option>
+                                    <option value="قم">قم</option>
+                                    <option value="مرکزی">مرکزی</option>
+                                    <option value="زنجان">زنجان</option>
+                                    <option value="مازندران">مازندران</option>
+                                    <option value="گلستان">گلستان</option>
+                                    <option value="اردبیل">اردبیل</option>
+                                    <option value="آذربایجان غربی">آذربایجان غربی</option>
+                                    <option value="همدان">همدان</option>
+                                    <option value="کردستان">کردستان</option>
+                                    <option value="کرمانشاه">کرمانشاه</option>
+                                    <option value="لرستان">لرستان</option>
+                                    <option value="بوشهر">بوشهر</option>
+                                    <option value="کرمان">کرمان</option>
+                                    <option value="هرمزگان">هرمزگان</option>
+                                    <option value="چهارمحال و بختیاری">چهارمحال و بختیاری</option>
+                                    <option value="یزد">یزد</option>
+                                    <option value="سیستان و بلوچستان">سیستان و بلوچستان</option>
+                                    <option value="ایلام">ایلام</option>
+                                    <option value="کهگلویه و بویراحمد">کهگلویه و بویراحمد</option>
+                                    <option value="خراسان شمالی">خراسان شمالی</option>
+                                    <option value="خراسان جنوبی">خراسان جنوبی</option>
+                                    <option value="البرز">البرز</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             @error('phone')
                             <label  for="phone" class="alert alert-danger" dir="rtl"> {{ $message }}</label>
                             @enderror
@@ -47,12 +92,11 @@
                         </div>
                         <input type="submit" value="ثبت نام" class="btn btn-info btn-block">
                     </form>
-                    <a class="left-text full" href="/login">ورود</a>
+                    <a class="left-text full" href="/login">ورود</a> / <a class="left-text full" href="/">خانه</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 </body>
-
 </html>
