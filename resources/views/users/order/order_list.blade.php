@@ -14,7 +14,7 @@
     <div class="contact-content back-white-color1">
         <div class="orders">
             <h2 class="violet-color">سفارش‌های من</h2>
-                @isset($orders)
+                @if(count($orders) > 0)
                          <table>
                              <tr>
                                  <th>نام پکیج</th>
@@ -30,9 +30,9 @@
                                  </tr>
                         @endforeach
                          </table>
-                @endisset
+                @endif
                 @if(count($orders) == 0)
-                    <h3 class="center gray-color">سفارشی وجود ندارد.</h3>
+                    <h3 class="center gray-color empty-bag">سفارشی وجود ندارد.</h3>
                 @endif
                 <a class="btn home-link" href="/">بازگشت به صفحه‌ی اصلی</a>
         </div>

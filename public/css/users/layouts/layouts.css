@@ -917,6 +917,11 @@ nav li img {
 .home-link {
     padding: 0 5%;
     border-radius: 4px;
+
+}
+
+.empty-bag {
+    margin: 7%;
 }
 
 .btn-new:hover, .btn-popular:hover, .btn-search:hover {

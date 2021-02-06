@@ -34,8 +34,10 @@
                 </ul>
                 @endisset
                 @if(count($tickets) == 0)
-                    <h3 class="center gray-color">پیامی وجود ندارد.</h3>
+                    <h3 class="center gray-color empty-bag">پیامی وجود ندارد.</h3>
                 @endif
+
+                <a class="btn home-link" href="/">بازگشت به صفحه‌ی اصلی</a>
             </div>
         </div>
     </div>
