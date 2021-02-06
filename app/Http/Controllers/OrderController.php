@@ -14,6 +14,16 @@ use Symfony\Component\Console\Input\Input;
 
 class OrderController extends Controller
 {
+    private $user_id;
+
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->user_id = Auth::user()->id;
+            return $next($request);
+        });
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +31,20 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $packages = Package::all();
+        $orders = Order::orderByDesc('updated_at')->where(['user_id'=> $this->user_id, 'pay' => 'success'])->get();
+        foreach ($orders as $order) {
+            if($order->package_3 > 0) {
+                $order->package_name = Package::find(3)->title;
+            }
+            if($order->package_2 > 0) {
+                $order->package_name = Package::find(2)->title;
+            }
+            if($order->package_1 > 0) {
+                $order->package_name = Package::find(1)->title;
+            }
+        }
+        return view('users.order.order_list', compact('orders'));
     }
 
     /**
@@ -90,7 +113,6 @@ class OrderController extends Controller
         //
     }
 
-
     /**
      * request to buy package.
      *
@@ -126,7 +148,6 @@ class OrderController extends Controller
     {
         Order::where('id', $orderId)->update(['pay'=> 'success']);
     }
-
 
     /**
      * pay invoice
@@ -191,7 +212,6 @@ class OrderController extends Controller
         $order = Order::find($order_id);
         return view("users.order.success", compact('order')) ;
     }
-
 
     /**
      * fail page

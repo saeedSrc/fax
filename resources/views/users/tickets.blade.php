@@ -23,7 +23,7 @@
                            {{ $ticket->title }}
                         </a>
 
-                        <span class="time">  اخرین بروز رسانی :  <span class="persian-time">{{  date('h:i:s d-m-Y', strtotime($ticket->updated_at)) }}</span></span>
+                        <span class="time">  اخرین بروز رسانی :  <span class="persian-time">{{  date('H:i:s d-m-Y', strtotime($ticket->updated_at)) }}</span></span>
                         @if($ticket->was_answered == 1)
                         <span class="left light-green-color">پاسخ داده شد</span>
                             @else

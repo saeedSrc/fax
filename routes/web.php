@@ -58,6 +58,7 @@ Route::post('/order/request','OrderController@Request')->middleware('check.phone
 Route::get('/order/callback','OrderController@VerifyPayment');
 Route::get('/order/success/{id}','OrderController@SuccessPage');
 Route::get('/order/fail/{msg}','OrderController@FailPage');
+Route::resource('order', 'OrderController')->middleware('check.phone.auth');
 
 //login to round cube panel
 Route::get('/login-panel','UserController@RoundCubeAutoLogin');

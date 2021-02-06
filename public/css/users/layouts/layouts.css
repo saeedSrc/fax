@@ -93,7 +93,6 @@ button {
     padding: 0 1vw;
     width: auto;
     border-radius: 4px;
-    font-weight: bold;
     min-width: 6vw;
     font-size: 1vw;
     border: 0px;
@@ -164,6 +163,60 @@ input:focus, textarea:focus, select:focus {
 button:focus {
     outline-width: 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+.drop-down .dropbtn {
+    border: none;
+    outline: none;
+    background-color: inherit;
+}
+
+.dropdownConten {
+    display: none;
+    text-align: right;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdownConten a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: right;
+}
+
+.dropdownConten a:hover {
+    background-color: #ddd;
+}
+
+.drop-down:hover .dropdownConten {
+    display: block;
+}
+
+
+
+
+
+
+
+
+
 
 .white-color1 {
     color: #FFFCFC;
@@ -406,6 +459,15 @@ nav li{
 }
 
 nav li a {
+    color: #9A9A9A;
+    /*color: black;*/
+    position: relative;
+    transition: color 0.1s,background-color 0.1s,padding 0.2s ease-in;
+    vertical-align: -webkit-baseline-middle;
+    vertical-align:middle;
+}
+
+nav li button {
     color: #9A9A9A;
     /*color: black;*/
     position: relative;
@@ -852,6 +914,11 @@ nav li img {
 
 }
 
+.home-link {
+    padding: 0 5%;
+    border-radius: 4px;
+}
+
 .btn-new:hover, .btn-popular:hover, .btn-search:hover {
     background: linear-gradient(261.44deg, #205F8F -29.09%, rgba(83, 174, 243, 0.72) 102.54%);
     box-shadow: 0px 4px 6px rgba(196, 196, 196, 0.44);
@@ -1024,7 +1091,7 @@ nav li img {
     }
 
     .header-nav .menu-btn:checked ~ .menu {
-        max-height: 406px;
+        max-height: 550px;
     }
 
     .header-nav .menu-btn:checked ~ .menu-icon .navicon {

@@ -33,7 +33,7 @@
             </div>
         </div>
         <div class="contact-form">
-            <h1 class="title">فرم ارسال پیام </h1>
+            <h1>فرم ارسال پیام </h1>
             <br>
             <form class="violet-color" action="{{ action('TicketController@store')}}" method="post" enctype="multipart/form-data">
                 @csrf

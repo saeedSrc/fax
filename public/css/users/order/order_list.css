@@ -1,0 +1,36 @@
+.right-nav {
+    display: none;
+}
+
+.orders {
+    text-align: center;
+    margin: 6%;
+}
+
+table {
+    margin: 3% auto;
+    text-align: center;
+    width: 30%;
+    border-collapse: collapse;
+
+}
+
+td, th {
+    padding: 5%;
+    border: 1px solid #dddddd;
+    direction: rtl;
+}
+
+
+
+
+tr:nth-child(even) {
+    background: linear-gradient(to right ,  #5B7FDE, #66C0E3);
+    color: white;
+}
+
+@media only screen and (max-width: 780px) {
+    table {
+        margin: 7% auto;
+    }
+}
