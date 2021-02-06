@@ -37,7 +37,7 @@
                             @error('national_code')
                             <label  for="national_code" class="alert alert-danger" dir="rtl"> {{ $message }}</label>
                             @enderror
-                            <input type="number" name="national_code" id="national_code" class="form-control input-sm" placeholder="کدملی" value="{{ old('national_code') }}" >
+                            <input type="text" name="national_code" id="national_code" class="form-control input-sm" placeholder="کدملی" value="{{ old('national_code') }}" >
                         </div>
                         <div class="form-group">
                             @error('province')
@@ -82,7 +82,7 @@
                             @error('phone')
                             <label  for="phone" class="alert alert-danger" dir="rtl"> {{ $message }}</label>
                             @enderror
-                            <input type="number" name="phone" id="phone" class="form-control input-sm" placeholder="شماره تلفن همراه" value="{{ old('phone') }}"  autocomplete="phone">
+                            <input type="text" name="phone" id="phone" class="form-control input-sm" placeholder="شماره تلفن همراه" value="{{ old('phone') }}"  autocomplete="phone">
                         </div>
                         <div class="form-group">
                             @error('password')

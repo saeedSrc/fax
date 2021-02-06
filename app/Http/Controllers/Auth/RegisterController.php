@@ -53,22 +53,18 @@ class RegisterController extends Controller
         if ($data['province'] == "null") {
             $data['province'] = null;
         }
+
+        $data['phone'] = $this->convert($data['phone']); // user can write phone in persian language
+        $data['national_code'] = $this->convert($data['national_code']); // user can write national_code in persian language
         return Validator::make($data, [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'max:255', 'unique:users'], // 'regex:/(01)[0-9]{9}/'
             'province' => ['required'], // 'regex:/(01)[0-9]{9}/'
-            'national_code' => ['required', 'numeric'], // 'regex:/(01)[0-9]{9}/'
+            'national_code' => ['required', 'melli_code'], // 'regex:/(01)[0-9]{9}/'
             'password' => ['required', 'string', 'min:2'],
         ]);
-
-//        session(['register-done' => null]);
-//        session(['auth-req-done' => 'true']);
-//        session(['auth-done' => 'true']);
-//        session(['register-form' => true]);
-//        session(['auth-req-form' => null]);
-//        session(['auth-form' => null]);
-    }
+        }
 
     /**
      * Create a new user instance after a valid registration.
@@ -81,11 +77,20 @@ class RegisterController extends Controller
         return User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
-            'phone' => $data['phone'],
+            'phone' => $this->convert($data['phone']),
             'province' => $data['province'],
-            'national_code' => $data['national_code'],
+            'national_code' => $this->convert($data['national_code']),
 //            'password' => Hash::make($data['password']),
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function convert($string) {
+        $persian = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+        $arabic = ['٩', '٨', '٧', '٦', '٥', '٤', '٣', '٢', '١','٠'];
+        $num = range(0, 9);
+        $convertedPersianNums = str_replace($persian, $num, $string);
+        $englishNumbersOnly = str_replace($arabic, $num, $convertedPersianNums);
+        return $englishNumbersOnly;
     }
 }
