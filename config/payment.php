@@ -193,7 +193,7 @@ return [
             'zaringateApiPaymentUrl' => 'https://www.zarinpal.com/pg/StartPay/:authority/ZarinGate',
             'zaringateApiVerificationUrl' => 'https://ir.zarinpal.com/pg/services/WebGate/wsdl',
 
-            'mode' => 'normal', // can be normal, sandbox, zaringate
+            'mode' => 'sandbox', // can be normal, sandbox, zaringate
             'merchantId' => 'f40c512a-1de4-43ce-836c-6dc119bdd627',
             'callbackUrl' => 'http://localhost:2222/order/callback',
             'description' => 'خرید پکیج از وب سایت ufax',
