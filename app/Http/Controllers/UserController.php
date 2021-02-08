@@ -144,8 +144,10 @@ class UserController extends Controller
 
 //        User::where('id', Auth::user()->id)->update(['auth_check'=> 1]);
 
-        $this->setUserTooLdap();
+//        $this->setUserTooLdap();
 //        $this->LdapStructure();
+
+        $this->setusertoldaptest();
 
         return redirect('/');
 
@@ -199,13 +201,12 @@ class UserController extends Controller
         $ldapconfig['basedn'] = 'dc=ir,dc=Ufax';
         putenv('LDAPTLS_REQCERT=never');
         $ds = ldap_connect($ldapconfig['host'], $ldapconfig['port']);
-        dd(extension_loaded('ldap'));
         ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, 3);
         ldap_set_option($ds, LDAP_OPT_REFERRALS, 0);
 
 
         if ($ds) {
-            ldap_start_tls($ds);
+//            ldap_start_tls($ds);
             ldap_bind($ds, "CN=Services, OU=Admin,OU=Users,OU=UFAX,DC=Ufax,DC=ir", $password);
             // prepare data
             $info["cn"] = "2saeed";
@@ -297,7 +298,6 @@ class UserController extends Controller
         }
     }
 
-
     /**
      * Roundcube auto login
      *
@@ -318,5 +318,142 @@ class UserController extends Controller
 
     }
 
+
+    public function setusertoldaptest()
+    {
+
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+
+
+
+
+$domain = 'ufax.ir';
+    $username = 'Services';
+    $password = 'Service@7585';
+    $ldapconfig['host'] = '109.125.151.255';
+    $ldapconfig['port'] = 636;
+    $ldapconfig['basedn'] = 'dc=ir,dc=Ufax';
+
+$pwdtxt = "Zz123456@";
+$newPassword = '"' . $pwdtxt . '"';
+$newPass = iconv( 'UTF-8', 'UTF-16LE', $newPassword );
+
+    //$ds=ldap_connect($ldapconfig['host'], $ldapconfig['port']);
+    $ds=ldap_connect('ldaps://109.125.151.255')or die("Failed to connect to LDAP server.");
+
+    ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, 2);
+    ldap_set_option($ds, LDAP_OPT_REFERRALS, 0);
+ldap_set_option(NULL, LDAP_OPT_DEBUG_LEVEL, 7);
+
+
+//echo file_get_contents("LDAPTLS_CACERT=C:\\openldap\\sysconf\\ssl\\UFAX-LDAP.pem");
+
+//ldap_set_option(null, LDAP_OPT_X_TLS_CACERTDIR, 'C:\openldap\sysconf\ssl');
+//ldap_set_option(null, LDAP_OPT_X_TLS_CACERTFILE, 'C:\openldap\sysconf\ssl\UFAX-LDAP.pem');
+
+
+//putenv('LDAPTLS_CACERT=C:\\Users\\Kamrani\\Desktop\\ufax.pem');
+
+    //ldap_start_tls($ds);
+
+
+if(!ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, 3)){
+    print "Could not set LDAPv3\r\n";
+}
+else {
+    print "V3 OKKKKKKKKKKKK\r\n";
+    //putenv('LDAPTLS_REQCERT=require');
+
+//tell ldap where the root ca certificate is
+//note that the space is allowed in the path without escape or quotes
+//I have not tested the permissions, but I would assume the service should have read.
+
+// now we need to bind to the ldap server
+   // $bth = ldap_bind($ds, $username, $password) or die("\r\nCould not connect to LDAP server\r\n");
+}
+//ldap_set_option(NULL, LDAP_OPT_DEBUG_LEVEL, 7);
+/*ldap_start_tls($ds);
+if (!ldap_start_tls($ds)){
+    print "TLS Failde \r\n";
+
+}else
+{
+    print "TLS OK\r\n";
+
+}*/
+
+
+    if ($ds) {
+
+        ldap_bind($ds, "CN=Services, OU=Admin,OU=Users,OU=UFAX,DC=Ufax,DC=ir", $password);
+
+        // prepare data
+
+        $info["givenName"] = "test2";
+        $info["userPrincipalName"] = "mehran85";
+
+//            $info["userPassword"] = decrypt(Auth::user()->password);
+        //$info["unicodepwd"] = "newPassw";
+       // $info["userAccountControl"] = "512";
+        $info["telephoneNumber"] = "09123860422";
+
+        $info["l"] = "tehran";
+        $info["accountExpires"] = "9223372036854775807";
+
+
+        $info['objectclass'][0] = "top";
+        $info['objectclass'][1] = "person";
+        $info['objectclass'][2] = "organizationalPerson";
+        $info['objectclass'][3] = "user";
+        // add data to directory
+        $info["cn"] = "John Jones";
+       // $info["userPrincipalName"] = "test2";
+        $info["givenName"] = "test2";
+        $info["sn"] = "Jones";
+       /* $info['objectclass'][0] = "top";
+        $info['objectclass'][1] = "person";
+        $info['objectclass'][1] = "organizationalPerson";
+        $info['objectclass'][2] = "user";*/
+        $info["mail"] = "09123860422@ufax";
+        $info["telephoneNumber"] = "09123860422";
+        //$info["userPrincipalName"] = "saeed13";
+        $info["unicodepwd"] = $newPass;
+        print "============================================================ unicodepwd\r\n";
+
+      //  $info["sAMAccountName"] = "John Jones";
+        //$info["userPassword"] = "Zz123456@";
+        //$info["description"] = "12345678";
+        $info["userAccountControl"] = "512";
+       // $info["l"] = "tehran";
+
+       //
+
+
+        $dn= 'OU=Ufax-Users,OU=Users,OU=UFAX,DC=Ufax,DC=ir';
+
+        $dn = 'cn=' . $info['cn'] . ',' . $dn;
+
+        try {
+            $r = ldap_add($ds, $dn, $info);
+            print "============================================================ add\r\n";
+
+
+        } catch (Exception $exception) {
+            dd(23);
+        }
+
+
+        ldap_close($ds);
+    } else {
+        echo "Unable to connect to LDAP server";
+    }
+
+   // dd("success");
+
+
+        }
 
 }
