@@ -8,18 +8,27 @@
 
 return [
 
-        "authentication_code" => 'auth-code',
+"authentication_code" => 'auth-code',
 
-        'auth_code_expired_at' => 'auth-code-expired-at',
+'auth_code_expired_at' => 'auth-code-expired-at',
 
-         'auth_code_expire_time' => 600, // second,
+'auth_code_expire_time' => 600, // second,
 
-          'user_type_admin' => 'admin',
+'user_type_admin' => 'admin',
 
-           'ticket_answer_img_path' => 'app/public/uploads/answers_img/',
+'ticket_answer_img_path' => 'app/public/uploads/answers_img/',
 
-           'ticket_question_img_path' => 'app/public/uploads/question_img/',
+'ticket_question_img_path' => 'app/public/uploads/question_img/',
 
-           'bank_page_detail_name' => 'فروشگاه اینترنتی یوفکس',
+'bank_page_detail_name' => 'فروشگاه اینترنتی یوفکس',
+
+'ldap_host' => 'ldaps://109.125.151.255',
+
+'ldap_main_user_name' => 'Services',
+
+'ldap_main_pass' => 'Service@7585',
+
+'ldap_user_account_control' => '512'
+
 ];
 

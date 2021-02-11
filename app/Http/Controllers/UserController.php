@@ -10,6 +10,7 @@ use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Crypt;
 use League\Flysystem\Config;
 use Mockery\Exception;
 use PHPUnit\TextUI\XmlConfiguration\Constant;
@@ -144,11 +145,8 @@ class UserController extends Controller
 
 //        User::where('id', Auth::user()->id)->update(['auth_check'=> 1]);
 
-//        $this->setUserTooLdap();
+        $this->setUserTooLdap();
 //        $this->LdapStructure();
-
-        $this->setusertoldaptest();
-
         return redirect('/');
 
     }
@@ -193,88 +191,51 @@ class UserController extends Controller
      */
     public function setUserTooLdap()
     {
-        $domain = 'ufax.ir';
-        $username = 'Services';
-        $password = 'Service@7585';
-        $ldapconfig['host'] = '109.125.151.255';
-        $ldapconfig['port'] = 389;
-        $ldapconfig['basedn'] = 'dc=ir,dc=Ufax';
-        putenv('LDAPTLS_REQCERT=never');
-        $ds = ldap_connect($ldapconfig['host'], $ldapconfig['port']);
+        $username = config('constants.ldap_main_user_name');
+        $password = config('constants.ldap_main_pass');
+        $ldapconfig['host'] = config('constants.ldap_host');
+        $ds=ldap_connect($ldapconfig['host']);
+
         ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, 3);
         ldap_set_option($ds, LDAP_OPT_REFERRALS, 0);
-
+        ldap_set_option(NULL, LDAP_OPT_DEBUG_LEVEL, 7);
 
         if ($ds) {
-//            ldap_start_tls($ds);
-            ldap_bind($ds, "CN=Services, OU=Admin,OU=Users,OU=UFAX,DC=Ufax,DC=ir", $password);
+            ldap_bind($ds, "CN=$username, OU=Admin,OU=Users,OU=UFAX,DC=Ufax,DC=ir", $password);
             // prepare data
-            $info["cn"] = "2saeed";
-            $info["sn"] = "test_testii";
-            $info["givenName"] = "2saeed";
-            $info["userPrincipalName"] = "2saeed";
-
-//            $info["userPassword"] = decrypt(Auth::user()->password);
-//            $info["userPassword"] = mb_convert_encoding("Aswe32b4", "UTF-16LE");
-            $info["userPassword"] = "Aswe32b4";
-//            $info["unicodepwd"] = mb_convert_encoding("Aswe32b4", "UTF-16LE");
-//            $info["userAccountControl"] = "512";
-            $info["telephoneNumber"] = "09123860422";
-            $info["mail"] = "09123860422@ufax";
-
-            $info["l"] = "tehran";
+            $info["givenName"] = Auth::user()->first_name;
+            $info["userPrincipalName"] = Auth::user()->phone;
+            $info["telephoneNumber"] = Auth::user()->phone;
+            $info["l"] = Auth::user()->province;
             $info["accountExpires"] = "9223372036854775807";
-            $info["description"] = "12345678";
-
             $info['objectclass'][0] = "top";
             $info['objectclass'][1] = "person";
             $info['objectclass'][2] = "organizationalPerson";
             $info['objectclass'][3] = "user";
-            // add data to directory
+            $info["cn"] = Auth::user()->first_name . ' ' . Auth::user()->last_name;
+            $info["sn"] = Auth::user()->last_name;
+            $info["mail"] = Auth::user()->phone . "@ufax.ir";
+//            $pwdtxt = Auth::user()->password;
+            $pwdtxt = "1Add3##12wq";
+            $newPassword = '"' . $pwdtxt . '"';
+            $newPass = iconv( 'UTF-8', 'UTF-16LE', $newPassword);
+            $info["unicodepwd"] = $newPass;
+            $info["description"] = Auth::user()->national_code;
+            $info["userAccountControl"] = config('constants.ldap_user_account_control');;
 
-            $dn = 'OU=Ufax-Users,OU=Users,OU=UFAX,DC=Ufax,DC=ir';
-
+            $dn= 'OU=Ufax-Users,OU=Users,OU=UFAX,DC=Ufax,DC=ir';
             $dn = 'cn=' . $info['cn'] . ',' . $dn;
 
             try {
-//                $r = ldap_add($ds, $dn, $info);
-
+                ldap_add($ds, $dn, $info);
             } catch (Exception $exception) {
-                dd(23);
+               return $exception;
             }
-
-//            dd("add.");
-            $filter="(|(userPrincipalName=2saeed*))";
-            $seerchresult = ldap_search($ds, "OU=Ufax-Users,OU=Users,OU=UFAX,DC=Ufax,DC=ir", $filter);
-            $res = ldap_get_entries($ds, $seerchresult);
-
-            //dd($res[0]['userpassword'], $res[0]['userpassword']);
-
-            $dn = $res[0]['dn'];
-            //$ac = $res[0]["useraccountcontrol"][0];
-           // $disable=($ac |  2); // set all bits plus bit 1 (=dec2)
-            //$enable =($ac & ~2); // set all bits minus bit 1 (=dec2)
-//            dd($enable);
-//            $userdata=array();
-//            if ($enable==1) $new=$enable; else $new=$disable; //enable or disable?
-////            dd($new);
-//            $userdata["useraccountcontrol"][0]=514;
-
-
-            $userdata=array();
-            $newPassword = "\"" . "32Wsq14" . "\"";
-            $newPassw = mb_convert_encoding($newPassword, "UTF-16LE");
-            $userdata["unicodePwd"] = $newPassw;
-
-            ldap_modify($ds, $dn , $userdata);
             ldap_close($ds);
-            dd('succ');
         } else {
-            echo "Unable to connect to LDAP server";
+            return "Unable to connect to LDAP server";
         }
-
-//        dd("success");
-    }
+}
 
     /**
      * ldap structure.
@@ -318,58 +279,5 @@ class UserController extends Controller
 
     }
 
-
-    public function setusertoldaptest()
- {
-    $username = 'Services';
-    $password = 'Service@7585';
-    $ldapconfig['host'] = 'ldaps://109.125.151.255';
-    $ldapconfig['port'] = 636;
-
-    $pwdtxt = "Zz123456@";
-    $newPassword = '"' . $pwdtxt . '"';
-    $newPass = iconv( 'UTF-8', 'UTF-16LE', $newPassword);
-    $ds=ldap_connect($ldapconfig['host']);
-
-    ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, 3);
-    ldap_set_option($ds, LDAP_OPT_REFERRALS, 0);
-    ldap_set_option(NULL, LDAP_OPT_DEBUG_LEVEL, 7);
-
-    if ($ds) {
-
-        ldap_bind($ds, "CN=$username, OU=Admin,OU=Users,OU=UFAX,DC=Ufax,DC=ir", $password);
-        // prepare data
-        $info["givenName"] = "test22222";
-        $info["userPrincipalName"] = "mehran855555";
-        $info["telephoneNumber"] = "09123860422";
-        $info["l"] = "tehran";
-        $info["accountExpires"] = "9223372036854775807";
-        $info['objectclass'][0] = "top";
-        $info['objectclass'][1] = "person";
-        $info['objectclass'][2] = "organizationalPerson";
-        $info['objectclass'][3] = "user";
-        $info["cn"] = "John Jonesssss";
-        $info["sn"] = "Jonesssss";
-        $info["mail"] = "09123860422@ufax";
-        $info["telephoneNumber"] = "09123860422";
-        $info["unicodepwd"] = $newPass;
-        $info["description"] = "0013824287";
-        $info["userAccountControl"] = "512";
-
-        $dn= 'OU=Ufax-Users,OU=Users,OU=UFAX,DC=Ufax,DC=ir';
-        $dn = 'cn=' . $info['cn'] . ',' . $dn;
-
-        try {
-        ldap_add($ds, $dn, $info);
-        } catch (Exception $exception) {
-            echo "fail to add.";
-        }
-
-        ldap_close($ds);
-    } else {
-        echo "Unable to connect to LDAP server";
-    }
-
-    }
 
 }
