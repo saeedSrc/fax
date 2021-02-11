@@ -191,6 +191,7 @@ class UserController extends Controller
      */
     public function setUserTooLdap()
     {
+        dd(config('constants.ldap_main_user_name'));
         $username = config('constants.ldap_main_user_name');
         $password = config('constants.ldap_main_pass');
         $ldapconfig['host'] = config('constants.ldap_host');
