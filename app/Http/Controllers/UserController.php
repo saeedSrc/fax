@@ -215,8 +215,7 @@ class UserController extends Controller
             $info["cn"] = Auth::user()->first_name . ' ' . Auth::user()->last_name;
             $info["sn"] = Auth::user()->last_name;
             $info["mail"] = Auth::user()->phone . "@ufax.ir";
-//            $pwdtxt = Auth::user()->password;
-            $pwdtxt = "123456Eq";
+            $pwdtxt = decrypt(Auth::user()->portal_password);
             $newPassword = '"' . $pwdtxt . '"';
             $newPass = iconv( 'UTF-8', 'UTF-16LE', $newPassword);
             $info["unicodepwd"] = $newPass;
@@ -267,8 +266,10 @@ class UserController extends Controller
     {
 
         // set your roundcube domain path
-        $rc = new RoundcubeAutoLogin('http://portal.ufax.ir/');
-        $cookies = $rc->login('Services@ufax.ir', 'Service@7585');
+        $rc = new RoundcubeAutoLogin(config('constants.ufax_domain'));
+        $email = Auth::user()->phone . '@ufax.ir';
+        $pass = decrypt(Auth::user()->portal_password);
+        $cookies = $rc->login($email, $pass);
         // now you can set the cookies with setcookie php function, or using any     other function of a framework you are using
         foreach($cookies as $cookie_name => $cookie_value)
         {
@@ -276,7 +277,6 @@ class UserController extends Controller
         }
         // and redirect to roundcube with the set cookies
         $rc->redirect();
-
     }
 
 

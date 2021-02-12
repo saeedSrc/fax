@@ -28,7 +28,9 @@ return [
 
 'ldap_main_pass' => 'Service@7585',
 
-'ldap_user_account_control' => '512'
+'ldap_user_account_control' => '512',
+
+'ufax_domain' => 'http://portal.ufax.ir/',
 
 ];
 

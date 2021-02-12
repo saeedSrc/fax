@@ -81,8 +81,8 @@ class RegisterController extends Controller
             'phone' => $this->convert($data['phone']),
             'province' => $data['province'],
             'national_code' => $this->convert($data['national_code']),
-//            'password' => Hash::make($data['password']),
-            'password' => bcrypt($data['password']),
+            'password' => Hash::make($data['password']),
+            'portal_password' => encrypt($data['password']),
         ]);
     }
 
