@@ -143,8 +143,7 @@ class UserController extends Controller
     public function FinalAuthenticate(AuthCode $request)
     {
 
-//        User::where('id', Auth::user()->id)->update(['auth_check'=> 1]);
-
+        User::where('id', Auth::user()->id)->update(['auth_check'=> 1]);
         $this->setUserTooLdap();
 //        $this->LdapStructure();
         return redirect('/');
