@@ -88,7 +88,7 @@
                             @error('password')
                             <label for="password" class="alert alert-danger" dir="rtl"> {{ $message }}</label>
                             @enderror
-                            <input type="password" name="password" id="password" class="form-control input-sm" placeholder="پسورد" value="{{ old('password') }}"  autocomplete="password">
+                            <input type="password" name="password" id="password" class="form-control input-sm" placeholder="پسورد(باید شامل عدد و حروف کوچک و بزرگ باشد)" value="{{ old('password') }}"  autocomplete="password">
                         </div>
                         <input type="submit" value="ثبت نام" class="btn btn-info btn-block">
                     </form>

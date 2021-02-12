@@ -54,6 +54,7 @@ class RegisterController extends Controller
             $data['province'] = null;
         }
 
+
         $data['phone'] = $this->convert($data['phone']); // user can write phone in persian language
         $data['national_code'] = $this->convert($data['national_code']); // user can write national_code in persian language
         return Validator::make($data, [
@@ -61,8 +62,8 @@ class RegisterController extends Controller
             'last_name' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'max:255', 'unique:users'], // 'regex:/(01)[0-9]{9}/'
             'province' => ['required'], // 'regex:/(01)[0-9]{9}/'
-            'national_code' => ['required', 'melli_code'], // 'regex:/(01)[0-9]{9}/'
-            'password' => ['required', 'string', 'min:2'],
+            'national_code' => ['required', 'melli_code'], // todo must be unique
+            'password' => ['required', 'min:6', 'is_not_persian', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/'],
         ]);
         }
 

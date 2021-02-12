@@ -216,7 +216,7 @@ class UserController extends Controller
             $info["sn"] = Auth::user()->last_name;
             $info["mail"] = Auth::user()->phone . "@ufax.ir";
 //            $pwdtxt = Auth::user()->password;
-            $pwdtxt = "1Add3##12wq";
+            $pwdtxt = "123456Eq";
             $newPassword = '"' . $pwdtxt . '"';
             $newPass = iconv( 'UTF-8', 'UTF-16LE', $newPassword);
             $info["unicodepwd"] = $newPass;

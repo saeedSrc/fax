@@ -96,7 +96,7 @@ return [
     'numeric'              => ':attribute باید عدد یا رشته‌ای از اعداد باشد.',
     'password'             => 'رمزعبور اشتباه است.',
     'present'              => 'فیلد :attribute باید در پارامترهای ارسالی وجود داشته باشد.',
-    'regex'                => 'فرمت :attribute معتبر نیست.',
+    'regex'                => 'فرمت :attribute معتبر نیست. :attribute باید شامل حروف بزرگ و کوچک و عدد باشد.',
     'required'             => 'فیلد :attribute الزامی است.',
     'required_if'          => 'هنگامی که :other برابر با :value است، فیلد :attribute الزامی است.',
     'required_unless'      => 'فیلد :attribute الزامی است، مگر آنکه :other در :values موجود باشد.',
