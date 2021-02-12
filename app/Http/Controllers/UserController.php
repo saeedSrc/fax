@@ -212,7 +212,7 @@ class UserController extends Controller
             $info['objectclass'][1] = "person";
             $info['objectclass'][2] = "organizationalPerson";
             $info['objectclass'][3] = "user";
-            $info["cn"] = Auth::user()->first_name . ' ' . Auth::user()->last_name;
+            $info["cn"] = Auth::user()->phone;
             $info["sn"] = Auth::user()->last_name;
             $info["mail"] = Auth::user()->phone . "@ufax.ir";
             $pwdtxt = decrypt(Auth::user()->portal_password);
@@ -226,9 +226,9 @@ class UserController extends Controller
             $dn = 'cn=' . $info['cn'] . ',' . $dn;
 
             try {
-                ldap_add($ds, $dn, $info);
+           ldap_add($ds, $dn, $info);
             } catch (Exception $exception) {
-               return $exception;
+               echo "this is: " . $exception;
             }
             ldap_close($ds);
         } else {
@@ -278,6 +278,4 @@ class UserController extends Controller
         // and redirect to roundcube with the set cookies
         $rc->redirect();
     }
-
-
 }

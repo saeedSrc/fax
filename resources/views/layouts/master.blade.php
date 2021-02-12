@@ -28,10 +28,12 @@
                     @if(auth()->check())
                         <li class="drop-down">
                             <button class="dropbtn">{{ Auth::user()->first_name }} </button>
+                            @if(Auth::user()->auth_check == 1)
                             <div class="dropdownConten">
                                 <a href="/login-panel">ورود به پنل ارسال فکس</a>
                                  <a href="/order"> سفارش‌های من</a>
                             </div>
+                                @endif
                         </li>
                         <li><a href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" >خروج</a></li>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -56,8 +58,10 @@
                 </div>
                 <ul class="menu">
                     @if(auth()->check())
+                        @if(Auth::user()->auth_check == 1)
                         <li><a href="/login-panel"><span> {{ Auth::user()->first_name }}</span>/ <span>ورود به پنل ارسال فکس</span></a></li>
                         <li><a href="/order"><span>سفارش‌های من </span></a></li>
+                        @endif
                     @endif
 
                     @if(auth()->check())
