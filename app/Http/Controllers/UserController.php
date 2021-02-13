@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AuthCode;
 use App\Http\Requests\StoreUser;
+use App\Kavenegar\Kavenegar;
 use App\Models\User;
 use App\Models\RoundcubeAutoLogin;
 use Illuminate\Contracts\Session\Session;
@@ -113,9 +114,14 @@ class UserController extends Controller
           if (Auth::user()->auth_check == 0) { // id user not authenticated at all
               $code = rand(1001, 9999);
               $expire_at = time() + config('constants.auth_code_expire_time');
-              $this->setSession('authentication_code', $code);
-              $this->setSession('auth_code_expired_at', $expire_at);
-              // TODO send sms method here
+                $kavenegar = new Kavenegar();
+                $message =  'یوفکس' . "\n" . ' کد احراز هویت شما:  ' . $code ;
+               $res = $kavenegar->sendSms("09123860421", $message);
+                //$res = $kavenegar->sendSms(Auth::user()->phone, $message);
+              if ($res == null) {
+                  $this->setSession('authentication_code', $code);
+                  $this->setSession('auth_code_expired_at', $expire_at);
+              }
           }
 
         }

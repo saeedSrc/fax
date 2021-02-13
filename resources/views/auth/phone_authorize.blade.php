@@ -34,10 +34,6 @@
                         </ul>
                     </nav>
                 </div>
-
-                @if(session()->has(config('constants.authentication_code')))
-                   {{ session(config('constants.authentication_code')) }}
-                @endif
                 <div class="panel-body">
                     <form role="form" action="/final_authenticate" method="post">
                             @csrf
