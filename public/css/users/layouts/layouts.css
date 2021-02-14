@@ -360,6 +360,7 @@ button:focus {
     top: 50%;
     width: 10%;
     margin: auto;
+    z-index: 11;
 }
 
 .course-img {
@@ -1046,6 +1047,7 @@ nav li img {
         left: 40%;
         top: 50%;
         width: 20%;
+
     }
 
     /* menu */

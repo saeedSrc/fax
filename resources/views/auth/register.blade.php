@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/fontiran.css') }}">
     <script src="{{ asset('js/jquery/jquery.js') }}"></script>
     <script src="{{ asset('js/bootstrap/bootstrap.js') }}"></script>
+    <script src="{{ asset('js/users/register.js') }}"></script>
 </head>
 <body>
 <div class="container">

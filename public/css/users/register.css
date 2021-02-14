@@ -12,6 +12,7 @@ body{
     top: 50%;
     width: 10%;
     margin: auto;
+    z-index: 11;
 }
 
 
