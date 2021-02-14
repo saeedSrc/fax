@@ -10,6 +10,11 @@
     <script src="{{ asset('js/jquery/jquery.js') }}"></script>
     <script src="{{ asset('js/bootstrap/bootstrap.js') }}"></script>
     <script src="{{ asset('js/users/register.js') }}"></script>
+    <script>
+        $(window).load(function() {
+            $('.loading').hide();
+        });
+    </script>
 </head>
 <body>
 <div class="container">

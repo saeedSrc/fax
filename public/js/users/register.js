@@ -19,5 +19,4 @@ $(document).ready(function() {
         baseTime = minutes + ':' + seconds;
     }, 1000);
 
-    $('.loading').hide();
 });
