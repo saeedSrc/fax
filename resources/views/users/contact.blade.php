@@ -18,17 +18,17 @@
         <div class="contact-all-info white-color">
             <div class="contact-info ">
                 <img src="{{asset('img/location.png')}}" alt="">
-                <h3>نشانی</h3>
+                <h2>نشانی</h2>
                 <p class=""> تهران خیابان فلان کوچه‌ی فلان پلاک 2 طبقه‌ی سوم</p>
             </div>
             <div class="contact-info">
                 <img src="{{asset('img/phone-number.png')}}" alt="">
-                <h3>شماره تماس</h3>
+                <h2>شماره تماس</h2>
                 <p class="">021 22122254 </p>
             </div>
             <div class="contact-info">
                 <img src="{{asset('img/email.png')}}" alt="">
-                <h3>آدرس ایمیل</h3>
+                <h2>آدرس ایمیل</h2>
                 <p class="">saeedrasooli@yahoo.com</p>
             </div>
         </div>

@@ -177,6 +177,10 @@ html {
     text-align: center;
 }
 
+.chosen-package-content .fax-packages-content {
+    width: 22%;
+}
+
 /*=================mobile==================*/
 
 @media only screen and (max-width: 780px) {
@@ -195,12 +199,12 @@ html {
     }
 
    .fax-spec-section {
-       width: 40%;
+       width: 45%;
    }
 
     .fax-packages-content {
         display: block;
-        width: 70%;
+        width: 90%;
         margin: 3% auto;
 
     }
@@ -227,6 +231,10 @@ html {
 
     .flow-section span {
         font-size: 4vw;
+    }
+
+    .chosen-package-content .fax-packages-content {
+        width: 80%;
     }
 
 

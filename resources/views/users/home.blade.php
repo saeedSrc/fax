@@ -64,7 +64,7 @@
             @foreach($packages as $package)
                 <div class="fax-packages-content back-white-color lagevardi">
                     <img class="org-img" src="{{asset( $package->title_image )}}" alt="">
-                    <h3 class="violet-color">{{ $package->title }}</h3>
+                    <h1 class="violet-color">{{ $package->title }}</h1>
                     <ul>
                         <li>
                             <div class="inline">
@@ -126,7 +126,7 @@
                         </li>
 
                     </ul>
-                    <h3 class="pink-color"> <span class="price">{{ $package->price }}</span> تومان</h3>
+                    <h2 class="pink-color"> <span class="price">{{ $package->price }}</span> تومان</h2>
                     <div class="final-order">
 
 
