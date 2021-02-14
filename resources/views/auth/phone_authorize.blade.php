@@ -13,6 +13,7 @@
 </head>
 <body>
 <div class="container">
+    <img class="loading" src="{{asset('img/loading.gif')}}"  alt="">
     <div class="row centered-form">
         <div class="col-xs-12 col-sm-8  col-sm-offset-2 ">
             <div class="panel panel-default">

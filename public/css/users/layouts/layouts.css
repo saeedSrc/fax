@@ -354,6 +354,14 @@ button:focus {
     opacity: 0.2;
 }
 
+.loading {
+    position: fixed;
+    left: 45%;
+    top: 50%;
+    width: 10%;
+    margin: auto;
+}
+
 .course-img {
     position: absolute;
     left: 25%;
@@ -1031,6 +1039,13 @@ nav li img {
         border-right: 1px solid #f4f4f4;
         text-decoration: none;
         text-align: right;
+    }
+
+    .loading {
+        position: fixed;
+        left: 40%;
+        top: 50%;
+        width: 20%;
     }
 
     /* menu */

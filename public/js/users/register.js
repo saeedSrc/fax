@@ -19,3 +19,7 @@ $(document).ready(function() {
         baseTime = minutes + ':' + seconds;
     }, 1000);
 });
+
+$(window).load(function() {
+    $('.loading').hide();
+});

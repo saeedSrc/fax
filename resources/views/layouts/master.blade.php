@@ -11,10 +11,16 @@
     @section('js')
         <script src="{{ asset('js/jquery/jquery.js') }}"></script>
         <script src="{{ asset('js/layouts/master.js') }}"></script>
+        <script>
+            $(window).load(function() {
+                $('.loading').hide();
+            });
+        </script>
     @show
 </head>
 <body>
 <div class="header">
+    <img class="loading" src="{{asset('img/loading.gif')}}"  alt="">
     <div class="header-top back-white-color2">
         <div class="right-header-name">
             <a href="/">
