@@ -116,8 +116,8 @@ class UserController extends Controller
               $expire_at = time() + config('constants.auth_code_expire_time');
                 $kavenegar = new Kavenegar();
                 $message =  'یوفکس' . "\n" . ' کد احراز هویت شما:  ' . $code ;
-               $res = $kavenegar->sendSms("09123860421", $message);
-                //$res = $kavenegar->sendSms(Auth::user()->phone, $message);
+//               $res = $kavenegar->sendSms("09123860421", $message);
+                $res = $kavenegar->sendSms(Auth::user()->phone, $message);
               if ($res == null) {
                   $this->setSession('authentication_code', $code);
                   $this->setSession('auth_code_expired_at', $expire_at);
