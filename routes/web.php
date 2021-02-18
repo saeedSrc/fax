@@ -31,6 +31,15 @@ Route::get('/phone_authorize','UserController@GetPhoneAuthenticationForm');
 // user phone authorize path
 Route::post('/final_authenticate','UserController@FinalAuthenticate');
 
+// user forget pass path
+Route::get('/forget_pass', function () {
+
+    return view('auth.forget_pass');
+});
+
+// user send reset pass path
+Route::post('/send_reset_pass','UserController@SendResetPass');
+
 // user contact path
 Route::get('/contact', function () {
     return view('users.contact');

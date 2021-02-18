@@ -36,5 +36,9 @@ return [
 
 'kavenegar_sender' => '1000596446',
 
+'reset_pass_resend_expired_at' => 'reset-pass-resend-expired-at',
+
+'reset_pass_expire_time' => 3600,
+
 ];
 

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Common\Common;
 use App\Http\Requests\AuthCode;
+use App\Http\Requests\ResetPass;
 use App\Http\Requests\StoreUser;
 use App\Kavenegar\Kavenegar;
 use App\Models\User;
@@ -17,6 +19,7 @@ use Mockery\Exception;
 use PHPUnit\TextUI\XmlConfiguration\Constant;
 use Psy\TabCompletion\Matcher\ConstantsMatcher;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -154,6 +157,36 @@ class UserController extends Controller
 //        $this->LdapStructure();
         return redirect('/');
 
+    }
+
+    /**
+     * Send reset password.
+     *
+     * @param  int $phone
+     * @return \Illuminate\Http\Response
+     */
+    public function SendResetPass(ResetPass $request)
+    {
+        if (!$this->getSession('reset_pass_resend_expired_at') || ( $this->getSession('reset_pass_resend_expired_at') && $this->getSession('reset_pass_resend_expired_at') < time())) { // if code expires
+            $phone = $request->phone;
+            $kavenegar = new Kavenegar();
+            $common = new Common();
+            $pass = $common->randomPassword(7);
+            $msg = 'یوفکس' . "\n" . ' رمز عبور جدید شما:  ' . $pass ;
+            $reset_pass_resend_expire_at = time() + config('constants.reset_pass_expire_time');
+            $res = $kavenegar->sendSms($request->phone, $msg);
+            if ($res == null) {
+                User::where('phone', $phone)->update(['password' => Hash::make($pass)]);
+                $this->setSession('reset_pass_resend_expired_at', $reset_pass_resend_expire_at);
+                $message = 'رمز عبور برای شما پیامک گردید.';
+            } else {
+                $message = 'مجددا تلاش کنید.';
+            }
+            return view('auth.forget_pass')->with('message', $message);
+        } else {
+            $message = 'رمز عبور برای شما  به تازگی ارسال شده است.';
+        }
+        return view('auth.forget_pass')->with('message', $message);
     }
 
     /**
