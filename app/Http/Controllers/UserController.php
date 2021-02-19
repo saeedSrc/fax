@@ -118,7 +118,7 @@ class UserController extends Controller
         if (true) { // if code expires
 
           if (true) { // id user not authenticated at all
-          if (Auth::user()->auth_check == 0) { // id user not authenticated at all
+//          if (Auth::user()->auth_check == 0) { // id user not authenticated at all
               $code = rand(1001, 9999);
 
               $expire_at = time() + config('constants.auth_code_expire_time');
