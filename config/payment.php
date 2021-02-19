@@ -195,8 +195,8 @@ return [
 
             'mode' => 'sandbox', // can be normal, sandbox, zaringate
             'merchantId' => 'f40c512a-1de4-43ce-836c-6dc119bdd627',
-//            'callbackUrl' => 'http://localhost:2222/order/callback',
-            'callbackUrl' => 'http://ufax.ir/order/callback',
+            'callbackUrl' => 'http://localhost:2222/order/callback',
+//            'callbackUrl' => 'http://ufax.ir/order/callback',
             'description' => 'خرید پکیج از وب سایت ufax',
         ],
         'zibal' => [

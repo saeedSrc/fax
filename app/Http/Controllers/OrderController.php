@@ -243,6 +243,12 @@ class OrderController extends Controller
     }
 
 
+    /**
+     * get package page counts.
+     *
+     * @param  int  $order_id
+     * @return \Illuminate\Http\Response
+     */
     public function getPackagePageCount($packageID)
     {
      $package =  Package::find($packageID);
