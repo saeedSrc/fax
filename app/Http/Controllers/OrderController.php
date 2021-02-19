@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Package;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Shetabit\Multipay\Invoice;
@@ -146,7 +147,24 @@ class OrderController extends Controller
      */
     public function successPayment($orderId)
     {
+        $order = Order::find($orderId);
         Order::where('id', $orderId)->update(['pay'=> 'success']);
+
+        $pageCounts = 0;
+        if($order->package_3 > 0) {
+            $pageCounts = $this->getPackagePageCount(3);
+        }
+        if($order->package_2 > 0) {
+            $pageCounts = $this->getPackagePageCount(3);
+        }
+        if($order->package_1 > 0) {
+            $pageCounts = $this->getPackagePageCount(3);
+        }
+
+        $newUserPageCount = Auth::user()->pages + $pageCounts;
+        User::where('id', Auth::user()->id)->update(['pages'=> $newUserPageCount]);
+
+
     }
 
     /**
@@ -222,5 +240,12 @@ class OrderController extends Controller
     public function FailPage($message)
     {
         return view("users.order.fail", compact('message')) ;
+    }
+
+
+    public function getPackagePageCount($packageID)
+    {
+     $package =  Package::find($packageID);
+      return $package->page_counts;
     }
 }
