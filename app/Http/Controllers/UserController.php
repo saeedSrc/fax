@@ -117,6 +117,7 @@ class UserController extends Controller
 //        if (!$this->getSession('auth_code_expired_at') || ( $this->getSession('auth_code_expired_at') && $this->getSession('auth_code_expired_at') < time())) { // if code expires
         if (true) { // if code expires
 
+          if (true) { // id user not authenticated at all
           if (Auth::user()->auth_check == 0) { // id user not authenticated at all
               $code = rand(1001, 9999);
 
