@@ -155,10 +155,10 @@ class OrderController extends Controller
             $pageCounts = $this->getPackagePageCount(3);
         }
         if($order->package_2 > 0) {
-            $pageCounts = $this->getPackagePageCount(3);
+            $pageCounts = $this->getPackagePageCount(2);
         }
         if($order->package_1 > 0) {
-            $pageCounts = $this->getPackagePageCount(3);
+            $pageCounts = $this->getPackagePageCount(1);
         }
 
         $newUserPageCount = Auth::user()->pages + $pageCounts;
