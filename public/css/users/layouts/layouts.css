@@ -165,16 +165,16 @@ button:focus {
 }
 
 
+.btn-logut {
+    padding: 0 10%;
+    border-radius: 4px;
+}
 
 
+.btn-logut:hover{
+    color: white;
 
-
-
-
-
-
-
-
+}
 
 .drop-down .dropbtn {
     border: none;
@@ -917,6 +917,8 @@ nav li img {
 .red-color {
     color: #BE3A48;
 }
+
+
 
 .footer>* {
     margin-bottom: 2%;

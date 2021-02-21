@@ -32,16 +32,16 @@
             <nav>
                 <ul>
                     @if(auth()->check())
-                        <li class="drop-down">
-                            <button class="dropbtn">{{ Auth::user()->first_name }} </button>
+                        {{--<li class="drop-down">--}}
+                            {{--<button class="dropbtn">{{ Auth::user()->first_name }} </button>--}}
                             @if(Auth::user()->auth_check == 1)
-                            <div class="dropdownConten">
-                                <a href="/login-panel">ورود به پنل ارسال فکس</a>
-                                 <a href="/order"> سفارش‌های من</a>
-                            </div>
+                            {{--<div class="dropdownConten">--}}
+                                <a  class="btn submit-btn btn-logut" href="/login-panel">ورود به پنل ارسال فکس</a>
+                                 {{--<a href="/order"> سفارش‌های من</a>--}}
+                            {{--</div>--}}
                                 @endif
-                        </li>
-                        <li><a href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" >خروج</a></li>
+                        {{--</li>--}}
+                        <li><a class="btn submit-btn btn-logut" href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" >خروج</a></li>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>

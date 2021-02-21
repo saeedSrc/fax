@@ -121,6 +121,23 @@ html {
     /*width: 30%;*/
 }
 
+.free-page-count {
+    font-weight: 700;
+    font-size: 2vw;
+}
+
+.user-desc {
+    text-align: center;
+}
+
+.user-desc>* {
+    margin-bottom: 1%;
+}
+
+.user-desc ul>* {
+    margin-bottom: 1%;
+}
+
 .fax-packages-content>* {
     margin-bottom: 1%;
 }
@@ -239,6 +256,10 @@ html {
 
     .chosen-package-content .fax-packages-content {
         width: 80%;
+    }
+
+    .free-page-count {
+        font-size: 5vw;
     }
 
 

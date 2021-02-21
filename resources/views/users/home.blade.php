@@ -3,6 +3,7 @@
 @section('css')
     @parent
     <link rel="stylesheet" href="{{ asset('css/users/home.css') }}" >
+    <link rel="stylesheet" href="{{ asset('css/users/order/order_list.css') }}" >
 @endsection
 
 
@@ -24,6 +25,42 @@
             <img src="{{asset('img/banner.png')}}" alt="">
         </div>
     </div>
+    @if(auth()->check())
+        <div class="contact-content back-white-color1">
+            <div class="user-desc">
+                <h2> <img  class="middle" src="{{asset('img/user.png')}}" alt="" style=""> مشخصات شما‌:</h2>
+                <ul>
+                    <li>نام:  {{auth()->user()->first_name}}  </li>
+                    <li>نام خانوادگی:  {{auth()->user()->last_name}}  </li>
+                    <li>شماره موبایل:  {{auth()->user()->phone}}  </li>
+                </ul>
+            </div>
+            <div class="orders">
+                <h2><span class="red-color free-page-count">۵ صفحه</span> فکس جهت ارسال به صورت رایگان برای شروع به شما اختصاص یافت.</h2>
+                <h2 class="violet-color">سفارش‌های من</h2>
+                @if(count($orders) > 0)
+                    <table>
+                        <tr>
+                            <th>نام پکیج</th>
+                            <th>تعداد</th>
+                            <th>تاریخ ثبت سفارش</th>
+                        </tr>
+                        @foreach($orders as $order)
+
+                            <tr>
+                                <td>{{ $order->package_name }}</td>
+                                <td>1</td>
+                                <td><span class="persian-time">{{  date('H:i:s d-m-Y', strtotime($order->created_at)) }}</span></td>
+                            </tr>
+                        @endforeach
+                    </table>
+                @endif
+                @if(count($orders) == 0)
+                    <h3 class="center gray-color empty-bag">سفارشی وجود ندارد.</h3>
+                @endif
+            </div>
+        </div>
+        @else
     <div class="fax-spec">
         <div class="fax-spec-section">
             <img class="social-img" src="{{asset('img/send-fax.png')}}" alt="" style="">
@@ -56,6 +93,7 @@
             <p class="gray-color">دریافت وب سرویس ارسال فکس</p>
         </div>
     </div>
+    @endif
     <div id='fax-packages' class="relative fax-packages white-color">
         <h2>تعرفه‌های ارسال فکس </h2>
         <img class="right-polygon" src="{{asset('img/Polygon.png')}}" alt="">
