@@ -65,72 +65,71 @@
                 <div class="fax-packages-content back-white-color lagevardi">
                     <img class="org-img" src="{{asset( $package->title_image )}}" alt="">
                     <h1 class="violet-color">{{ $package->title }}</h1>
-                    <ul>
-                        <li>
-                            <div class="inline">
-                                <img class="right" src="{{asset('img/check.png')}}" alt="">
-                            </div>
-                            <span>{{ $package->page_counts }}  صفحه فکس </span>
-                        </li>
-                        @if($package->send_receive_fax)
-                        <li>
-                            <div class="inline">
-                                <img class="right" src="{{asset('img/check.png')}}" alt="">
-                            </div>
-                            <span>ارسال و دریافت فکس</span>
-                        </li>
-                        @endif
-                        @if($package->number == "dedicate")
-                        <li>
-                            <div class="inline">
-                                <img class="right" src="{{asset('img/check.png')}}" alt="">
-                            </div>
-                            <span>شماره اختصاصی</span>
-                        </li>
-                        @else
-                            <li>
-                                <div class="inline">
-                                    <img class="right" src="{{asset('img/check.png')}}" alt="">
-                                </div>
-                                <span>شماره اشتراکی</span>
-                            </li>
-                            @endif
-                        @if($package->service == "email")
-                        <li>
-                            <div class="inline">
-                                <img class="right" src="{{asset('img/check.png')}}" alt="">
-                            </div>
-                            <span>ارسال فکس از طریق ایمیل</span>
-                        </li>
-                            @elseif($package->service == "panel")
-                            <li>
-                                <div class="inline">
-                                    <img class="right" src="{{asset('img/check.png')}}" alt="">
-                                </div>
-                                <span>پنل تحت وب</span>
-                            </li>
-                            @else
-                            <li>
-                                <div class="inline">
-                                    <img class="right" src="{{asset('img/check.png')}}" alt="">
-                                </div>
-                                <span>وب سرویس</span>
-                            </li>
-                            @endif
+                  <div class="package-detail">
+                      <ul>
+                          <li>
+                              <div class="inline">
+                                  <img class="right" src="{{asset('img/check.png')}}" alt="">
+                              </div>
+                              <span>{{ $package->page_counts }}  صفحه فکس </span>
+                          </li>
+                          @if($package->send_receive_fax)
+                              <li>
+                                  <div class="inline">
+                                      <img class="right" src="{{asset('img/check.png')}}" alt="">
+                                  </div>
+                                  <span>ارسال و دریافت فکس</span>
+                              </li>
+                          @endif
+                          @if($package->number == "dedicate")
+                              <li>
+                                  <div class="inline">
+                                      <img class="right" src="{{asset('img/check.png')}}" alt="">
+                                  </div>
+                                  <span>شماره اختصاصی</span>
+                              </li>
+                          @else
+                              <li>
+                                  <div class="inline">
+                                      <img class="right" src="{{asset('img/check.png')}}" alt="">
+                                  </div>
+                                  <span>شماره اشتراکی</span>
+                              </li>
+                          @endif
+                          @if($package->service == "email")
+                              <li>
+                                  <div class="inline">
+                                      <img class="right" src="{{asset('img/check.png')}}" alt="">
+                                  </div>
+                                  <span>ارسال فکس از طریق ایمیل</span>
+                              </li>
+                          @elseif($package->service == "panel")
+                              <li>
+                                  <div class="inline">
+                                      <img class="right" src="{{asset('img/check.png')}}" alt="">
+                                  </div>
+                                  <span>پنل تحت وب</span>
+                              </li>
+                          @else
+                              <li>
+                                  <div class="inline">
+                                      <img class="right" src="{{asset('img/check.png')}}" alt="">
+                                  </div>
+                                  <span>وب سرویس</span>
+                              </li>
+                          @endif
 
-                        <li class="hide">
-                            <div class="inline">
-                                <img class="right" src="{{asset('img/check.png')}}" alt="">
-                            </div>
-                            <span>{{ $package->package_ttl_text }} </span>
-                        </li>
+                          <li class="hide">
+                              <div class="inline">
+                                  <img class="right" src="{{asset('img/check.png')}}" alt="">
+                              </div>
+                              <span>{{ $package->package_ttl_text }} </span>
+                          </li>
 
-                    </ul>
-                    <h2 class="pink-color"> <span class="price">{{ $package->price }}</span> تومان</h2>
+                      </ul>
+                      <h2 class="pink-color"> <span class="price">{{ $package->price }}</span> تومان</h2>
+                  </div>
                     <div class="final-order">
-
-
-
                     <form action="/order/request" method="post">
                         @csrf
                         <input type="hidden" name="package_id"  value="{{ $package->id }}">
@@ -138,9 +137,7 @@
                             سفارش
                         </button>
                     </form>
-
                     </div>
-
                 </div>
                 @endforeach
             @endisset

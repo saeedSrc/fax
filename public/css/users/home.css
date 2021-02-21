@@ -118,7 +118,7 @@ html {
 }
 
 .org-img {
-    width: 30%;
+    /*width: 30%;*/
 }
 
 .fax-packages-content>* {
@@ -179,6 +179,10 @@ html {
 
 .chosen-package-content .fax-packages-content {
     width: 22%;
+}
+
+.package-detail {
+    display: none;
 }
 
 /*=================mobile==================*/
