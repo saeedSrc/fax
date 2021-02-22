@@ -179,7 +179,6 @@ class UserController extends Controller
                 $this->setSession('reset_pass_resend_expired_at', $reset_pass_resend_expire_at);
                 $message = 'رمز عبور برای شما پیامک گردید.';
             } else {
-                dd($res);
                 $message = 'مجددا تلاش کنید.';
             }
             return view('auth.forget_pass')->with('message', $message);

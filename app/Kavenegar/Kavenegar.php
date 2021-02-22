@@ -9,11 +9,10 @@ class Kavenegar
 {
    public function sendSms($receptor, $message, $template)
    {
-
        $ch = curl_init();
        Curl_setopt($ch, CURLOPT_URL, "https://api.kavenegar.com/v1/"
            . config('constants.kavenegar_api_key') . "/verify/lookup.json?receptor=" .
-           "09123860421" . "&token=" . $message . "&template=" . $template);
+           $receptor . "&token=" . $message . "&template=" . $template);
        Curl_exec($ch);
        Curl_close($ch);
 
