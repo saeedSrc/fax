@@ -40,5 +40,8 @@ return [
 
 'reset_pass_expire_time' => 3600,
 
+'pass_recovery_temp' => "PasswordRecovery",
+
+'register_temp' => "Register",
 ];
 

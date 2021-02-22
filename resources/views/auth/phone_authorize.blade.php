@@ -41,7 +41,6 @@
                     </nav>
                 </div>
                 <div class="panel-body">
-                    {{ $code }}
                     <form role="form" action="/final_authenticate" method="post">
                             @csrf
                             <div class="form-group">

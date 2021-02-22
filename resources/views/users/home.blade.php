@@ -34,9 +34,10 @@
                     <li>نام خانوادگی:  {{auth()->user()->last_name}}  </li>
                     <li>شماره موبایل:  {{auth()->user()->phone}}  </li>
                 </ul>
+                <h2><span class="red-color free-page-count">۵ صفحه</span> فکس جهت ارسال به صورت رایگان برای شروع به شما اختصاص یافت.</h2>
             </div>
             <div class="orders">
-                <h2><span class="red-color free-page-count">۵ صفحه</span> فکس جهت ارسال به صورت رایگان برای شروع به شما اختصاص یافت.</h2>
+
                 <h2 class="violet-color">سفارش‌های من</h2>
                 @if(count($orders) > 0)
                     <table>

@@ -115,24 +115,24 @@ class UserController extends Controller
     {
 
         if (!$this->getSession('auth_code_expired_at') || ( $this->getSession('auth_code_expired_at') && $this->getSession('auth_code_expired_at') < time())) { // if code expires
-          if (Auth::user()->auth_check == 0) { // id user not authenticated at all
-              $code = rand(1001, 9999);
-              $expire_at = time() + config('constants.auth_code_expire_time');
+            if (Auth::user()->auth_check == 0) { // id user not authenticated at all
+                $code = rand(1001, 9999);
+                $expire_at = time() + config('constants.auth_code_expire_time');
                 $kavenegar = new Kavenegar();
-                $message =  'یوفکس' . "\n" . ' کد احراز هویت شما:  ' . $code ;
-//               $res = $kavenegar->sendSms("09123860421", $message);
-                $res = $kavenegar->sendSms(Auth::user()->phone, $message);
-              if ($res == null) {
-                  $this->setSession('authentication_code', $code);
-                  $this->setSession('auth_code_expired_at', $expire_at);
-              } else {
-                  return view('auth.phone_authorize')->with("remaining_time", 0);
-              }
-          }
+//               $res = $kavenegar->sendSms("09123860421", $message, config('constants.register_temp'));
+                $res = $kavenegar->sendSms(Auth::user()->phone, $code, config('constants.register_temp'));
+                if ($res == null) {
+                    $this->setSession('authentication_code', $code);
+                    $this->setSession('auth_code_expired_at', $expire_at);
+
+                } else {
+                    return view('auth.phone_authorize')->with("remaining_time", 0);
+                }
+            }
 
         }
 
-        return view('auth.phone_authorize')->with(["remaining_time"=> $this->getRemainingSessionTime('auth_code_expired_at'), 'code' => $code]);
+        return view('auth.phone_authorize')->with(["remaining_time"=> $this->getRemainingSessionTime('auth_code_expired_at'), 'code' => $this->getSession('authentication_code')]);
     }
 
     /**
@@ -154,12 +154,9 @@ class UserController extends Controller
      */
     public function FinalAuthenticate(AuthCode $request)
     {
-
-        User::where('id', Auth::user()->id)->update(['auth_check'=> 1]);
         $this->setUserTooLdap();
-//        $this->LdapStructure();
+        User::where('id', Auth::user()->id)->update(['auth_check' => 1]);
         return redirect('/');
-
     }
 
     /**
@@ -175,9 +172,8 @@ class UserController extends Controller
             $kavenegar = new Kavenegar();
             $common = new Common();
             $pass = $common->randomPassword(7);
-            $msg = 'یوفکس' . "\n" . ' رمز عبور جدید شما:  ' . $pass ;
             $reset_pass_resend_expire_at = time() + config('constants.reset_pass_expire_time');
-            $res = $kavenegar->sendSms($request->phone, $msg);
+            $res = $kavenegar->sendSms($request->phone, $pass, config('constants.pass_recovery_temp'));
             if ($res == null) {
                 User::where('phone', $phone)->update(['password' => Hash::make($pass)]);
                 $this->setSession('reset_pass_resend_expired_at', $reset_pass_resend_expire_at);
