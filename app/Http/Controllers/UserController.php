@@ -114,14 +114,14 @@ class UserController extends Controller
     public function PostPhoneAuthenticationForm(Request $request)
     {
 
-        if (!$this->getSession('auth_code_expired_at') || ( $this->getSession('auth_code_expired_at') && $this->getSession('auth_code_expired_at') < time())) { // if code expires
+        if (!$this->getSession('auth_code_expired_at') || ($this->getSession('auth_code_expired_at') && $this->getSession('auth_code_expired_at') < time())) { // if code expires
             if (Auth::user()->auth_check == 0) { // id user not authenticated at all
                 $code = rand(1001, 9999);
                 $expire_at = time() + config('constants.auth_code_expire_time');
                 $kavenegar = new Kavenegar();
 //               $res = $kavenegar->sendSms("09123860421", $message, config('constants.register_temp'));
                 $res = $kavenegar->sendSms(Auth::user()->phone, $code, config('constants.register_temp'));
-                if ($res == null) {
+                if ($res == true) {
                     $this->setSession('authentication_code', $code);
                     $this->setSession('auth_code_expired_at', $expire_at);
 
@@ -129,10 +129,9 @@ class UserController extends Controller
                     return view('auth.phone_authorize')->with("remaining_time", 0);
                 }
             }
-
         }
 
-        return view('auth.phone_authorize')->with(["remaining_time"=> $this->getRemainingSessionTime('auth_code_expired_at'), 'code' => $this->getSession('authentication_code')]);
+        return view('auth.phone_authorize')->with(["remaining_time" => $this->getRemainingSessionTime('auth_code_expired_at')]);
     }
 
     /**
@@ -174,7 +173,7 @@ class UserController extends Controller
             $pass = $common->randomPassword(7);
             $reset_pass_resend_expire_at = time() + config('constants.reset_pass_expire_time');
             $res = $kavenegar->sendSms($request->phone, $pass, config('constants.pass_recovery_temp'));
-            if ($res == null) {
+            if ($res == true) {
                 User::where('phone', $phone)->update(['password' => Hash::make($pass)]);
                 $this->setSession('reset_pass_resend_expired_at', $reset_pass_resend_expire_at);
                 $message = 'رمز عبور برای شما پیامک گردید.';
@@ -183,7 +182,7 @@ class UserController extends Controller
             }
             return view('auth.forget_pass')->with('message', $message);
         } else {
-            $message = 'رمز عبور برای شما  به تازگی ارسال شده است.';
+            $message = 'رمز عبور برای شما به تازگی ارسال شده است.';
         }
         return view('auth.forget_pass')->with('message', $message);
     }

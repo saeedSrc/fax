@@ -10,11 +10,13 @@ class Kavenegar
    public function sendSms($receptor, $message, $template)
    {
        $ch = curl_init();
+       curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
        Curl_setopt($ch, CURLOPT_URL, "https://api.kavenegar.com/v1/"
            . config('constants.kavenegar_api_key') . "/verify/lookup.json?receptor=" .
            $receptor . "&token=" . $message . "&template=" . $template);
-       Curl_exec($ch);
-       Curl_close($ch);
+      $res = Curl_exec($ch);
+      Curl_close($ch);
+      return $res;
 
 //       $sender = config('constants.kavenegar_sender');
 //       $api = new \Kavenegar \KavenegarApi(config('constants.kavenegar_api_key'));
