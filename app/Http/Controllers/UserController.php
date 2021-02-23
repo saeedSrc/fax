@@ -121,7 +121,7 @@ class UserController extends Controller
                 $kavenegar = new Kavenegar();
 //               $res = $kavenegar->sendSms("09123860421", $message, config('constants.register_temp'));
                 $res = $kavenegar->sendSms(Auth::user()->phone, $code, config('constants.register_temp'));
-                if ($res == true) {
+                if ($res == 200) {
                     $this->setSession('authentication_code', $code);
                     $this->setSession('auth_code_expired_at', $expire_at);
 
@@ -166,14 +166,15 @@ class UserController extends Controller
      */
     public function SendResetPass(ResetPass $request)
     {
-        if (!$this->getSession('reset_pass_resend_expired_at') || ( $this->getSession('reset_pass_resend_expired_at') && $this->getSession('reset_pass_resend_expired_at') < time())) { // if code expires
+//        if (!$this->getSession('reset_pass_resend_expired_at') || ( $this->getSession('reset_pass_resend_expired_at') && $this->getSession('reset_pass_resend_expired_at') < time())) { // if code expires
+        if (true) { // if code expires
             $phone = $request->phone;
             $kavenegar = new Kavenegar();
             $common = new Common();
             $pass = $common->randomPassword(7);
             $reset_pass_resend_expire_at = time() + config('constants.reset_pass_expire_time');
             $res = $kavenegar->sendSms($request->phone, $pass, config('constants.pass_recovery_temp'));
-            if ($res == true) {
+            if ($res == 200) {
                 User::where('phone', $phone)->update(['password' => Hash::make($pass)]);
                 $this->setSession('reset_pass_resend_expired_at', $reset_pass_resend_expire_at);
                 $message = 'رمز عبور برای شما پیامک گردید.';
