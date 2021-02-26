@@ -24,12 +24,12 @@
             <div class="contact-info">
                 <img src="{{asset('img/phone-number.png')}}" alt="">
                 <h2>شماره تماس</h2>
-                <p class="">021 22122254 </p>
+                <p class=""> 021 91090702 </p>
             </div>
             <div class="contact-info">
                 <img src="{{asset('img/email.png')}}" alt="">
                 <h2>آدرس ایمیل</h2>
-                <p class="">saeedrasooli@yahoo.com</p>
+                <p class="">ufax.ir@gmail.com</p>
             </div>
         </div>
         <div class="contact-form">

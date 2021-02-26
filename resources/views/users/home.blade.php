@@ -17,8 +17,8 @@
 @section('content')
     <div class="home-banner">
         <div class="white-color home-banner-right-section">
-               <h1 class="right-text">دریافت و ارسال فکس از طریف اینترنت</h1>
-               <p>شما می توانید با یوفکس در بستر اینترت به ارسال فک اقدام نمایید ما در یو فکس به شما کمک میکنیم تا لذت ارتباط آنلاین را بار دیگر تجربه نمایید.</p>
+               <h1 class="right-text">سرویس فکس اینترنتی یوفکس</h1>
+               <p>با یوفکس، در کمترین زمان، با کمترین هزینه، بدون نیاز به خط تلفن، ارسال و دریافت فکس داشته باشید.</p>
                <a class="btn back-white-color lagevardi" href="#fax-packages">سفارش فکس آنلاین</a>
            </div>
         <div class="home-banner-left-section">

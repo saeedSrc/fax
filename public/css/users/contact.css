@@ -86,6 +86,10 @@ form .btn {
     cursor: pointer;
 }
 
+.contact-info>* {
+    direction: ltr!important;
+}
+
 .contact-info img {
     /*width: 25%;*/
 

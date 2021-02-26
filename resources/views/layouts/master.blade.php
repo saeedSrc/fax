@@ -24,7 +24,7 @@
     <div class="header-top back-white-color2">
         <div class="right-header-name">
             <a href="/">
-                <h3>ارسال و دریافت فکس به صورت آنلاین</h3>
+                <h3>یوفکس،کامل ترین سامانه ارسال فکس در ایران</h3>
                 <img class="logo" src="{{asset('img/fax.png')}}"  alt="">
             </a>
         </div>
@@ -134,13 +134,12 @@
     @yield('content')
 </div>
 <div class="footer">
-    <p>سرویس ارسال و دریافت فکس به صورت انلاین <span class="red-color">به صورت انلاین</span> سرویس اراسل و دریافت فکس به صورت انلاین ویس اراسل و دریافت فکس  </p>
+    {{--<p>سرویس ارسال و دریافت فکس به صورت انلاین <span class="red-color">به صورت انلاین</span> سرویس اراسل و دریافت فکس به صورت انلاین ویس اراسل و دریافت فکس  </p>--}}
     <p>یوفکس را در شبکه‌های اجتماعی دنبال کنید.</p>
-    <img class="social-img" src="{{asset('img/telegram.png')}}" alt="">
-    <img class="social-img" src="{{asset('img/instagram.png')}}" alt="">
+    <a href="https://t.me/ufaxir"><img class="social-img" src="{{asset('img/telegram.png')}}" alt=""></a>
+    <a href="https://instagram.com/ufax.ir?igshid=pled14e3kk0o"><img class="social-img" src="{{asset('img/instagram.png')}}" alt=""></a>
     <p>
-       یو فکس در تلاش است ارسال فکس رو برای شما اسان و اسان تر بکنه یو فکس در تلاش است ارسال فکس رو برای شما اسان و اسان تر بکنه
-        یو فکس در تلاش است ارسال فکس رو برای شما اسان و اسان تر بکنه
+        یوفکس همواره در تلاش است تا با بهره گیری از تکنولوژی، بستری را جهت ارسال امن فکس، فراهم آورد.
     </p>
     <img src="{{asset('img/enamad.png')}}" alt="">
 </div>
