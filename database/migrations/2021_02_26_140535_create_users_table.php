@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->string('province');
             $table->string('national_code');
+            $table->integer('fax_shared_number');
             $table->string('password');
             $table->string('portal_password');
             $table->integer('pages')->default(0);

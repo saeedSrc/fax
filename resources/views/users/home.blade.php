@@ -33,6 +33,7 @@
                     <li>نام:  {{auth()->user()->first_name}}  </li>
                     <li>نام خانوادگی:  {{auth()->user()->last_name}}  </li>
                     <li>شماره موبایل:  {{auth()->user()->phone}}  </li>
+                    <li>شماره اشتراکی برای ارسال فکس:  {{auth()->user()->fax_shared_number}}  </li>
                 </ul>
                 <h2><span class="red-color free-page-count">۵ صفحه</span> فکس جهت ارسال به صورت رایگان برای شروع به شما اختصاص یافت.</h2>
             </div>

@@ -242,7 +242,7 @@ class UserController extends Controller
             // prepare data
             $info["givenName"] = Auth::user()->first_name;
             $info["userPrincipalName"] = Auth::user()->phone;
-            $info["telephoneNumber"] = Auth::user()->phone;
+            $info["telephoneNumber"] = Auth::user()->fax_shared_number;
             $info["l"] = Auth::user()->province;
             $info["accountExpires"] = "9223372036854775807";
             $info['objectclass'][0] = "top";

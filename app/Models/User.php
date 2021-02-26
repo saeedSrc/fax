@@ -23,6 +23,7 @@ class User extends Authenticatable
         'province',
         'national_code',
         'password',
+        'fax_shared_number',
         'portal_password',
     ];
 

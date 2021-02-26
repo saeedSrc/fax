@@ -81,6 +81,7 @@ class RegisterController extends Controller
             'phone' => $this->convert($data['phone']),
             'province' => $data['province'],
             'national_code' => $this->convert($data['national_code']),
+            'fax_shared_number' => $this->getUserFaxSharedNumber(),
             'password' => Hash::make($data['password']),
             'portal_password' => encrypt($data['password']),
         ]);
@@ -93,5 +94,15 @@ class RegisterController extends Controller
         $convertedPersianNums = str_replace($persian, $num, $string);
         $englishNumbersOnly = str_replace($arabic, $num, $convertedPersianNums);
         return $englishNumbersOnly;
+    }
+
+    public function getUserFaxSharedNumber()
+    {
+        $max = User::max('fax_shared_number');
+        if($max == null) {
+            return 10000;
+        } else {
+            return $max + 1;
+        }
     }
 }
