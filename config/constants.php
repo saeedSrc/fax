@@ -30,7 +30,7 @@ return [
 
 'ldap_user_account_control' => '512',
 
-'ufax_domain' => 'http://portal.ufax.ir/',
+'ufax_domain' => 'https://portal.ufax.ir/',
 
 'kavenegar_api_key' => '526763684176386B483461444C36733430793979774C5658493577304F6A646B6E345930363373463073633D',
 
