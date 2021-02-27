@@ -31,7 +31,7 @@
                 <h2> <img  class="middle" src="{{asset('img/user.png')}}" alt="" style=""> مشخصات شما‌:</h2>
                 <table id="desktop-view">
                     <tr>
-                        <th>نام ::</th>
+                        <th>نام :</th>
                         <th>نام خانوادگی:</th>
                         <th>شماره موبایل:</th>
                         <th>شماره اشتراکی:</th>
@@ -55,7 +55,7 @@
                     </tr>
                     <tr>
                         <th>شماره موبایل:</th>
-                        <td>{{auth()->user()->phone}}  </td>
+                        <td style="color: white!important;">{{auth()->user()->phone}}  </td>
                     </tr>
 
                         <th>شماره اشتراکی:</th>
