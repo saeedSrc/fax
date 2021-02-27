@@ -55,7 +55,7 @@
                     </tr>
                     <tr>
                         <th>شماره موبایل:</th>
-                        <td style="color: white!important;">{{auth()->user()->phone}}  </td>
+                        <td>{{auth()->user()->phone}}  </td>
                     </tr>
 
                         <th>شماره اشتراکی:</th>
