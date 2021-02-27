@@ -241,7 +241,7 @@ class UserController extends Controller
             ldap_bind($ds, "CN=$username, OU=Admin,OU=Users,OU=UFAX,DC=Ufax,DC=ir", $password);
             // prepare data
             $info["givenName"] = Auth::user()->first_name;
-            $info["userPrincipalName"] = Auth::user()->phone;
+            $info["userPrincipalName"] = Auth::user()->phone . "@ufax.ir";
             $info["telephoneNumber"] = Auth::user()->fax_shared_number;
             $info["l"] = Auth::user()->province;
             $info["accountExpires"] = "9223372036854775807";

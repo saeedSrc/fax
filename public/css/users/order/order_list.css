@@ -30,14 +30,27 @@ tr:nth-child(even) {
     color: white;
 }
 
+#mobile-view {
+    display: none;
+}
+
+#desktop-view {
+    display: table;
+}
+
 @media only screen and (max-width: 780px) {
     table {
         margin: 7% auto;
-        width: 40%;
+        width: 80%;
         font-size: 3vw!important;
     }
 
-    td {
-        color: white!important;
+
+
+    #desktop-view{
+        display: none;
+    }
+    #mobile-view{
+        display: table;
     }
 }

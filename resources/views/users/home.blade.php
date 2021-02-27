@@ -29,7 +29,7 @@
         <div class="contact-content back-white-color1">
             <div class="user-desc">
                 <h2> <img  class="middle" src="{{asset('img/user.png')}}" alt="" style=""> مشخصات شما‌:</h2>
-                <table>
+                <table id="desktop-view">
                     <tr>
                         <th>نام :</th>
                         <th>نام خانوادگی:</th>
@@ -43,6 +43,31 @@
                     <td>{{auth()->user()->phone}}  </td>
                     <td>{{auth()->user()->fax_shared_number}}  </td>
                 </tr>
+                </table>
+                <table id="mobile-view">
+                    <tr>
+                        <th>نام :</th>
+                        <td>{{auth()->user()->first_name}}  </td>
+                    </tr>
+                    <tr>
+                        <th>نام خانوادگی:</th>
+                        <td>{{auth()->user()->last_name}}  </td>
+                    </tr>
+                    <tr>
+                        <th>شماره موبایل:</th>
+                        <td>{{auth()->user()->phone}}  </td>
+                    </tr>
+
+                        <th>شماره اشتراکی:</th>
+                        <td>{{auth()->user()->fax_shared_number}}  </td>
+                    </tr>
+
+                    <tr>
+
+
+
+
+                    </tr>
                 </table>
                 <h2><span class="red-color free-page-count">۵ صفحه</span> فکس جهت ارسال به صورت رایگان برای شروع به شما اختصاص یافت.</h2>
             </div>
