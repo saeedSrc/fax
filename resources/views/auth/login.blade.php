@@ -18,7 +18,6 @@
         .container {
             background: url("../../../img/loginkos.jpg");
             width: 100%;
-            height: 100vw;
             background-size: cover;
 
         }
