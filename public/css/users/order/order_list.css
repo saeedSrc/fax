@@ -12,6 +12,7 @@ table {
     text-align: center;
     width: 30%;
     border-collapse: collapse;
+    direction: rtl;
 
 }
 

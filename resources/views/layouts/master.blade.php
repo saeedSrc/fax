@@ -17,6 +17,14 @@
             });
         </script>
     @show
+
+    <style>
+        /*.container {*/
+            /*background: url("../../../img/bgkoos.JPG");*/
+            /*width: 100%;*/
+
+        /*}*/
+    </style>
 </head>
 <body>
 <div class="header">
@@ -131,6 +139,12 @@
     </div>
 </div>
 <div class="container">
+    <img class="social-img" src="{{asset('img/bgkos.JPG')}}" alt="" style="background-size: cover;
+    position: absolute;
+    width: 100%;
+    /* z-index: -1; */
+    opacity: 0.8; height: 200vw;">
+
     @yield('content')
 </div>
 <div class="footer">

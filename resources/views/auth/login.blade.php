@@ -14,6 +14,15 @@
             $('.loading').hide();
         });
     </script>
+    <style>
+        .container {
+            background: url("../../../img/loginkos.jpg");
+            width: 100%;
+            height: 100vw;
+            background-size: cover;
+
+        }
+    </style>
 </head>
 <body>
 <div class="container">

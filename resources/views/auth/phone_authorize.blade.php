@@ -23,7 +23,7 @@
         <div class="col-xs-12 col-sm-8  col-sm-offset-2 ">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"> فرم احراز هویت در یوفکس <small>کاملن رایگان !</small></h3>
+                    <h3 class="panel-title"> فرم احراز هویت در یوفکس </h3>
                     <nav>
                         <ul>
                             <li>

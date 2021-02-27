@@ -29,12 +29,21 @@
         <div class="contact-content back-white-color1">
             <div class="user-desc">
                 <h2> <img  class="middle" src="{{asset('img/user.png')}}" alt="" style=""> مشخصات شما‌:</h2>
-                <ul>
-                    <li>نام:  {{auth()->user()->first_name}}  </li>
-                    <li>نام خانوادگی:  {{auth()->user()->last_name}}  </li>
-                    <li>شماره موبایل:  {{auth()->user()->phone}}  </li>
-                    <li>شماره اشتراکی برای ارسال فکس:  {{auth()->user()->fax_shared_number}}  </li>
-                </ul>
+                <table>
+                    <tr>
+                        <th>نام :</th>
+                        <th>نام خانوادگی:</th>
+                        <th>شماره موبایل:</th>
+                        <th>شماره اشتراکی برای ارسال فکس:</th>
+                    </tr>
+
+                <tr>
+                    <td>{{auth()->user()->first_name}}  </td>
+                    <td>{{auth()->user()->last_name}}  </td>
+                    <td>{{auth()->user()->phone}}  </td>
+                    <td>{{auth()->user()->fax_shared_number}}  </td>
+                </tr>
+                </table>
                 <h2><span class="red-color free-page-count">۵ صفحه</span> فکس جهت ارسال به صورت رایگان برای شروع به شما اختصاص یافت.</h2>
             </div>
             <div class="orders">
