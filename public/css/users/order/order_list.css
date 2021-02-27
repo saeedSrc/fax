@@ -33,5 +33,11 @@ tr:nth-child(even) {
 @media only screen and (max-width: 780px) {
     table {
         margin: 7% auto;
+        width: 40%;
+        font-size: 2vw!important;
+    }
+
+    td {
+        color: white!important;
     }
 }
