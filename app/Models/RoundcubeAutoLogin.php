@@ -106,7 +106,6 @@ class RoundcubeAutoLogin
      */
     public function redirect()
     {
-        dd($this->_rc_link);
         header('Location: ' . $this->_rc_link . '?task=mail');
         die();
     }
