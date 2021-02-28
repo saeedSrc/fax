@@ -309,7 +309,8 @@ class UserController extends Controller
 //        $pass = decrypt(Auth::user()->portal_password);
         $pass = 'Service@7585';
         $cookies = $rc->login($email, $pass);
-        // now you can set the cookies with setcookie php function, or using any     other function of a framework you are using
+        // now you can set the cookies with setcookie php function, or using any other function of a framework you are using
+        dd($cookies);
         foreach($cookies as $cookie_name => $cookie_value)
         {
             setcookie($cookie_name, $cookie_value, 0, '/', 'ufax.ir');
