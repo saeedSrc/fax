@@ -305,7 +305,7 @@ class UserController extends Controller
         // set your roundcube domain path
         $rc = new RoundcubeAutoLogin(config('constants.ufax_domain'));
 //        $email = Auth::user()->phone;
-        $email = 'Services@ufax.ir';
+        $email = 'Services@ufax.irr';
 //        $pass = decrypt(Auth::user()->portal_password);
         $pass = 'Service@7585';
         $cookies = $rc->login($email, $pass);
