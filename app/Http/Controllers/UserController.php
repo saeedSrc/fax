@@ -304,8 +304,10 @@ class UserController extends Controller
 
         // set your roundcube domain path
         $rc = new RoundcubeAutoLogin(config('constants.ufax_domain'));
-        $email = Auth::user()->phone;
-        $pass = decrypt(Auth::user()->portal_password);
+//        $email = Auth::user()->phone;
+        $email = 'Services@ufax.ir';
+//        $pass = decrypt(Auth::user()->portal_password);
+        $pass = 'Service@7585';
         $cookies = $rc->login($email, $pass);
         // now you can set the cookies with setcookie php function, or using any     other function of a framework you are using
         foreach($cookies as $cookie_name => $cookie_value)
