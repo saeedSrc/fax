@@ -12,7 +12,7 @@ class Kavenegar
    {
        $ch = curl_init();
        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-       Curl_setopt($ch, CURLOPT_URL, "https://api.kavenegar.com/v1/" . config('constants.kavenegar_api_key') . "/verify/lookup.json?receptor=09123860421&token=$message&template=$template");
+       Curl_setopt($ch, CURLOPT_URL, "https://api.kavenegar.com/v1/" . config('constants.kavenegar_api_key') . "/verify/lookup.json?receptor=$receptor&token=$message&template=$template");
        $res = Curl_exec($ch);
        Curl_close($ch);
        return json_decode($res)->return->status;
