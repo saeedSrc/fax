@@ -252,6 +252,7 @@ class UserController extends Controller
             $info["cn"] = Auth::user()->phone;
             $info["sn"] = Auth::user()->last_name;
             $info["mail"] = Auth::user()->phone . "@ufax.ir";
+            $info["sAMAccountName"] = Auth::user()->phone;
             $pwdtxt = decrypt(Auth::user()->portal_password);
             $newPassword = '"' . $pwdtxt . '"';
             $newPass = iconv( 'UTF-8', 'UTF-16LE', $newPassword);
