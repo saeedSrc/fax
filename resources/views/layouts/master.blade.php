@@ -139,10 +139,6 @@
     </div>
 </div>
 <div class="container">
-
-    <div>sssZ</div>
-
-    sss
     @yield('content')
 </div>
 <div class="footer">
