@@ -135,7 +135,7 @@ class RoundcubeAutoLogin
             curl_setopt($this->ch, CURLOPT_HEADER, TRUE);
             curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, TRUE);
             curl_setopt($this->ch, CURLOPT_POSTFIELDS, $query);
-             dd($this->ch . "/" . $query);
+             dd($this->_rc_link . "/" . $query);
 
             $response = curl_exec($this->ch . "/" . $query);
             $response_info = curl_getinfo($this->ch);
