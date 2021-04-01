@@ -127,7 +127,7 @@ class RoundcubeAutoLogin
             );
 
             $query =  '_task=logout'.'&_token='.$token;
-
+dd($this->_rc_link);
             curl_setopt($this->ch, CURLOPT_URL, $this->_rc_link);
             curl_setopt($this->ch, CURLOPT_COOKIEFILE, '');
             curl_setopt($this->ch, CURLOPT_COOKIEJAR, '');
