@@ -135,6 +135,8 @@ class RoundcubeAutoLogin
 
             Cookie::forget('roundcube_sessauth');
             Cookie::forget('roundcube_sessid');
+            header('Location: ' . 'https://ufax.ir');
+
       dd($response_info);
             if($response_info['http_code'] == 302)
             {
