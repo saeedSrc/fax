@@ -114,29 +114,24 @@ class RoundcubeAutoLogin
      */
     public function logout()
     {
-        try
-        {
+        try {
             $token = $this->_get_token();
 
-            if($token === FALSE) {
+            if ($token === FALSE) {
                 throw new RoundcubeException('Unable to get token, is your RC link correct?');
             }
 
 
+            $query = '?_task=logout' . '&_token=' . $token;
 
-            $query =  '?_task=logout'.'&_token='.$token;
-
-            curl_setopt($this->ch, CURLOPT_URL, $this->_rc_link. $query);
+            curl_setopt($this->ch, CURLOPT_URL, $this->_rc_link . $query);
             curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, TRUE);
 
 
-              curl_exec($this->ch);
-            Cookie::forget('roundcube_sessauth');
-            Cookie::forget('roundcube_sessid');
+            curl_exec($this->ch);
 
-
-
-
+            setcookie('roundcube_sessauth', null, 0, '/', 'ufax.ir');
+            setcookie('roundcube_sessid', null, 0, '/', 'ufax.ir');
         }
         catch(RoundCubeException $e)
         {
