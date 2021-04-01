@@ -87,7 +87,7 @@ class RoundcubeAutoLogin
             }
             else
             {
-                throw new RoundCubeException('Login failed, please check your credentials.');
+                throw new RoundCubeException('ورود شما با خطا مواجه شد لطفا مجددا تلاش کنید.');
             }
 
         }

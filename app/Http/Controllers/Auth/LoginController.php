@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Cookie;
 
 class LoginController extends Controller
 {
@@ -35,6 +36,11 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+//        $request->session()->forget('roundcube_sessid');
+//        $request->session()->forget('roundcube_sessauth');
+        Cookie::forget('roundcube_sessauth');
+        Cookie::forget('roundcube_sessid');
+
         $this->middleware('guest')->except('logout');
     }
 }
