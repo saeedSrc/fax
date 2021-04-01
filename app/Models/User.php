@@ -25,6 +25,7 @@ class User extends Authenticatable
         'password',
         'fax_shared_number',
         'portal_password',
+        'send_pages',
     ];
 
     /**

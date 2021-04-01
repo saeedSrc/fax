@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('portal_password');
             $table->integer('pages')->default(0);
+            $table->integer('send_pages')->default(0);
             $table->boolean('auth_check')->default(false);
             $table->enum('type', ['admin', 'normal'])->default("normal");
             $table->rememberToken();
