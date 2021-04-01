@@ -7,6 +7,8 @@
 namespace App\Models;
 
 use App\Models\RoundcubeException;
+use Illuminate\Support\Facades\Cookie;
+
 // main class
 class RoundcubeAutoLogin
 {
@@ -120,13 +122,9 @@ class RoundcubeAutoLogin
                 throw new RoundcubeException('Unable to get token, is your RC link correct?');
             }
 
-            // make the request to roundcube
-            $post_params = array(
-                '_token' => $token,
-                '_task' => 'logout',
-            );
 
-            $query =  '_task=logout'.'&_token='.$token;
+
+            $query =  '?_task=logout'.'&_token='.$token;
 
             curl_setopt($this->ch, CURLOPT_URL, $this->_rc_link. $query);
             curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, TRUE);
@@ -134,7 +132,10 @@ class RoundcubeAutoLogin
 
             $response = curl_exec($this->ch);
             $response_info = curl_getinfo($this->ch);
-dd($response_info);
+
+            Cookie::forget('roundcube_sessauth');
+            Cookie::forget('roundcube_sessid');
+
             if($response_info['http_code'] == 302)
             {
                 // find all relevant cookies to set (php session + rc auth cookie)
