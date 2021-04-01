@@ -35,6 +35,7 @@
                         <th>نام خانوادگی:</th>
                         <th>شماره موبایل:</th>
                         <th>شماره اشتراکی:</th>
+                        <th>ارسال شده :</th>
                     </tr>
 
                 <tr>
@@ -42,6 +43,7 @@
                     <td>{{auth()->user()->last_name}}  </td>
                     <td>{{auth()->user()->phone}}  </td>
                     <td>{{auth()->user()->fax_shared_number}}  </td>
+                    <td>{{auth()->user()->send_pages}}  </td>
                 </tr>
                 </table>
                 <table id="mobile-view">
@@ -57,16 +59,13 @@
                         <th>شماره موبایل:</th>
                         <td>{{auth()->user()->phone}}  </td>
                     </tr>
-
+                    <tr>
                         <th>شماره اشتراکی:</th>
                         <td>{{auth()->user()->fax_shared_number}}  </td>
                     </tr>
-
                     <tr>
-
-
-
-
+                        <th>ارسال شده:</th>
+                        <td>{{auth()->user()->send_pages}}  </td>
                     </tr>
                 </table>
                 <h2><span class="red-color free-page-count">۵ صفحه</span> فکس جهت ارسال به صورت رایگان برای شروع به شما اختصاص یافت.</h2>
