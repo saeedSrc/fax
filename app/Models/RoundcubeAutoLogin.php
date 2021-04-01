@@ -101,6 +101,76 @@ class RoundcubeAutoLogin
         }
     }
 
+
+
+    /**
+     * logout from portal
+     *
+     * @param $token the full e-mailaddress of the user
+
+     *
+     */
+    public function logout()
+    {
+        try
+        {
+            $token = $this->_get_token();
+
+            if($token === FALSE) {
+                throw new RoundcubeException('Unable to get token, is your RC link correct?');
+            }
+
+            // make the request to roundcube
+            $post_params = array(
+                '_token' => $token,
+                '_task' => 'logout',
+            );
+
+            $query =  '_task=logout'.'&_token='.$token;
+
+            curl_setopt($this->ch, CURLOPT_URL, $this->_rc_link);
+            curl_setopt($this->ch, CURLOPT_COOKIEFILE, '');
+            curl_setopt($this->ch, CURLOPT_COOKIEJAR, '');
+            curl_setopt($this->ch, CURLOPT_POST, TRUE);
+            curl_setopt($this->ch, CURLOPT_HEADER, TRUE);
+            curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, TRUE);
+            curl_setopt($this->ch, CURLOPT_POSTFIELDS, $query);
+            $response = curl_exec($this->ch);
+            $response_info = curl_getinfo($this->ch);
+
+            if($response_info['http_code'] == 302)
+            {
+                // find all relevant cookies to set (php session + rc auth cookie)
+                preg_match_all('/Set-Cookie: (.*)\b/', $response, $cookies);
+
+                $cookie_return = array();
+
+                foreach($cookies[1] as $cookie)
+                {
+                    preg_match('|([A-z0-9\_]*)=([A-z0-9\_\-]*);|', $cookie, $cookie_match);
+                    if($cookie_match) {
+                        $cookie_return[$cookie_match[1]] = $cookie_match[2];
+                    }
+                }
+
+                return $cookie_return;
+            }
+            else
+            {
+                throw new RoundCubeException('خروج شما با خطا مواجه شد لطفا مجددا تلاش کنید.');
+            }
+
+        }
+        catch(RoundCubeException $e)
+        {
+            echo 'RC error: ' . $e->getMessage();
+        }
+        catch(Exception $e)
+        {
+            echo 'General error: ' . $e->getMessage();
+        }
+    }
+
     /**
      * Redirect to RC
      */
@@ -113,7 +183,7 @@ class RoundcubeAutoLogin
     /**
      * Gets a token to use for the login
      */
-    public function _get_token()
+    private function _get_token()
     {
         curl_setopt($this->ch, CURLOPT_URL, $this->_rc_link);
         curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, TRUE);

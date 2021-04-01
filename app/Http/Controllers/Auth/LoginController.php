@@ -44,8 +44,7 @@ class LoginController extends Controller
 
 
         $rc = new RoundcubeAutoLogin(config('constants.ufax_domain'));
-        $token = $rc->_get_token();
-        dd($token);
+        $rc->logout();
         $this->middleware('guest')->except('logout');
     }
 }
