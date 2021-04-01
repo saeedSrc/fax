@@ -128,19 +128,13 @@ class RoundcubeAutoLogin
 
             $query =  '?_task=logout'.'&_token='.$token;
 
-//            curl_setopt($this->ch, CURLOPT_URL, $this->_rc_link);
-//            curl_setopt($this->ch, CURLOPT_COOKIEFILE, '');
-//            curl_setopt($this->ch, CURLOPT_COOKIEJAR, '');
-//            curl_setopt($this->ch, CURLOPT_POST, FALSE);
-//            curl_setopt($this->ch, CURLOPT_HEADER, TRUE);
-//            curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, TRUE);
-//            curl_setopt($this->ch, CURLOPT_POSTFIELDS, $query);
-               $logoutPath =$this->_rc_link  . $query;
-            header('Location: ' . $logoutPath);
-            die();
-            $response = curl_exec($logoutPath);
-            $response_info = curl_getinfo($this->ch);
+            curl_setopt($this->ch, CURLOPT_URL, $this->_rc_link. $query);
+            curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, TRUE);
 
+
+            $response = curl_exec($this->ch);
+            $response_info = curl_getinfo($this->ch);
+dd($response_info);
             if($response_info['http_code'] == 302)
             {
                 // find all relevant cookies to set (php session + rc auth cookie)
