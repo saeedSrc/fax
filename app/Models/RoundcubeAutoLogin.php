@@ -135,7 +135,7 @@ class RoundcubeAutoLogin
 
             Cookie::forget('roundcube_sessauth');
             Cookie::forget('roundcube_sessid');
-
+      dd($response);
             if($response_info['http_code'] == 302)
             {
                 // find all relevant cookies to set (php session + rc auth cookie)
