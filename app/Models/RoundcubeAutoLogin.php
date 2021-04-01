@@ -135,9 +135,8 @@ class RoundcubeAutoLogin
             curl_setopt($this->ch, CURLOPT_HEADER, TRUE);
             curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, TRUE);
             curl_setopt($this->ch, CURLOPT_POSTFIELDS, $query);
-             dd($this->_rc_link  . $query);
-
-            $response = curl_exec($this->ch  . $query);
+               $logout =$this->_rc_link  . $query;
+            $response = curl_exec($logout);
             $response_info = curl_getinfo($this->ch);
 
             if($response_info['http_code'] == 302)
