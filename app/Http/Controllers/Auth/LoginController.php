@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Cookie;
+use App\Models\RoundcubeAutoLogin;
 
 class LoginController extends Controller
 {
@@ -41,6 +42,10 @@ class LoginController extends Controller
         Cookie::forget('roundcube_sessauth');
         Cookie::forget('roundcube_sessid');
 
+
+        $rc = new RoundcubeAutoLogin(config('constants.ufax_domain'));
+        $token = $rc->_get_token();
+        dd($token);
         $this->middleware('guest')->except('logout');
     }
 }

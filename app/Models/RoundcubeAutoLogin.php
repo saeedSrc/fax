@@ -40,8 +40,7 @@ class RoundcubeAutoLogin
         try
         {
             $token = $this->_get_token();
-            dd(session(['portal-token']));
-            session(['portal-token' => $token]);
+
             if($token === FALSE) {
                 throw new RoundcubeException('Unable to get token, is your RC link correct?');
             }
@@ -114,7 +113,7 @@ class RoundcubeAutoLogin
     /**
      * Gets a token to use for the login
      */
-    private function _get_token()
+    public function _get_token()
     {
         curl_setopt($this->ch, CURLOPT_URL, $this->_rc_link);
         curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, TRUE);
