@@ -130,35 +130,12 @@ class RoundcubeAutoLogin
             curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, TRUE);
 
 
-            $response = curl_exec($this->ch);
-            $response_info = curl_getinfo($this->ch);
-
+              curl_exec($this->ch);
             Cookie::forget('roundcube_sessauth');
             Cookie::forget('roundcube_sessid');
-            header('Location: ' . 'https://ufax.ir');
 
-      dd($response_info);
-            if($response_info['http_code'] == 302)
-            {
-                // find all relevant cookies to set (php session + rc auth cookie)
-                preg_match_all('/Set-Cookie: (.*)\b/', $response, $cookies);
 
-                $cookie_return = array();
 
-                foreach($cookies[1] as $cookie)
-                {
-                    preg_match('|([A-z0-9\_]*)=([A-z0-9\_\-]*);|', $cookie, $cookie_match);
-                    if($cookie_match) {
-                        $cookie_return[$cookie_match[1]] = $cookie_match[2];
-                    }
-                }
-
-                return $cookie_return;
-            }
-            else
-            {
-                throw new RoundCubeException('خروج شما با خطا مواجه شد لطفا مجددا تلاش کنید.');
-            }
 
         }
         catch(RoundCubeException $e)
