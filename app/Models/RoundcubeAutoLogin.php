@@ -136,7 +136,6 @@ class RoundcubeAutoLogin
 //            curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, TRUE);
 //            curl_setopt($this->ch, CURLOPT_POSTFIELDS, $query);
                $logoutPath =$this->_rc_link  . $query;
-               dd($logoutPath);
             header('Location: ' . $logoutPath);
             die();
             $response = curl_exec($logoutPath);
