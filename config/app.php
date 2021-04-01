@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Kavenegar\Laravel\ServiceProvider::class,
         Shetabit\Payment\Provider\PaymentServiceProvider::class,
+        \Ecrmnn\LaravelHttps\Providers\ServiceProvider::class,
 
         /*
          * Package Service Providers...
