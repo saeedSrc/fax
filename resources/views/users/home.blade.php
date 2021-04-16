@@ -44,7 +44,7 @@
                     <td>{{auth()->user()->last_name}}  </td>
                     <td>{{auth()->user()->phone}}  </td>
                     <td>{{auth()->user()->fax_shared_number}}  </td>
-                    <td> 91090702-021  </td>
+                    <td> 021-91090702  </td>
                     <td>{{auth()->user()->send_pages}}  </td>
                 </tr>
                 </table>
@@ -67,7 +67,7 @@
                     </tr>
                     <tr>
                         <th>شماره فکس:</th>
-                        <td>  91090702-021 </td>
+                        <td>  021-91090702 </td>
                     </tr>
                     <tr>
                         <th>ارسال شده:</th>
