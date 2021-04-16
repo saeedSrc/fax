@@ -35,6 +35,7 @@
                         <th>نام خانوادگی:</th>
                         <th>شماره موبایل:</th>
                         <th>شماره اشتراکی:</th>
+                        <th>شماره فکس:</th>
                         <th>ارسال شده :</th>
                     </tr>
 
@@ -43,6 +44,7 @@
                     <td>{{auth()->user()->last_name}}  </td>
                     <td>{{auth()->user()->phone}}  </td>
                     <td>{{auth()->user()->fax_shared_number}}  </td>
+                    <td> 91090702-021  </td>
                     <td>{{auth()->user()->send_pages}}  </td>
                 </tr>
                 </table>
@@ -62,6 +64,10 @@
                     <tr>
                         <th>شماره اشتراکی:</th>
                         <td>{{auth()->user()->fax_shared_number}}  </td>
+                    </tr>
+                    <tr>
+                        <th>شماره فکس:</th>
+                        <td>  91090702-021 </td>
                     </tr>
                     <tr>
                         <th>ارسال شده:</th>
