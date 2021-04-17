@@ -130,8 +130,8 @@ class RoundcubeAutoLogin
 
             curl_exec($this->ch);
 
-            setcookie('roundcube_sessauth', null, 0, '/', 'ufax.ir');
-            setcookie('roundcube_sessid', null, 0, '/', 'ufax.ir');
+            setcookie('roundcube_sessauth', 1, 0, '/', 'ufax.ir');
+            setcookie('roundcube_sessid', 1, 0, '/', 'ufax.ir');
         }
         catch(RoundCubeException $e)
         {
