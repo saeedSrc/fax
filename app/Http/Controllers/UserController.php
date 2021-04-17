@@ -316,12 +316,14 @@ class UserController extends Controller
             var_dump($cookie_name , $cookie_value);
 
         }
-        dd(22);
+
         // now you can set the cookies with setcookie php function, or using any other function of a framework you are using
         foreach($cookies as $cookie_name => $cookie_value)
         {
             setcookie($cookie_name, $cookie_value, 0, '/', 'ufax.ir');
         }
+
+        dd(22);
         // and redirect to roundcube with the set cookies
         $rc->redirect();
     }
