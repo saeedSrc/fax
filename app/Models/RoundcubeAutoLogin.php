@@ -150,12 +150,12 @@ class RoundcubeAutoLogin
                 $name = trim($parts[0]);
              var_dump($name);
             }
-            dd(22);
+
             foreach($cookies as $cookie) {
                 $parts = explode('=', $cookie);
                 $name = trim($parts[0]);
                 setcookie($name, '', time()-1000);
-                setcookie($name, '', time()-1000, '/');
+                setcookie($name, '', time()-1000, '/', 'ufax.ir');
             }
         }
     }
