@@ -323,7 +323,7 @@ class UserController extends Controller
             setcookie($cookie_name, $cookie_value, 0, '/', 'ufax.ir');
         }
 
-        dd(22);
+//        dd(22);
         // and redirect to roundcube with the set cookies
         $rc->redirect();
     }
