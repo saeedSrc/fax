@@ -60,7 +60,7 @@ class RoundcubeAutoLogin
 
             $query = '_token='.$token . '&_task=login' . '&_action=login' . '&_timezone=' . '&_url=_task=login' . '&_user='.$email.'&_pass='.$password;
 
-            curl_setopt($this->ch, CURLOPT_URL, $this->_rc_link);
+            curl_setopt($this->ch, CURLOPT_URL, $this->_rc_link . '?_task=login');
             curl_setopt($this->ch, CURLOPT_COOKIEFILE, '');
             curl_setopt($this->ch, CURLOPT_COOKIEJAR, '');
             curl_setopt($this->ch, CURLOPT_POST, TRUE);
@@ -114,32 +114,42 @@ class RoundcubeAutoLogin
      */
     public function logout()
     {
-        try {
-            $token = $this->_get_token();
+//        try {
+//            $token = $this->_get_token();
+//
+//            if ($token === FALSE) {
+//                throw new RoundcubeException('Unable to get token, is your RC link correct?');
+//            }
+//
+//
+//            $query = '?_task=logout' . '&_token=' . $token;
+//
+//            curl_setopt($this->ch, CURLOPT_URL, $this->_rc_link . $query);
+//            curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, TRUE);
+//
+//
+//            curl_exec($this->ch);
+//
+//            setcookie('roundcube_sessauth', null, 0, '/', 'ufax.ir');
+//            setcookie('roundcube_sessid', null, 0, '/', 'ufax.ir');
+//        }
+//        catch(RoundCubeException $e)
+//        {
+//            echo 'RC error: ' . $e->getMessage();
+//        }
+//        catch(Exception $e)
+//        {
+//            echo 'General error: ' . $e->getMessage();
+//        }
 
-            if ($token === FALSE) {
-                throw new RoundcubeException('Unable to get token, is your RC link correct?');
+        if (isset($_SERVER['HTTP_COOKIE'])) {
+            $cookies = explode(';', $_SERVER['HTTP_COOKIE']);
+            foreach($cookies as $cookie) {
+                $parts = explode('=', $cookie);
+                $name = trim($parts[0]);
+                setcookie($name, '', time()-1000);
+                setcookie($name, '', time()-1000, '/');
             }
-
-
-            $query = '?_task=logout' . '&_token=' . $token;
-
-            curl_setopt($this->ch, CURLOPT_URL, $this->_rc_link . $query);
-            curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, TRUE);
-
-
-            curl_exec($this->ch);
-
-            setcookie('roundcube_sessauth', 1, 0, '/', 'ufax.ir');
-            setcookie('roundcube_sessid', 1, 0, '/', 'ufax.ir');
-        }
-        catch(RoundCubeException $e)
-        {
-            echo 'RC error: ' . $e->getMessage();
-        }
-        catch(Exception $e)
-        {
-            echo 'General error: ' . $e->getMessage();
         }
     }
 
