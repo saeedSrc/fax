@@ -12,6 +12,8 @@ return [
 
 'auth_code_expired_at' => 'auth-code-expired-at',
 
+'reset_pass_phone' => 'reset-pass-phone',
+
 'auth_code_expire_time' => 600, // second,
 
 'user_type_admin' => 'admin',

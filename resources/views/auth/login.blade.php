@@ -41,7 +41,8 @@
                         </div>
                         <input type="submit" value="ورود" class="btn btn-info btn-block">
                     </form>
-                    <a class="left-text" href="/register">درخواست عضویت</a> / <a class="left-text full" href="/">خانه</a>  / <a class="left-text full" href="/forget_pass">فراموشی رمز عبور</a>
+                    <a class="left-text" href="/register">درخواست عضویت</a> / <a class="left-text full" href="/">خانه</a> / <a class="left-text full" href="/reset_pass">بازنشانی رمزعبور</a>
+                    {{--/ <a class="left-text full" href="/forget_pass">فراموشی رمز عبور</a>--}}
                 </div>
             </div>
         </div>

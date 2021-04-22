@@ -181,5 +181,7 @@ return [
         'question'             => 'متن پیام',
         'question_image'        => 'تصویر',
         'national_code'        => 'کدملی',
+        'reset_pass_code'        => 'کد احراز هویت',
+        'reset_password'        => 'رمز عبور',
     ],
 ];

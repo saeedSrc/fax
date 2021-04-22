@@ -25,16 +25,35 @@ Route::get('/phone_authentication_request', function () {
 // user phone authorize path
 Route::post('/phone_authorize','UserController@PostPhoneAuthenticationForm');
 
+
+// user phone authorize path
+Route::post('/reset_pass_phone_authorize','UserController@PostResetPassPhoneAuthenticationForm');
+
+
 // user phone authorize path
 Route::get('/phone_authorize','UserController@GetPhoneAuthenticationForm');
 
+// user reset pass phone authorize path
+Route::get('/reset_pass_phone_authorize','UserController@GetResetPassPhoneAuthenticationForm');
+
 // user phone authorize path
 Route::post('/final_authenticate','UserController@FinalAuthenticate');
+
+
+// user reset pass final authenticate
+Route::post('/reset_pass_final_authenticate','UserController@ResetPassFinalAuthenticate');
 
 // user forget pass path
 Route::get('/forget_pass', function () {
 
     return view('auth.forget_pass');
+});
+
+
+// user reset pass path
+Route::get('/reset_pass', function () {
+
+    return view('auth.reset_pass');
 });
 
 // user send reset pass path

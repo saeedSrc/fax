@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Common\Common;
 use App\Http\Requests\AuthCode;
+use App\Http\Requests\AuthResetPass;
 use App\Http\Requests\ResetPass;
 use App\Http\Requests\StoreUser;
 use App\Kavenegar\Kavenegar;
@@ -134,6 +135,36 @@ class UserController extends Controller
         return view('auth.phone_authorize')->with(["remaining_time" => $this->getRemainingSessionTime('auth_code_expired_at')]);
     }
 
+
+
+    /**
+     * Send reset pass auth code to user.
+     *
+     * @param  int $phone
+     * @return \Illuminate\Http\Response
+     */
+    public function PostResetPassPhoneAuthenticationForm(Request $request)
+    {
+        if (!$this->getSession('auth_code_expired_at') || ($this->getSession('auth_code_expired_at') && $this->getSession('auth_code_expired_at') < time())) { // if code expires
+                $code = rand(1001, 9999);
+                $expire_at = time() + config('constants.auth_code_expire_time');
+                $kavenegar = new Kavenegar();
+//               $res = $kavenegar->sendSms("09123860421", $message, config('constants.register_temp'));
+                $res = $kavenegar->sendSms($request->phone, $code, config('constants.register_temp'));
+                if ($res == 200) {
+                    $this->setSession('authentication_code', $code);
+                    $this->setSession('reset_pass_phone', $request->phone);
+                    $this->setSession('auth_code_expired_at', $expire_at);
+
+                } else {
+                    return view('auth.phone_authorize')->with("remaining_time", 0);
+                }
+
+        }
+
+        return view('auth.reset_pass_phone_authorize')->with(["remaining_time" => $this->getRemainingSessionTime('auth_code_expired_at')]);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -143,6 +174,17 @@ class UserController extends Controller
     public function GetPhoneAuthenticationForm(Request $request)
     {
         return view('auth.phone_authorize')->with("remaining_time", $this->getRemainingSessionTime('auth_code_expired_at'));
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int $phone
+     * @return \Illuminate\Http\Response
+     */
+    public function GetResetPassPhoneAuthenticationForm(Request $request)
+    {
+        return view('auth.reset_pass_phone_authorize')->with("remaining_time", $this->getRemainingSessionTime('auth_code_expired_at'));
     }
 
     /**
@@ -159,6 +201,18 @@ class UserController extends Controller
     }
 
     /**
+     * Final rule for user Authentication.
+     *
+     * @param  int $phone
+     * @return \Illuminate\Http\Response
+     */
+    public function ResetPassFinalAuthenticate(AuthResetPass $request)
+    {
+        User::where('phone', $this->getSession('reset_pass_phone'))->update(['password' => Hash::make($request->password)]);
+        return view('auth.success_reset_pass');
+    }
+
+    /**
      * Send reset password.
      *
      * @param  int $phone
@@ -166,8 +220,7 @@ class UserController extends Controller
      */
     public function SendResetPass(ResetPass $request)
     {
-//        if (!$this->getSession('reset_pass_resend_expired_at') || ( $this->getSession('reset_pass_resend_expired_at') && $this->getSession('reset_pass_resend_expired_at') < time())) { // if code expires
-        if (true) { // if code expires
+        if (!$this->getSession('reset_pass_resend_expired_at') || ( $this->getSession('reset_pass_resend_expired_at') && $this->getSession('reset_pass_resend_expired_at') < time())) { // if code expires
             $phone = $request->phone;
             $kavenegar = new Kavenegar();
             $common = new Common();
