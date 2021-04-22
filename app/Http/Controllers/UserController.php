@@ -208,7 +208,7 @@ class UserController extends Controller
      */
     public function ResetPassFinalAuthenticate(AuthResetPass $request)
     {
-        User::where('phone', $this->getSession('reset_pass_phone'))->update(['password' => Hash::make($request->password)]);
+        User::where('phone', $this->getSession('reset_pass_phone'))->update(['password' => Hash::make($request->reset_password)]);
         return view('auth.success_reset_pass');
     }
 
