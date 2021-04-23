@@ -40,6 +40,14 @@
             <nav>
                 <ul>
                     @if(auth()->check())
+                        <li class="drop-down">
+                        <button class="dropbtn">{{ Auth::user()->first_name }} </button>
+                            <div class="dropdownConten">
+                            <a href="#"> نام: {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</a>
+                            <a href="#"> شماره همراه: {{ Auth::user()->phone }}</a>
+                            <a href="#"> کد ملی: {{ Auth::user()->national_code }}</a>
+                            </div>
+                        </li>
                         {{--<li class="drop-down">--}}
                             {{--<button class="dropbtn">{{ Auth::user()->first_name }} </button>--}}
                             @if(Auth::user()->auth_check == 1)
