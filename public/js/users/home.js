@@ -20,4 +20,20 @@ $(document).ready(function() {
             container.slideToggle();
         }
     });
+
+    var progress = $('#progress-percent').html().replace('%','').replace(' ', '');
+
+    if(progress <= 50)
+    {
+
+        var className = 'p' + progress;
+        $('#progress').addClass(className);
+    }
+    else
+    {
+
+        var className = 'over50 p' + progress;
+        $('#progress').addClass(className);
+    }
+
 });

@@ -4,6 +4,7 @@
     @parent
     <link rel="stylesheet" href="{{ asset('css/users/home.css') }}" >
     <link rel="stylesheet" href="{{ asset('css/users/order/order_list.css') }}" >
+    <link rel="stylesheet" href="{{ asset('css/users/order/progress.css') }}" >
 @endsection
 
 
@@ -95,11 +96,30 @@
                             </tr>
                         @endforeach
                     </table>
+
+
+
+
+
+
+
                 @endif
                 @if(count($orders) == 0)
                     <h3 class="center gray-color empty-bag">سفارشی وجود ندارد.</h3>
                 @endif
             </div>
+
+            <div class="progress">
+                <p>نمودار پیج‌های مصرف شده</p>
+            <div id="progress" class="progress-circle">
+                <span id="progress-percent"> {{auth()->user()->send_pages / auth()->user()->pages * 100}} % </span>
+                <div class="left-half-clipper">
+                    <div class="first50-bar"></div>
+                    <div class="value-bar"></div>
+                </div>
+            </div>
+            </div>
+
         </div>
         @else
     <div class="fax-spec">
