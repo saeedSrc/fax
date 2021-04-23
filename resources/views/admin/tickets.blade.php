@@ -21,7 +21,8 @@
                     @foreach($tickets as $ticket)
                     <li>
                         <a  id="ticket-title{{ $ticket->id }}"  class="black-color" href="/admin/ticket/{{ $ticket->id }}">
-                            <span>  {{ $ticket->id * 100 }}</span> <span> - </span>  {{ $ticket->title }}
+                            <span>شماره تیکت</span>
+                            <span>  {{ $ticket->id }}</span> <span> - </span>  {{ $ticket->title }}
                         </a>
 
                         <span class="time">  اخرین بروز رسانی :  <span class="persian-time">{{  date('H:i:s d-m-Y', strtotime($ticket->updated_at)) }}</span> </span>
